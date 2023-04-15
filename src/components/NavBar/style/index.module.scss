@@ -1,0 +1,11 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 64px;
+  max-width: 100%;
+  background: hsla(0,0%,100%,.8);
+  transition: box-shadow .1s ease 0s,background-color .1s ease 0s;
+}
