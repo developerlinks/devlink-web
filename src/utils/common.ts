@@ -129,7 +129,6 @@ export function randomString(length = 6) {
 
 export function getUserInfo(): Promise<User> {
   return new Promise((resolve, reject) => {
-    JSON.parse(localStorage.getItem(STORGE_USER_INFO)) ||
     getInfo().then((res) => {
       const userinfo: User = res.data;
       localStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
