@@ -1,7 +1,32 @@
 .footer {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;  
   max-width: 100%;
   background: #fafafa;
+  padding: 64px 24px 0;
+  font-size: .875rem;
+
+  .footerMarketing {
+    display: flex;
+    justify-content: space-between;
+
+    .statusContinaer {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .group {
+      .groupHeader {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  .filingsInfo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }

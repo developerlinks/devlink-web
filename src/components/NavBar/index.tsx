@@ -1,26 +1,21 @@
-import { Nav, Avatar, Dropdown, Select, Button } from '@douyinfe/semi-ui';
+import {
+  Nav,
+  Avatar,
+  Dropdown,
+  Select,
+  Button,
+  Typography,
+} from '@douyinfe/semi-ui';
 import Image from 'next/image';
 import styles from './style/index.module.scss';
+import { useRouter } from 'next/router';
 
 export default function NavBar() {
-  const renderHorizontal = () => {
-    return (
-      <header className={styles.navbar}>
-        <Nav
-          mode={'horizontal'}
-          onSelect={(key) => console.log(key)}
-          header={{
-            logo: (
-              <Image
-                src={'/images/devlink_d_black.svg'}
-                alt='logo'
-                width={40}
-                height={40}
-              />
-            ),
-          }}
-          footer={
-            <>
+  const { push } = useRouter();
+  const navRightBox = () => {
+    const { Text } = Typography;
+    /**
+     * <>
               <Dropdown
                 position='bottomRight'
                 render={
@@ -36,7 +31,37 @@ export default function NavBar() {
                 <span>devlink</span>
               </Dropdown>
             </>
-          }
+     */
+    return (
+      <div>
+        <div className={styles.unAuth}>
+          <Text type='primary' link onClick={() => push('/login')}>
+            登录
+          </Text>
+          <Button type='primary' theme='solid' onClick={() => push('/login/register')}>注册</Button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderHorizontal = () => {
+    return (
+      <header className={styles.navbarContainer}>
+        <Nav
+          className={styles.navbar}
+          mode={'horizontal'}
+          onSelect={(key) => console.log(key)}
+          header={{
+            logo: (
+              <Image
+                src={'/images/devlink_d_black.svg'}
+                alt='logo'
+                width={40}
+                height={40}
+              />
+            ),
+          }}
+          footer={navRightBox()}
         />
       </header>
     );
