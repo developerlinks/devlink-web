@@ -59,7 +59,7 @@ export declare class Group {
   material: Material[];
 }
 
-export declare class Material {
+export interface Material {
   id: string;
   name: string;
   npmName: string;

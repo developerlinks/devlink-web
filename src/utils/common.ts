@@ -129,10 +129,23 @@ export function randomString(length = 6) {
 
 export function getUserInfo(): Promise<User> {
   return new Promise((resolve, reject) => {
+    let userinfo = sessionStorage.getItem(STORGE_USER_INFO);
+    userinfo = userinfo && JSON.parse(userinfo);
+    userinfo && resolve(userinfo as unknown as User);
     getInfo().then((res) => {
-      const userinfo: User = res.data;
-      localStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
-      resolve(userinfo);
+      if (res) {
+        const { status } = res.data;
+        if (status === 0) {
+          const { data } = res.data;
+          const userinfo: User = data;
+          sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
+          resolve(userinfo);
+        } else {
+          reject({
+            error: ' 获取失败',
+          });
+        }
+      }
     });
   });
 }

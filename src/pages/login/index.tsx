@@ -3,9 +3,9 @@ import Seo from '@/components/Seo';
 import styles from './style/index.module.scss';
 import { Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
+import { getUserInfo } from '@/utils/common';
 
 export default function Login() {
-
   const { push } = useRouter();
   return (
     <Layout>

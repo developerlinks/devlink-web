@@ -27,5 +27,9 @@ export const register = (data: RegisterByEmail) =>
 export const findAllUser = () => http('/user/findall');
 
 export function getInfo() {
-  return http('/members/info');
+  return http('/user/userinfo');
+}
+
+export function getMyMaterial() {
+  return http('/material/myself');
 }

@@ -1,0 +1,27 @@
+.homeContainer {
+  display: flex;
+  min-height: 100vh;
+
+  .userAside{
+    min-width: 350px;
+    padding: 32px;
+    border: 1px solid #eaeaea;
+  }
+
+  .informationAside {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+
+    .recommendContainer {
+      flex: 2;
+      background-color: antiquewhite;
+    }
+
+    .newsContainer {
+      flex: 1;
+      background-color: aliceblue;
+    }
+
+  }
+}

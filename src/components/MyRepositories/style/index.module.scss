@@ -1,0 +1,14 @@
+.myRepositories {
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .searchContainer {
+    margin: 10px 0;
+    .inputBox {
+      width: 100%;
+    }
+  }
+}

@@ -4,9 +4,10 @@ import styles from './style/index.module.scss';
 import { Form, Toast, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi } from '@/api/user';
-import { LoginByPasswordParams } from '@/api/types/user';
+import { LoginByPasswordParams, User } from '@/api/types/user';
 import { useState } from 'react';
 import { ToastSuccess } from '@/utils/common';
+import useUserStore from '@/store/user';
 
 interface handleSubmitParams extends LoginByPasswordParams {
   agree: boolean;
@@ -14,6 +15,7 @@ interface handleSubmitParams extends LoginByPasswordParams {
 
 export default function Email() {
   const [loading, setLoading] = useState(false);
+  const { setUser } = useUserStore();
 
   const { push } = useRouter();
   const handleSubmit = (values: handleSubmitParams) => {
@@ -22,8 +24,9 @@ export default function Email() {
         const { status } = res.data;
         if (status === 0) {
           const { data } = res.data;
+          setUser(data.user);
           localStorage.setItem('bearerToken', data.access_token);
-          afterLoginSuccess(values);
+          afterLoginSuccess(data.user);
         }
       })
       .finally(() => {
@@ -31,9 +34,14 @@ export default function Email() {
       });
   };
 
-  const afterLoginSuccess = (values: LoginByPasswordParams) => {
+  const afterLoginSuccess = (user: User) => {
+    const { roles } = user;
+    const isAdmin =
+      roles.findIndex(
+        (item) => item.name === 'super' || item.name === 'admin'
+      ) !== -1;
     // 判断权限
-    push('/');
+    push(isAdmin ? '/admin' : '/');
     ToastSuccess('欢迎回来👏');
   };
 
@@ -89,7 +97,8 @@ export default function Email() {
                     <Button
                       disabled={!values.agree}
                       htmlType='submit'
-                      type='tertiary'
+                      type='primary'
+                      theme='solid'
                       loading={loading}
                     >
                       登录
