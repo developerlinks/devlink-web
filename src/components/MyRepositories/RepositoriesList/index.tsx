@@ -35,7 +35,7 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
           <Avatar size='small' color='indigo' style={{ marginRight: 4 }}>
             {item.user.username.slice(0, 1)}
           </Avatar>
-          <div> {item.user.username}/</div>
+          {/* <div> {item.user.username}/</div> */}
         </div>
         <div>{item.name}</div>
       </li>

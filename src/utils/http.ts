@@ -32,7 +32,7 @@ http.interceptors.response.use(
 
       switch (status) {
         case 400:
-          ToastError(`错误请求: ${message}，请联系管理员`);
+          ToastError(`${message}`);
           console.error(`错误请求: ${message}`);
           break;
         case 401:
@@ -46,13 +46,14 @@ http.interceptors.response.use(
           ToastError(message);
           break;
         case 500:
-          ToastError(`网络发生波动: ${message}`);
+          ToastError(`网络发生波动，请联系管理员`);
           break;
         default:
           ToastError(message);
       }
     } else if (error.request) {
-      ToastWaring(`未收到响应: ${error.message}`);
+      ToastWaring(`网络发生波动,未收到响应,请稍后再试`);
+      console.error(`${error.message}`)
     } else {
       ToastError(error.message);
       // 在设置请求时触发的错误

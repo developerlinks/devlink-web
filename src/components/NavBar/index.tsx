@@ -74,6 +74,7 @@ export default function NavBar() {
           className={styles.navbar}
           mode={'horizontal'}
           onSelect={(key) => console.log(key)}
+          style={{ padding: 0 }}
           header={
             <Image
               src={'/images/devlink_white.svg'}

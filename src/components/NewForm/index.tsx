@@ -154,7 +154,7 @@ export default function NewForm() {
         label={{ text: '分组', required: true }}
         style={{ width: '100%' }}
         multiple
-        initValue={[GroupData?.groups[0].id]}
+        initValue={[GroupData?.groups[GroupData?.groups.length - 1].id]}
       >
         {GroupData?.groups.map((item) => (
           <Select.Option value={item.id} key={item.id}>
