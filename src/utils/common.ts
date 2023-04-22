@@ -133,19 +133,9 @@ export function getUserInfo(): Promise<User> {
     userinfo = userinfo && JSON.parse(userinfo);
     userinfo && resolve(userinfo as unknown as User);
     getInfo().then((res) => {
-      if (res) {
-        const { status } = res.data;
-        if (status === 0) {
-          const { data } = res.data;
-          const userinfo: User = data;
-          sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
-          resolve(userinfo);
-        } else {
-          reject({
-            error: ' 获取失败',
-          });
-        }
-      }
+      const userinfo: User = res.data;
+      sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
+      resolve(userinfo);
     });
   });
 }

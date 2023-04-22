@@ -19,16 +19,14 @@ export default function Email() {
 
   const { push } = useRouter();
   const handleSubmit = (values: handleSubmitParams) => {
+    setLoading(true);
     loginApi(values)
       .then((res) => {
-        const { status } = res.data;
-        if (status === 0) {
-          const { data } = res.data;
-          setUser(data.user);
-          localStorage.setItem('bearerToken', data.access_token);
-          afterLoginSuccess(data.user);
-        }
+        const { user, access_token } = res.data;
+        localStorage.setItem('bearerToken', access_token);
+        afterLoginSuccess(user);
       })
+      .catch((err) => {})
       .finally(() => {
         setLoading(false);
       });

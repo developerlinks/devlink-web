@@ -21,7 +21,6 @@ http.interceptors.response.use(
   (error) => {
     // 对响应错误做点什么
     if (error.response) {
-      // 服务器返回了一个状态码范围之外的错误
       const errorData = error.response.data;
       const { status } = errorData;
       let {
@@ -29,7 +28,6 @@ http.interceptors.response.use(
       } = errorData;
       // TODO: 错误信息处理，后端返回的错误信息格式不统一 数组 or 对象
       message = Array.isArray(message) ? message[0] : message;
-
       switch (status) {
         case 400:
           ToastError(`${message}`);
@@ -56,12 +54,11 @@ http.interceptors.response.use(
       console.error(`${error.message}`)
     } else {
       ToastError(error.message);
-      // 在设置请求时触发的错误
       console.error(`Request configuration error: ${error.message}`);
     }
-    // return Promise.reject(error);
+    return Promise.reject(error);
   }
 );
 export default http;
 
-export const fetcher = (url: string) => http.get(url).then(res => res.data.data)
+export const fetcher = (url: string) => http.get(url).then(res => res.data)

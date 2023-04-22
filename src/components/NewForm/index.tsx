@@ -72,14 +72,10 @@ export default function NewForm() {
     setLoading(true);
     addMaterial(data)
       .then((res) => {
-        if (res) {
-          const { status } = res.data;
-          if (status === 0) {
-            const { data } = res.data;
-            ToastSuccess('添加成功');
-          }
-        }
+        // TODO: 跳转到详情页
+        ToastSuccess('添加成功');
       })
+      .catch()
       .finally(() => {
         setLoading(false);
       });

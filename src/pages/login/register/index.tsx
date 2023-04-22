@@ -18,23 +18,18 @@ export default function Email() {
   const { push } = useRouter();
 
   const sendCodeHandle = (email: string) => {
-    sendCode(email).then((res) => {
-      const { status } = res.data;
-      if (status === 0) {
+    sendCode(email)
+      .then(() => {
         Toast.success('发送成功');
-      } else {
-        Toast.error('发送失败');
-      }
-    });
+      })
+      .catch((err) => {});
   };
   const handleSubmit = (values: RegisterByEmail) => {
     register(values)
-      .then((res) => {
-        const { status } = res.data;
-        if (status === 0) {
-          ToastSuccess('注册成功');
-        }
+      .then(() => {
+        ToastSuccess('注册成功');
       })
+      .catch((err) => {})
       .finally(() => {
         setLoading(false);
       });
