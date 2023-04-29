@@ -1,0 +1,16 @@
+.projectStatus {
+  width: 100%;
+  padding: 0 10px;
+
+  .commitListContainer {
+    .commitListHeader {
+      font-weight: 600;
+      padding-top: 10px;
+      padding-left: 15px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

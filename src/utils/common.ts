@@ -136,6 +136,38 @@ export function getUserInfo(): Promise<User> {
       const userinfo: User = res.data;
       sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
       resolve(userinfo);
-    });
+    }).catch()
   });
+}
+
+
+export function getDeviceAndOSInfo() {
+  const userAgent = navigator.userAgent;
+
+  // 设备型号和操作系统信息
+  let device = 'unknown';
+  let os = 'unknown';
+
+  // 获取操作系统信息
+  if (userAgent.indexOf('Windows') !== -1) {
+    os = 'Windows';
+  } else if (userAgent.indexOf('Mac') !== -1) {
+    os = 'MacOS';
+  } else if (userAgent.indexOf('Linux') !== -1) {
+    os = 'Linux';
+  } else if (userAgent.indexOf('Android') !== -1) {
+    os = 'Android';
+  } else if (userAgent.indexOf('iPhone') !== -1) {
+    os = 'iOS';
+  }
+
+  // 获取设备型号信息（主要针对移动设备）
+  const deviceRegex = /iPhone|iPad|iPod|Android/;
+  const matchedDevice = userAgent.match(deviceRegex);
+
+  if (matchedDevice) {
+    device = matchedDevice[0];
+  }
+
+  return { device, os };
 }

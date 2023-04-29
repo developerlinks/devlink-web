@@ -20,7 +20,7 @@ export default function MyRepositories() {
     <>
       <div className={styles.myRepositories}>
         <div className={styles.header}>
-          <div>热门仓库</div>
+          <div>我的仓库</div>
           <Button
             icon={<IconCustomize />}
             theme='solid'

@@ -3,7 +3,7 @@ import { GetMyMaterial } from '@/api/types/material';
 import { fetcher } from '@/utils/http';
 import styles from './style/index.module.scss';
 import { Material } from '@/api/types/user';
-import { Avatar } from '@douyinfe/semi-ui';
+import Avatar from '@/components/Avatar';
 
 type RepositoriesListProps = {
   search: string;
@@ -32,10 +32,11 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
     return (
       <li className={styles.repositoryItem} key={item.id}>
         <div className={styles.ownerInfo}>
-          <Avatar size='small' color='indigo' style={{ marginRight: 4 }}>
-            {item.user.username.slice(0, 1)}
-          </Avatar>
-          {/* <div> {item.user.username}/</div> */}
+          <Avatar
+            phone={item.user?.profile?.photo ?? ''}
+            username={item.user?.username as string}
+            size='small'
+          />
         </div>
         <div>{item.name}</div>
       </li>

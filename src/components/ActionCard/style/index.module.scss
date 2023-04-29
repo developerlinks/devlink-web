@@ -1,0 +1,35 @@
+@import '@/styles/color.scss';
+
+.actionCard {
+  .actionHeader {
+    display: flex;
+    align-items: center;
+
+    .owner {
+      margin-right: 8px;
+      display: flex;
+      justify-content: space-around;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .action {
+      margin-right: 5px;
+    }
+
+    .actionTime {}
+  }
+
+  .actionDetail {
+    margin-top: 8px;
+    background-color: #ffffff;
+    border: 1px solid $color-border-default;
+    padding: 16px;
+    border-radius: 6px;
+
+    .actionDetailHeader {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

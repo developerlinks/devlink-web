@@ -1,17 +1,11 @@
-import {
-  Nav,
-  Avatar,
-  Dropdown,
-  Select,
-  Button,
-  Typography,
-} from '@douyinfe/semi-ui';
+import { Nav, Dropdown, Button, Typography } from '@douyinfe/semi-ui';
 import Image from 'next/image';
 import styles from './style/index.module.scss';
 import { useRouter } from 'next/router';
 import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
 import { User } from '@/api/types/user';
+import Avatar from '../Avatar';
 
 export default function NavBar() {
   const [userInfo, setUserInfo] = useState<User>();
@@ -55,9 +49,11 @@ export default function NavBar() {
           </Dropdown.Menu>
         }
       >
-        <Avatar size='small' color='light-blue' style={{ margin: 4 }}>
-          {userInfo?.username.slice(0, 1)}
-        </Avatar>
+        <Avatar
+          phone={userInfo?.profile.photo}
+          username={userInfo?.username as string}
+          size='small'
+        />
         <span>{userInfo?.username}</span>
       </Dropdown>
     </>

@@ -3,6 +3,8 @@ import internal from 'stream';
 export interface LoginByPasswordParams {
   email: string;
   password: string;
+  deviceId: string;
+  deviceType: string;
 }
 
 export type RegisterByEmail = {
@@ -17,6 +19,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
+  accountType: AccountType;
   roles: Roles[];
   profile: Profile;
   group: Group[];
@@ -34,7 +37,6 @@ interface Profile {
   photo: string;
   address: string;
   description: string;
-  accountType: AccountType;
   refreshToken: string;
   refreshTokenExpiresAt: number;
 }
@@ -64,12 +66,13 @@ export interface Material {
   name: string;
   npmName: string;
   version: string;
+  description: string;
   installCommand: string;
   startCommand: string;
   ignore: string;
   isPrivate: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   user: User;
   tags: Tag[];
   groups: Group[];

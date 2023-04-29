@@ -2,25 +2,24 @@
   display: flex;
   min-height: 100vh;
 
-  .userAside{
+  .userAside {
     min-width: 350px;
     padding: 32px;
-    border: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
   }
 
   .informationAside {
     flex: 1;
     padding: 32px;
     display: flex;
+    background-color: rgb(250, 250, 250);
 
     .recommendContainer {
-      flex: 2;
-      background-color: antiquewhite;
+      flex: 1;
     }
 
     .newsContainer {
-      flex: 1;
-      background-color: aliceblue;
+      width: 382px;
     }
 
   }
