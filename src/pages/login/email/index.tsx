@@ -6,24 +6,34 @@ import { useRouter } from 'next/router';
 import { loginApi } from '@/api/user';
 import { LoginByPasswordParams, User } from '@/api/types/user';
 import { useState } from 'react';
-import { ToastSuccess } from '@/utils/common';
+import { ToastSuccess, getDeviceAndOSInfo } from '@/utils/common';
 import useUserStore from '@/store/user';
-
-interface handleSubmitParams extends LoginByPasswordParams {
-  agree: boolean;
-}
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { generateHash } from '@/utils/generateHash';
 
 export default function Email() {
   const [loading, setLoading] = useState(false);
   const { setUser } = useUserStore();
 
   const { push } = useRouter();
-  const handleSubmit = (values: handleSubmitParams) => {
+  const handleSubmit = (values: LoginByPasswordParams) => {
     setLoading(true);
-    loginApi(values)
+    FingerprintJS.load()
+      .then((fp) => fp.get())
+      .then((result) => {
+        const visitorId = result.visitorId;
+        const deviceId = generateHash({ visitorId, email: values.email });
+        const { os, device } = getDeviceAndOSInfo();
+        const params: LoginByPasswordParams = {
+          ...values,
+          deviceId,
+          deviceType: `${device}:${os}`,
+        };
+        return loginApi(params);
+      })
       .then((res) => {
-        const { user, access_token } = res.data;
-        localStorage.setItem('bearerToken', access_token);
+        const { user, accessToken } = res.data;
+        localStorage.setItem('bearerToken', accessToken);
         afterLoginSuccess(user);
       })
       .catch((err) => {})
@@ -34,6 +44,7 @@ export default function Email() {
 
   const afterLoginSuccess = (user: User) => {
     const { roles } = user;
+    setUser(user);
     const isAdmin =
       roles.findIndex(
         (item) => item.name === 'super' || item.name === 'admin'
