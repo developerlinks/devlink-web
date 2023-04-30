@@ -34,11 +34,13 @@ export interface User {
 interface Profile {
   id: string;
   gender: Gender;
+  avatar: string;
   photo: string;
   address: string;
   description: string;
   refreshToken: string;
   refreshTokenExpiresAt: number;
+  createdAt: string;
 }
 
 export enum Gender {
@@ -107,4 +109,18 @@ export interface Follow {
 export interface Roles {
   id: number;
   name: string;
+}
+
+export interface UpdateUserDto {
+  username?: string;
+
+  email?: string;
+
+  gender?: Gender;
+
+  photo?: string;
+
+  address?: string;
+
+  description?: string;
 }

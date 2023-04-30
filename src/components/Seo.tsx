@@ -37,7 +37,7 @@ export default function Seo(props: SeoProps) {
       <meta name='robots' content={meta.robots} />
       <meta content={meta.keywords} name='keywords' />
       <meta content={meta.description} name='description' />
-      <meta property='' name='header_title' content='CODING 官网'></meta>
+      <meta property='' name='header_title' content='devlink 官网'></meta>
       <meta name='image' property='og:image' content={meta.image} />
       <meta property='og:type' content={meta.type} />
       <meta property='og:site_name' content={meta.siteName} />
@@ -45,7 +45,7 @@ export default function Seo(props: SeoProps) {
       <meta property='og:title' content={meta.title} />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      <link key='/favicon/favicon.ico' href='/favicon/favicon.ico' rel='icon' />
+      <link key='/images/devlink_d_black.svg' href='/images/devlink_d_black.svg' rel='icon' />
       <meta name='theme-color' content='#ffffff' />
     </Head>
   );

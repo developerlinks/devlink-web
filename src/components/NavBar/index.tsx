@@ -10,14 +10,15 @@ import Avatar from '../Avatar';
 export default function NavBar() {
   const [userInfo, setUserInfo] = useState<User>();
   const { push, pathname } = useRouter();
-  const { getUser } = useUserStore();
+  const { getUser, user } = useUserStore();
+  
   useEffect(() => {
     if (!pathname.includes('login')) {
       getUser().then((data) => {
         setUserInfo(data);
       });
     }
-  }, []);
+  }, [user]);
 
   const UnAuthRightBox = () => {
     const { Text } = Typography;
@@ -44,15 +45,21 @@ export default function NavBar() {
         position='bottomRight'
         render={
           <Dropdown.Menu>
-            <Dropdown.Item>详情</Dropdown.Item>
+            <Dropdown.Item onClick={() => push(`/user/${userInfo?.id}`)}>
+              个人主页
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => push('/user/setting')}>
+              个人设置
+            </Dropdown.Item>
             <Dropdown.Item>退出</Dropdown.Item>
           </Dropdown.Menu>
         }
       >
         <Avatar
-          phone={userInfo?.profile.photo}
+          avatar={userInfo?.profile.avatar ?? ''}
           username={userInfo?.username as string}
           size='small'
+          style={{ marginRight: 8 }}
         />
         <span>{userInfo?.username}</span>
       </Dropdown>

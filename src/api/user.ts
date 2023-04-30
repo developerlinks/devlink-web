@@ -1,4 +1,4 @@
-import type { LoginByPasswordParams, RegisterByEmail } from './types/user';
+import type { LoginByPasswordParams, RegisterByEmail, UpdateUserDto } from './types/user';
 import http from '../utils/http';
 
 // TODO response type
@@ -32,4 +32,12 @@ export function getInfo() {
 
 export function getMyMaterial() {
   return http('/material/myself');
+}
+
+export function updateUserInfo(data: UpdateUserDto) {
+  return http({
+    url: '/user/update',
+    method: 'patch',
+    data,
+  });
 }

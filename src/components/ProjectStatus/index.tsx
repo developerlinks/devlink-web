@@ -1,12 +1,12 @@
 import styles from './style/index.module.scss';
-import CommitList from '../CommitList';
+import CommitList from '../../materials/CommitList';
 
 export default function ProjectStatus() {
   return (
     <div className={styles.projectStatus}>
       <div className={styles.commitListContainer}>
         <header className={styles.commitListHeader}>
-          devlink相关项目提交记录
+          devlink 相关项目提交记录
         </header>
         <CommitList owner='developerlinks' repo='devlink-server' />
         <CommitList owner='developerlinks' repo='devlink-web' />

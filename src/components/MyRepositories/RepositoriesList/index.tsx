@@ -29,11 +29,12 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
   const filteredMaterials = filterMaterials(data?.materials || [], search);
 
   const RepositoryLi = (item: Material) => {
+    console.log('item.user?.profile', item);
     return (
       <li className={styles.repositoryItem} key={item.id}>
         <div className={styles.ownerInfo}>
           <Avatar
-            phone={item.user?.profile?.photo ?? ''}
+            avatar={item.user?.profile?.avatar ?? ''}
             username={item.user?.username as string}
             size='small'
           />

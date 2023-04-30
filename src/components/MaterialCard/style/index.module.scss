@@ -1,0 +1,17 @@
+@import '@/styles/color.scss';
+
+.materialCard {
+  .materialDetail {
+    margin-top: 8px;
+    background-color: #ffffff;
+    border: 1px solid $color-border-default;
+    padding: 16px;
+    border-radius: 6px;
+
+    .materialDetailHeader {
+      display: flex;
+      justify-content: space-between;
+      height: 32px;
+    }
+  }
+}

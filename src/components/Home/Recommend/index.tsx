@@ -8,7 +8,6 @@ export default function Recommend() {
   const { data, isLoading, error } = useSWR('/material', fetcher);
   if (isLoading) return <>loading...</>;
   if (error) return <>error...</>;
-  console.log('marial', data);
   return (
     <div className={styles.recommend}>
       {data?.materials.map((material: Material) => (
