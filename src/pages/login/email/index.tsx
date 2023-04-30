@@ -23,11 +23,11 @@ export default function Email() {
       .then((result) => {
         const visitorId = result.visitorId;
         const deviceId = generateHash({ visitorId, email: values.email });
-        const { os, device } = getDeviceAndOSInfo();
+        const { os, device, browser } = getDeviceAndOSInfo();
         const params: LoginByPasswordParams = {
           ...values,
           deviceId,
-          deviceType: `${device}:${os}`,
+          deviceType: `${device}:${os}:${browser}`,
         };
         return loginApi(params);
       })

@@ -147,6 +147,7 @@ export function getDeviceAndOSInfo() {
   // 设备型号和操作系统信息
   let device = 'unknown';
   let os = 'unknown';
+  let browser = 'unknown';
 
   // 获取操作系统信息
   if (userAgent.indexOf('Windows') !== -1) {
@@ -161,13 +162,29 @@ export function getDeviceAndOSInfo() {
     os = 'iOS';
   }
 
-  // 获取设备型号信息（主要针对移动设备）
-  const deviceRegex = /iPhone|iPad|iPod|Android/;
-  const matchedDevice = userAgent.match(deviceRegex);
+  const mobileDeviceRegex = /iPhone|iPad|iPod|Android/;
+  const matchedMobileDevice = userAgent.match(mobileDeviceRegex);
 
-  if (matchedDevice) {
-    device = matchedDevice[0];
+  if (matchedMobileDevice) {
+    device = matchedMobileDevice[0];
+  } else if (os === 'Windows' || os === 'MacOS' || os === 'Linux') {
+    device = 'Desktop';
   }
 
-  return { device, os };
+  // 获取浏览器类型信息
+  if (userAgent.indexOf('Chrome') !== -1) {
+    browser = 'Chrome';
+  } else if (userAgent.indexOf('Safari') !== -1) {
+    browser = 'Safari';
+  } else if (userAgent.indexOf('Firefox') !== -1) {
+    browser = 'Firefox';
+  } else if (userAgent.indexOf('MSIE') !== -1 || userAgent.indexOf('Trident') !== -1) {
+    browser = 'Internet Explorer';
+  } else if (userAgent.indexOf('Edge') !== -1) {
+    browser = 'Edge';
+  } else if (userAgent.indexOf('Opera') !== -1 || userAgent.indexOf('OPR') !== -1) {
+    browser = 'Opera';
+  }
+
+  return { device, os, browser };
 }
