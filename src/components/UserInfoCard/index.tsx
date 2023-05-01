@@ -12,9 +12,11 @@ moment.locale('zh-cn');
 const UserInfoCard = (user: User) => {
   const {
     username,
-    profile: { avatar, description, createdAt },
+    profile: { avatar, description },
+    createdAt,
     followers,
     following,
+    materials,
   } = user;
   return (
     <div className={styles.userInfoCard}>
@@ -47,11 +49,11 @@ const UserInfoCard = (user: User) => {
           <div className={styles.situationItemValue}>{following.length}</div>
         </div>
         <div className={styles.situationItem}>
-          <div className={styles.situationItemTitle}>获赞</div>
-          <div className={styles.situationItemValue}>{following.length}</div>
+          <div className={styles.situationItemTitle}>物料</div>
+          <div className={styles.situationItemValue}>{materials.length}</div>
         </div>
         <div className={styles.situationItem}>
-          <div className={styles.situationItemTitle}>物料使用量</div>
+          <div className={styles.situationItemTitle}>获赞</div>
           <div className={styles.situationItemValue}>{following.length}</div>
         </div>
       </div>

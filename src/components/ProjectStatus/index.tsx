@@ -1,5 +1,5 @@
 import styles from './style/index.module.scss';
-import CommitList from '../../materials/CommitList';
+import CommitList from '../../materials/RepoCommitList';
 
 export default function ProjectStatus() {
   return (

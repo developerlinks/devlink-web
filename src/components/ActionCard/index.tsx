@@ -32,12 +32,18 @@ export default function ActionCard({ material }: ActionCardProps) {
         </div>
         <div className={styles.action}>创建了物料</div>
         <div className={styles.actionTime}>
-          {moment(material.createdAt).startOf('day').fromNow()}
+          {moment(material.createdAt).startOf('hour').fromNow()}
         </div>
       </div>
       <div className={styles.actionDetail}>
         <div className={styles.actionDetailHeader}>
-          <div className={styles.name}>{material.name}</div>
+          <HoverLink
+            href={`/material/${material.id}`}
+            openNewTab
+            className={styles.name}
+          >
+            {material.name}
+          </HoverLink>
           <SplitButtonGroup
             style={{ marginRight: 10 }}
             aria-label='项目操作按钮组'

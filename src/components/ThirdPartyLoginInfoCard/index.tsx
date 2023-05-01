@@ -32,7 +32,7 @@ const ThirdPartyLoginInfoCard = () => {
         </div>
         <div className={styles.cardRight}>
           <div className={styles.time}>
-            授权于 {moment().startOf('day').fromNow()}
+            授权于 {moment().startOf('hour').fromNow()}
           </div>
           <div className={styles.operation}>
             <Button theme='borderless' icon={<IconMore />} />

@@ -1,0 +1,42 @@
+@import '@/styles/color.scss';
+
+.fuzzyQueryItemContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 14px;
+  color: $color-fg-muted;
+
+  .header {
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .queryItem {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    padding: 16px 9px;
+    height: 30px;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgb(240, 242, 244);
+      cursor: pointer;
+    }
+
+    .searchValueLeft {
+      display: flex;
+      gap: 8px;
+      color: $color-text-default;
+    }
+
+    .searchValueRight {
+      color: #656d76;
+      font-size: 14px;
+    }
+  }
+}

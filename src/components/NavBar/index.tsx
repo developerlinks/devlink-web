@@ -6,12 +6,13 @@ import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
 import { User } from '@/api/types/user';
 import Avatar from '../Avatar';
+import SearchBar from '../SearchBar';
 
 export default function NavBar() {
   const [userInfo, setUserInfo] = useState<User>();
   const { push, pathname } = useRouter();
   const { getUser, user } = useUserStore();
-  
+
   useEffect(() => {
     if (!pathname.includes('login')) {
       getUser().then((data) => {
@@ -79,14 +80,17 @@ export default function NavBar() {
           onSelect={(key) => console.log(key)}
           style={{ padding: 0 }}
           header={
-            <Image
-              src={'/images/devlink_white.svg'}
-              alt='logo'
-              width={127}
-              height={35}
-              style={{ cursor: 'pointer' }}
-              onClick={() => push('/')}
-            />
+            <>
+              <Image
+                src={'/images/devlink_white.svg'}
+                alt='logo'
+                width={127}
+                height={35}
+                style={{ cursor: 'pointer' }}
+                onClick={() => push('/')}
+              />
+              <SearchBar />
+            </>
           }
           footer={navRightBox()}
         />

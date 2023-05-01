@@ -35,7 +35,7 @@ const DeviceMange = () => {
       title: '最后登录时间',
       dataIndex: 'lastLoginAt',
       render: (text, record, index) => {
-        return <div> {moment(text).startOf('day').fromNow()}</div>;
+        return <div> {moment(text).startOf('hour').fromNow()}</div>;
       },
     },
     {

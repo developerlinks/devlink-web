@@ -29,7 +29,6 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
   const filteredMaterials = filterMaterials(data?.materials || [], search);
 
   const RepositoryLi = (item: Material) => {
-    console.log('item.user?.profile', item);
     return (
       <li className={styles.repositoryItem} key={item.id}>
         <div className={styles.ownerInfo}>

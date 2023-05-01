@@ -19,6 +19,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
+  createdAt: string;
   accountType: AccountType;
   roles: Roles[];
   profile: Profile;
@@ -40,7 +41,6 @@ interface Profile {
   description: string;
   refreshToken: string;
   refreshTokenExpiresAt: number;
-  createdAt: string;
 }
 
 export enum Gender {
