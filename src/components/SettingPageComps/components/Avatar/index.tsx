@@ -3,7 +3,7 @@ import { settingConfig } from '../../config';
 import { useEffect, useState } from 'react';
 import useUserStore from '@/store/user';
 import { updateUserInfo } from '@/api/user';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { Avatar, Upload } from '@douyinfe/semi-ui';
 import { IconCamera } from '@douyinfe/semi-icons';
 import { ToastError, ToastSuccess } from '@/utils/common';

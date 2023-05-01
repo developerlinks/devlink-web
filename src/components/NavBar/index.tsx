@@ -1,6 +1,12 @@
-import { Nav, Dropdown, Button, Typography } from '@douyinfe/semi-ui';
+import {
+  Nav,
+  Dropdown,
+  Button,
+  Typography,
+  DropdownDivider,
+} from '@douyinfe/semi-ui';
 import Image from 'next/image';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { useRouter } from 'next/router';
 import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
@@ -42,8 +48,9 @@ export default function NavBar() {
 
   const AuthRightBox = () => (
     <>
+      {/* TODO: */}
       <Dropdown
-        position='bottomRight'
+        position='bottomLeft'
         render={
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => push(`/user/${userInfo?.id}`)}>
@@ -52,6 +59,11 @@ export default function NavBar() {
             <Dropdown.Item onClick={() => push('/user/setting')}>
               个人设置
             </Dropdown.Item>
+            <DropdownDivider />
+            <Dropdown.Item onClick={() => push('/admin')}>
+              后台管理
+            </Dropdown.Item>
+            <DropdownDivider />
             <Dropdown.Item>退出</Dropdown.Item>
           </Dropdown.Menu>
         }
@@ -62,7 +74,7 @@ export default function NavBar() {
           size='small'
           style={{ marginRight: 8 }}
         />
-        <span>{userInfo?.username}</span>
+        <div />
       </Dropdown>
     </>
   );

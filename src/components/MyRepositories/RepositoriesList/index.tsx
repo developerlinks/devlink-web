@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { GetMyMaterial } from '@/api/types/material';
 import { fetcher } from '@/utils/http';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { Material } from '@/api/types/user';
 import Avatar from '@/components/Avatar';
 

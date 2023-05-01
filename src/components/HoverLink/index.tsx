@@ -1,7 +1,7 @@
 import Link, { LinkProps } from 'next/link';
 import { forwardRef } from 'react';
 import clsx from 'clsx';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 
 interface HoverLinkProps {
   styleSheet?: React.CSSProperties;

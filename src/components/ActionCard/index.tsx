@@ -1,4 +1,4 @@
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import {
   Button,
   Dropdown,

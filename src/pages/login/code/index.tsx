@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout/Layout";
+import Layout from "@/components/FrontLayout/Layout";
 import Seo from "@/components/Seo";
 import { useEffect } from "react";
 

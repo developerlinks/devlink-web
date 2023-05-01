@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import Seo from '@/components/Seo';
 import { fetcher } from '@/utils/http';
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/FrontLayout/Layout';
 import { Anchor } from '@douyinfe/semi-ui';
 import UserNameSettingCard from '@/components/SettingPageComps/components/UserName';
 import EmailSettingCard from '@/components/SettingPageComps/components/Email';

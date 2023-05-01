@@ -1,8 +1,8 @@
 import useSWR from 'swr';
 import Seo from '@/components/Seo';
 import { useRouter } from 'next/router';
-import styles from './style/index.module.scss';
-import Layout from '@/components/Layout/Layout';
+import styles from './index.module.scss';
+import Layout from '@/components/FrontLayout/Layout';
 import CateGory from '@/components/SearchPageComps/Category';
 import { SearchConsiderations } from '@/components/SearchPageComps/SearchConsiderations';
 import ResultList from '@/components/SearchPageComps/ResultList';
@@ -29,7 +29,7 @@ export default function Search({ keyword, type }) {
     `/user/fuzzy_query?page=1&limit=10&keyword=${keyword}`,
     fetcher
   );
-  
+
   if (isLoading || router.isFallback) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -41,29 +41,25 @@ export default function Search({ keyword, type }) {
   if (error) return <>error，请刷新重试</>;
 
   return (
-    <Layout>
-      <Seo />
-      <main>
-        <div className={styles.searchContainer}>
-          <div className={styles.categoryAside}>
-            <CateGory data={data} />
+    <main>
+      <div className={styles.searchContainer}>
+        <div className={styles.categoryAside}>
+          <CateGory data={data} />
+        </div>
+        <div className={styles.resultAside}>
+          <div className={styles.resultContainer}>
+            <ResultList type={type} data={data} />
           </div>
-          <div className={styles.resultAside}>
-            <div className={styles.resultContainer}>
-              <ResultList type={type} data={data} />
-            </div>
-            <div className={styles.noticeContainer}>
-              <SearchConsiderations />
-            </div>
+          <div className={styles.noticeContainer}>
+            <SearchConsiderations />
           </div>
         </div>
-      </main>
-    </Layout>
+      </div>
+    </main>
   );
 }
 
 export async function getServerSideProps(context) {
-  console.info('context', context);
   const { query } = context;
   const { keyword, type } = query;
 

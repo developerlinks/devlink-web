@@ -23,7 +23,7 @@ import {
 } from '@douyinfe/semi-ui/lib/es/autoComplete';
 import { AddMaterialParmas } from '@/api/types/material';
 import { debounce } from 'lodash';
-import styles from './style//index.module.scss';
+import styles from './index.module.scss';
 import { addMaterial } from '@/api/material';
 
 interface TagItem extends BaseDataItem, TagIF {}

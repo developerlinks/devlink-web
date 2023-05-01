@@ -1,6 +1,5 @@
 import StrIcon from "@/materials/StrIcon";
-
-import styles from "./style/index.module.scss";
+import styles from "./index.module.scss";
 import { IconBulb } from "@douyinfe/semi-icons";
 
 export function SearchConsiderations() {

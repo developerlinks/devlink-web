@@ -1,5 +1,5 @@
 import ProjectStatus from '@/components/ProjectStatus';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 
 export default function News() {
   return (

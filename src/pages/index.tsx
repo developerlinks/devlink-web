@@ -1,5 +1,5 @@
 import { User } from '@/api/types/user';
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/FrontLayout/Layout';
 import Seo from '@/components/Seo';
 import Welcome from '@/components/Welcome';
 import Home from '@/components/Home';
@@ -17,15 +17,5 @@ export default function Index() {
     });
   }, []);
 
-  
-  return (
-    <Layout>
-      <Seo />
-      <main>
-        {
-          !!userInfo ? <Home /> : <Welcome />
-        }
-      </main>
-    </Layout>
-  );
+  return <main>{!!userInfo ? <Home /> : <Welcome />}</main>;
 }

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@douyinfe/semi-ui';
 import { IconCloud } from '@douyinfe/semi-icons';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { group } from 'console';
 
 export default function Footer() {

@@ -1,9 +1,9 @@
 import useSWR from 'swr';
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/FrontLayout/Layout';
 import Seo from '@/components/Seo';
 import UserInfoCard from '@/components/UserInfoCard';
 
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { fetcher } from '@/utils/http';
 import UserView from '@/components/UserView';
 

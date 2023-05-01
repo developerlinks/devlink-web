@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/FrontLayout/Layout';
 import Seo from '@/components/Seo';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { Button } from '@douyinfe/semi-ui';
 
 export default function Email() {

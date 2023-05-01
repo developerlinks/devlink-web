@@ -4,7 +4,7 @@ import { Button, Table } from '@douyinfe/semi-ui';
 import { fetcher } from '@/utils/http';
 import moment from 'moment';
 
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import clsx from 'clsx';
 import { useState } from 'react';
 

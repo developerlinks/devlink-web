@@ -1,7 +1,7 @@
 import MyRepositories from '../MyRepositories';
 import News from './News';
 import Recommend from './Recommend';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 
 export default function Home() {
   return (

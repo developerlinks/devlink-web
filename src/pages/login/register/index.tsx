@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout/Layout';
+import Layout from '@/components/FrontLayout/Layout';
 import Seo from '@/components/Seo';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { Form, Toast, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi, register, sendCode } from '@/api/user';

@@ -22,7 +22,7 @@ const colors = [
 interface AvatarProps {
   username: string;
   src: string | undefined | null;
-  size: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large';
   style?: React.CSSProperties;
   [key: string]: any;
 }
@@ -34,7 +34,7 @@ function Avatar({ username, src, size, style, ...rest }: AvatarProps) {
       color={color}
       alt={username}
       src={src ?? ''}
-      size={size}
+      size={size ?? 'default'}
       style={style}
       {...rest}
     >

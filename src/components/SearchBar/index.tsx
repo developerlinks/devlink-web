@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import Search from '@/materials/Search';
-import styles from './styles/index.module.scss';
+import styles from './index.module.scss';
 import { Divider } from '../Divider';
 import { IconPriceTag, IconPuzzle, IconUserCircle } from '@douyinfe/semi-icons';
 import { fetcher } from '@/utils/http';

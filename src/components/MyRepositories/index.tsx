@@ -1,5 +1,5 @@
 import { Button, Input } from '@douyinfe/semi-ui';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { IconCustomize } from '@douyinfe/semi-icons';
 import RepositoriesList from './RepositoriesList';
 import { useCallback, useState } from 'react';
