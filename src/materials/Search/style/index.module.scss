@@ -1,0 +1,93 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  width: 214px;
+  font-size: 0.875rem;
+  height: 40px;
+  cursor: text;
+  max-width: 60vw;
+  padding: 0 8px;
+
+  .searchLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #666666;
+  }
+
+  .searchRight {
+    .strIcon {
+      color: #b3b3b3;
+      font-size: .75rem;
+      min-width: 24px;
+      background-color: #FAFAFA;
+      display: inline-block;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 2em;
+      border: 1px solid #eaeaea;
+    }
+  }
+}
+
+.searchModal {
+
+  :global {
+    .semi-modal-content {
+      padding: 0;
+    }
+  }
+
+  .inputContainer {
+    padding: 0 24px;
+
+    .searchInput {
+      padding-left: 8px;
+
+      :global {
+
+        .semi-input-prefix {
+          margin-right: 8px;
+
+          div {
+            display: flex !important;
+
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .searchValueContainer {
+    display: flex;
+    align-items: center;
+    padding: 16px 9px;
+    height: 30px;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 5px;
+    margin: 0 24px;
+    margin-top: 16px;
+
+    &:hover {
+      background-color: rgb(240, 242, 244);
+      cursor: pointer;
+    }
+
+    .searchValueLeft {
+      display: flex;
+      gap: 8px;
+    }
+
+    .searchValueRight {
+      color: #656d76;
+      font-size: 14px;
+    }
+  }
+}

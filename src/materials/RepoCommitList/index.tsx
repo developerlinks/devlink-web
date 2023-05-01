@@ -12,8 +12,9 @@ interface CommitListProps {
   repo: string;
 }
 moment.locale('zh-cn');
+
 const pageNumber = 5;
-export default function CommitList({ owner, repo }: CommitListProps) {
+export default function RepoCommitList({ owner, repo }: CommitListProps) {
   const [listLoading, setListLoading] = useState(false);
   const [dataSource, setDataSource] = useState<Commit[]>([]);
   const [page, setPage] = useState(1);
@@ -125,7 +126,7 @@ export default function CommitList({ owner, repo }: CommitListProps) {
 
                       <div className={styles.commitTime}>
                         {moment(item.commit.author.date)
-                          .startOf('day')
+                          .startOf('hour')
                           .fromNow()}
                       </div>
                     </div>
