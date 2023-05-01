@@ -57,7 +57,7 @@ export default function NavBar() {
         }
       >
         <Avatar
-          avatar={userInfo?.profile.avatar ?? ''}
+          src={userInfo?.profile.avatar ?? ''}
           username={userInfo?.username as string}
           size='small'
           style={{ marginRight: 8 }}

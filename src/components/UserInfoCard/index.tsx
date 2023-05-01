@@ -21,7 +21,7 @@ const UserInfoCard = (user: User) => {
   return (
     <div className={styles.userInfoCard}>
       <div className={styles.userAvatarContainer}>
-        <Avatar username={username} avatar={avatar ?? ''} size='large' />
+        <Avatar username={username} src={avatar ?? ''} size='large' />
       </div>
       <div className={styles.userName}>{username}</div>
       <div className={styles.operationBar}>

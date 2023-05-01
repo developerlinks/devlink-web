@@ -24,12 +24,13 @@
     border-radius: 5px;
 
     &:hover {
-      background-color: rgb(240, 242, 244);
+      background-color: $color-bg-hover;
       cursor: pointer;
     }
 
     .searchValueLeft {
       display: flex;
+      align-items: center;
       gap: 8px;
       color: $color-text-default;
     }
@@ -38,5 +39,33 @@
       color: #656d76;
       font-size: 14px;
     }
+  }
+
+}
+
+.searchValueContainer {
+  display: flex;
+  align-items: center;
+  padding: 16px 9px;
+  height: 30px;
+  justify-content: space-between;
+  background-color: transparent;
+  border-radius: 5px;
+  margin: 0 24px;
+  margin-top: 16px;
+
+  &:hover {
+    background-color: rgb(240, 242, 244);
+    cursor: pointer;
+  }
+
+  .searchValueLeft {
+    display: flex;
+    gap: 8px;
+  }
+
+  .searchValueRight {
+    color: #656d76;
+    font-size: 14px;
   }
 }

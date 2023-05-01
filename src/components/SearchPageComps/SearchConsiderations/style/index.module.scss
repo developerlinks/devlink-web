@@ -1,0 +1,16 @@
+@import '@/styles/color.scss';
+
+.tipsContainer {
+  font-size: 13px;
+  color: $color-text-gray;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
+
+  .tipsBold {
+    color: rgb(154, 103, 0);
+    display: flex;
+    align-items: center;
+  }
+}

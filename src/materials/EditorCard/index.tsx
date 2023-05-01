@@ -1,9 +1,6 @@
 import {
   Card,
-  Avatar,
-  Space,
   Button,
-  Typography,
   Input,
 } from '@douyinfe/semi-ui';
 

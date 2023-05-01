@@ -3,15 +3,15 @@ import Seo from '@/components/Seo';
 import { fetcher } from '@/utils/http';
 import Layout from '@/components/Layout/Layout';
 import { Anchor } from '@douyinfe/semi-ui';
-import UserNameSettingCard from '@/components/SettingComps/components/UserName';
-import EmailSettingCard from '@/components/SettingComps/components/Email';
-import AddressSettingCard from '@/components/SettingComps/components/Address';
-import DescriptionSettingCard from '@/components/SettingComps/components/Description';
+import UserNameSettingCard from '@/components/SettingPageComps/components/UserName';
+import EmailSettingCard from '@/components/SettingPageComps/components/Email';
+import AddressSettingCard from '@/components/SettingPageComps/components/Address';
+import DescriptionSettingCard from '@/components/SettingPageComps/components/Description';
 
 import styles from './style/index.module.scss';
-import DeviceMange from '@/components/SettingComps/components/DeviceMange';
+import DeviceMange from '@/components/SettingPageComps/components/DeviceMange';
 import ThirdPartyLoginInfoCard from '@/components/ThirdPartyLoginInfoCard';
-import AvatarettingCard from '@/components/SettingComps/components/Avatar';
+import AvatarettingCard from '@/components/SettingPageComps/components/Avatar';
 
 const Setting = () => {
   const { data: user, error, isLoading } = useSWR('user/userinfo', fetcher);

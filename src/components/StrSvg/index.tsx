@@ -9,7 +9,7 @@ const StrSvg = ({ svgString }: StrSvgProps) => {
     <>
       {createElement('div', {
         dangerouslySetInnerHTML: { __html: svgString },
-        style: { display: 'inline-block' },
+        style: { display: 'flex', alignItems: 'center' },
       })}
     </>
   );

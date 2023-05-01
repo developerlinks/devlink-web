@@ -22,7 +22,7 @@ export default function ActionCard({ material }: ActionCardProps) {
       <div className={styles.actionHeader}>
         <div className={styles.owner}>
           <Avatar
-            avatar={material.user.profile?.avatar ?? ''}
+            src={material.user.profile?.avatar ?? ''}
             username={material.user.username}
             size='small'
           />

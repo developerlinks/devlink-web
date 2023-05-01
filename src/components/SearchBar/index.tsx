@@ -7,13 +7,27 @@ import { IconPriceTag, IconPuzzle, IconUserCircle } from '@douyinfe/semi-icons';
 import { fetcher } from '@/utils/http';
 import { Spin } from '@douyinfe/semi-ui';
 import useMinimumLoadingTime from '@/hooks/useMinimumLoadingTime';
-import { Material, Tag, User } from '@/api/types/user';
+import StrSvg from '../StrSvg';
+import { SearchIcon } from './material';
 import { useRouter } from 'next/router';
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [placeholder, setPlaceholder] = useState('');
+  const { route, push, query } = useRouter();
+
+  const handleLink = (url) => {
+    setModalVisible(false);
+    setPlaceholder(searchValue);
+    return route === '/search' ? push(url) : open(url);
+  };
+  useEffect(() => {
+    if (query.keyword) {
+      setPlaceholder(query.keyword as string);
+    }
+  }, []);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -50,15 +64,12 @@ const SearchBar = () => {
       (item) => item.reason === 'tag.name'
     );
 
-    console.info('queryMaterialName', queryMaterialName);
-
     const renderFuzzyQueryItems = (
       queryResult,
       title,
       iconComponent,
       routePrefix
     ) => {
-      console.info('queryResult', queryResult);
       if (!queryResult || queryResult.total === 0) {
         return null;
       }
@@ -105,6 +116,12 @@ const SearchBar = () => {
     );
   };
 
+  const handleInputEnter = () => {
+    if (searchValue !== '') {
+      handleLink(`/search?keyword=${searchValue}&type=material`);
+    }
+  }
+
   return (
     <div style={{ marginLeft: '16px' }}>
       <Search
@@ -112,7 +129,26 @@ const SearchBar = () => {
         onSearchValueChange={setSearchValue}
         modalVisible={modalVisible}
         onModalVisibleChange={setModalVisible}
+        placeholder={placeholder === '' ? undefined : placeholder}
+        handleInputEnter={handleInputEnter}
       >
+        {searchValue !== '' && (
+          <div
+            className={styles.searchValueContainer}
+            onClick={() =>
+              handleLink(`/search?keyword=${searchValue}&type=material`)
+            }
+          >
+            <div className={styles.searchValueLeft}>
+              <StrSvg svgString={SearchIcon} />
+              <div>{searchValue}</div>
+            </div>
+            <div className={styles.searchValueRight}>
+              搜索 DevLink 的所有内容
+            </div>
+          </div>
+        )}
+
         {FuzzyQueryResult()}
       </Search>
     </div>

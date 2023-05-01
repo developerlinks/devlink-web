@@ -1,3 +1,5 @@
+@import '@/styles/color.scss';
+
 .search {
   display: flex;
   justify-content: space-between;
@@ -17,6 +19,9 @@
     gap: 12px;
     font-size: 14px;
     color: #666666;
+    .placeholder {
+      color: $color-text-default;
+    }
   }
 
   .searchRight {
@@ -61,33 +66,6 @@
       }
     }
 
-
   }
-
-  .searchValueContainer {
-    display: flex;
-    align-items: center;
-    padding: 16px 9px;
-    height: 30px;
-    justify-content: space-between;
-    background-color: transparent;
-    border-radius: 5px;
-    margin: 0 24px;
-    margin-top: 16px;
-
-    &:hover {
-      background-color: rgb(240, 242, 244);
-      cursor: pointer;
-    }
-
-    .searchValueLeft {
-      display: flex;
-      gap: 8px;
-    }
-
-    .searchValueRight {
-      color: #656d76;
-      font-size: 14px;
-    }
-  }
+  
 }

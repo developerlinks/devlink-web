@@ -21,19 +21,19 @@ const colors = [
 
 interface AvatarProps {
   username: string;
-  avatar: string | undefined | null;
+  src: string | undefined | null;
   size: 'small' | 'default' | 'large';
   style?: React.CSSProperties;
   [key: string]: any;
 }
 
-function Avatar({ username, avatar, size, style, ...rest }: AvatarProps) {
+function Avatar({ username, src, size, style, ...rest }: AvatarProps) {
   const color = colors[username.length % colors.length] as AvatarColor;
   return (
     <AvatarSemi
       color={color}
       alt={username}
-      src={avatar ?? ''}
+      src={src ?? ''}
       size={size}
       style={style}
       {...rest}

@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import { SearchIcon } from './material';
+import { SearchIcon } from '../../components/SearchBar/material';
 import styles from './style/index.module.scss';
 import StrSvg from '@/components/StrSvg';
 import StrIcon from '../StrIcon';
 import { useEffect } from 'react';
 import { Input, Modal } from '@douyinfe/semi-ui';
+import clsx from 'clsx';
 
 interface SearchProps {
   placeholder?: string;
@@ -13,6 +14,7 @@ interface SearchProps {
   modalVisible: boolean;
   onSearchValueChange: (value: string) => void;
   onModalVisibleChange: (visible: boolean) => void;
+  handleInputEnter: () => void;
 }
 
 const Search = (props: SearchProps) => {
@@ -23,6 +25,7 @@ const Search = (props: SearchProps) => {
     modalVisible,
     onSearchValueChange,
     onModalVisibleChange,
+    handleInputEnter
   } = props;
 
   useEffect(() => {
@@ -49,7 +52,9 @@ const Search = (props: SearchProps) => {
       <div className={styles.search} onClick={() => onModalVisibleChange(true)}>
         <div className={styles.searchLeft}>
           <StrSvg svgString={SearchIcon} />
-          <div className={styles.placeholder}>{placeholder}</div>
+          <div className={clsx({ [styles.placeholder]: true })}>
+            {placeholder}
+          </div>
         </div>
         <div className={styles.searchRight}>
           <StrIcon>/</StrIcon>
@@ -72,15 +77,10 @@ const Search = (props: SearchProps) => {
             value={searchValue}
             onChange={(e) => onSearchValueChange(e)}
             showClear
+            onEnterPress={handleInputEnter}
           />
         </div>
-        <div className={styles.searchValueContainer}>
-          <div className={styles.searchValueLeft}>
-            <StrSvg svgString={SearchIcon} />
-            <div>{searchValue}</div>
-          </div>
-          <div className={styles.searchValueRight}>搜索 DevLink 的所有内容</div>
-        </div>
+
         <div>{children}</div>
       </Modal>
     </>

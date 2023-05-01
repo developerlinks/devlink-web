@@ -1,0 +1,25 @@
+.searchContainer {
+  display: flex;
+  min-height: 100vh;
+
+  .categoryAside {
+    padding: 32px;
+    border-right: 1px solid #eaeaea;
+  }
+
+  .resultAside {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    background-color: rgb(250, 250, 250);
+
+    .resultContainer {
+      flex: 1;
+    }
+
+    .noticeContainer {
+      width: 382px;
+    }
+
+  }
+}
