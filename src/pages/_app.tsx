@@ -7,10 +7,10 @@ import FrontLayout from '@/components/FrontLayout/Layout';
 import AdminLayout from '@/components/Admin/AdminLayout';
 import { LocaleProvider } from '@douyinfe/semi-ui';
 import IntlProvider from 'react-intl/src/components/provider';
-import useStore from '../store/common/global'
-import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN'
-import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB'
-import { localeConfig } from '../locales'
+import useStore from '../store/common/global';
+import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
+import en_GB from '@douyinfe/semi-ui/lib/es/locale/source/en_GB';
+import { localeConfig } from '../locales';
 
 import '@/styles/nprogress.module.scss';
 import '@/styles/normalize.css';

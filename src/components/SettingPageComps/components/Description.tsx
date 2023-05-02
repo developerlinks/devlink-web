@@ -22,10 +22,10 @@ const DescriptionSettingCard = () => {
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
-    if(value === initialValue) {
-      setIsExternallyDisabled(true)
+    if (value === initialValue) {
+      setIsExternallyDisabled(true);
     } else {
-      setIsExternallyDisabled(false)
+      setIsExternallyDisabled(false);
     }
   };
 
@@ -35,7 +35,7 @@ const DescriptionSettingCard = () => {
       .then((res) => {
         setUser(res.data);
         setInitialValue(res.data.profile.description);
-        setIsExternallyDisabled(true)
+        setIsExternallyDisabled(true);
       })
       .catch((err) => err)
       .finally(() => {

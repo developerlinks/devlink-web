@@ -51,7 +51,7 @@ http.interceptors.response.use(
       }
     } else if (error.request) {
       ToastWaring(`网络发生波动,未收到响应,请稍后再试`);
-      console.error(`${error.message}`)
+      console.error(`${error.message}`);
     } else {
       ToastError(error.message);
       console.error(`Request configuration error: ${error.message}`);
@@ -61,4 +61,4 @@ http.interceptors.response.use(
 );
 export default http;
 
-export const fetcher = (url: string) => http.get(url).then(res => res.data)
+export const fetcher = (url: string) => http.get(url).then((res) => res.data);

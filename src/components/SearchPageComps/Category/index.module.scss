@@ -37,7 +37,6 @@
       }
 
       .categoryRight {
-
         .categoryNumber {
           font-size: 12px;
           font-weight: 600;
@@ -51,18 +50,17 @@
       }
     }
     .avtive {
-        
       &:after {
         position: absolute;
         top: calc(50% - 12px);
         left: -8px;
         width: 4px;
         height: 24px;
-        content: "";
+        content: '';
         background-color: rgb(9, 105, 218);
         border-radius: 6px;
       }
-     
+
       background-color: $color-bg-hover;
     }
   }

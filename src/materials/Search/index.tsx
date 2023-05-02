@@ -25,7 +25,7 @@ const Search = (props: SearchProps) => {
     modalVisible,
     onSearchValueChange,
     onModalVisibleChange,
-    handleInputEnter
+    handleInputEnter,
   } = props;
 
   useEffect(() => {

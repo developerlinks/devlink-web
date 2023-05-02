@@ -1,7 +1,7 @@
-import { zhCN_menu } from './menu'
+import { zhCN_menu } from './menu';
 
 const zh_CN = {
-	...zhCN_menu
-}
+  ...zhCN_menu,
+};
 
-export default zh_CN
+export default zh_CN;

@@ -3,9 +3,8 @@ import { SearchData } from '@/pages/search';
 
 interface ResultListProps {
   type: string;
-  data: SearchData
+  data: SearchData;
 }
-
 
 const ResultList = ({ type, data }: ResultListProps) => {
   const getQueryMaterialResult = () => {

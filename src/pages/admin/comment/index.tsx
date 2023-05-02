@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 export default function CommentPage() {
   return (
-    <div >
+    <div>
       <CommentPageTable />
     </div>
   );

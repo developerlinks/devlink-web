@@ -42,65 +42,65 @@ const Index: FC = () => {
     window.open('https://github.com/developerlinks/devlink-web/issues');
   };
   return (
-      <Header className='layout-header'>
-        <Nav
-          mode='horizontal'
-          footer={
-            <>
+    <Header className='layout-header'>
+      <Nav
+        mode='horizontal'
+        footer={
+          <>
+            <Button
+              theme='borderless'
+              icon={<IconHelpCircle size='large' />}
+              style={{
+                color: 'var(--semi-color-text-2)',
+                marginRight: '12px',
+              }}
+              onClick={question}
+            />
+            <Badge count={5} type='danger'>
               <Button
                 theme='borderless'
-                icon={<IconHelpCircle size='large' />}
+                icon={<IconBell />}
                 style={{
                   color: 'var(--semi-color-text-2)',
                   marginRight: '12px',
                 }}
-                onClick={question}
               />
-              <Badge count={5} type='danger'>
-                <Button
-                  theme='borderless'
-                  icon={<IconBell />}
-                  style={{
-                    color: 'var(--semi-color-text-2)',
-                    marginRight: '12px',
-                  }}
-                />
-              </Badge>
+            </Badge>
 
-              <Dropdown
-                render={
-                  <Dropdown.Menu>
-                    <Dropdown.Item>个人中心</Dropdown.Item>
-                    <Dropdown.Item>个人设置</Dropdown.Item>
-                    <Dropdown.Item>退出登录</Dropdown.Item>
-                  </Dropdown.Menu>
-                }
-              >
-                <Avatar
-                  username={userInfo?.username as string}
-                  src={userInfo?.profile.avatar}
-                  size='small'
-                />
-								{/* FIXME: */}
-                <div />
-              </Dropdown>
+            <Dropdown
+              render={
+                <Dropdown.Menu>
+                  <Dropdown.Item>个人中心</Dropdown.Item>
+                  <Dropdown.Item>个人设置</Dropdown.Item>
+                  <Dropdown.Item>退出登录</Dropdown.Item>
+                </Dropdown.Menu>
+              }
+            >
+              <Avatar
+                username={userInfo?.username as string}
+                src={userInfo?.profile.avatar}
+                size='small'
+              />
+              {/* FIXME: */}
+              <div />
+            </Dropdown>
 
-              <RadioGroup
-                type='button'
-                defaultValue={locale}
-                style={{ marginLeft: '20px' }}
-              >
-                <Radio value={'zh_CN'} onChange={() => selectLocale('zh_CN')}>
-                  中文
-                </Radio>
-                <Radio value={'en_GB'} onChange={() => selectLocale('en_GB')}>
-                  EN
-                </Radio>
-              </RadioGroup>
-            </>
-          }
-        ></Nav>
-      </Header>
+            <RadioGroup
+              type='button'
+              defaultValue={locale}
+              style={{ marginLeft: '20px' }}
+            >
+              <Radio value={'zh_CN'} onChange={() => selectLocale('zh_CN')}>
+                中文
+              </Radio>
+              <Radio value={'en_GB'} onChange={() => selectLocale('en_GB')}>
+                EN
+              </Radio>
+            </RadioGroup>
+          </>
+        }
+      ></Nav>
+    </Header>
   );
 };
 

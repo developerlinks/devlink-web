@@ -132,14 +132,15 @@ export function getUserInfo(): Promise<User> {
     let userinfo = sessionStorage.getItem(STORGE_USER_INFO);
     userinfo = userinfo && JSON.parse(userinfo);
     userinfo && resolve(userinfo as unknown as User);
-    getInfo().then((res) => {
-      const userinfo: User = res.data;
-      sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
-      resolve(userinfo);
-    }).catch()
+    getInfo()
+      .then((res) => {
+        const userinfo: User = res.data;
+        sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
+        resolve(userinfo);
+      })
+      .catch();
   });
 }
-
 
 export function getDeviceAndOSInfo() {
   const userAgent = navigator.userAgent;
@@ -178,11 +179,17 @@ export function getDeviceAndOSInfo() {
     browser = 'Safari';
   } else if (userAgent.indexOf('Firefox') !== -1) {
     browser = 'Firefox';
-  } else if (userAgent.indexOf('MSIE') !== -1 || userAgent.indexOf('Trident') !== -1) {
+  } else if (
+    userAgent.indexOf('MSIE') !== -1 ||
+    userAgent.indexOf('Trident') !== -1
+  ) {
     browser = 'Internet Explorer';
   } else if (userAgent.indexOf('Edge') !== -1) {
     browser = 'Edge';
-  } else if (userAgent.indexOf('Opera') !== -1 || userAgent.indexOf('OPR') !== -1) {
+  } else if (
+    userAgent.indexOf('Opera') !== -1 ||
+    userAgent.indexOf('OPR') !== -1
+  ) {
     browser = 'Opera';
   }
 

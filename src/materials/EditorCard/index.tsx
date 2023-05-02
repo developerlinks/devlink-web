@@ -1,8 +1,4 @@
-import {
-  Card,
-  Button,
-  Input,
-} from '@douyinfe/semi-ui';
+import { Card, Button, Input } from '@douyinfe/semi-ui';
 
 import styles from './index.module.scss';
 import { useState } from 'react';

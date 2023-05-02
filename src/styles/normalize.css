@@ -83,7 +83,7 @@ a {
 }
 
 li {
-  list-style: none
+  list-style: none;
 }
 /**
  * 1. Remove the bottom border in Chrome 57-

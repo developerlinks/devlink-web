@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"*.ts\" "
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.32.2",
@@ -22,7 +23,6 @@
     "clsx": "^1.2.1",
     "compressorjs": "^1.2.1",
     "crypto": "^1.0.1",
-    "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
@@ -38,8 +38,20 @@
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.6.1",
     "@types/lodash": "^4.14.194",
     "@types/nprogress": "^0.2.0",
-    "@types/react-infinite-scroller": "^1.2.3"
+    "@types/react-infinite-scroller": "^1.2.3",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }

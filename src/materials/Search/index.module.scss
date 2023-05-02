@@ -27,9 +27,9 @@
   .searchRight {
     .strIcon {
       color: #b3b3b3;
-      font-size: .75rem;
+      font-size: 0.75rem;
       min-width: 24px;
-      background-color: #FAFAFA;
+      background-color: #fafafa;
       display: inline-block;
       border-radius: 5px;
       text-align: center;
@@ -40,7 +40,6 @@
 }
 
 .searchModal {
-
   :global {
     .semi-modal-content {
       padding: 0;
@@ -54,18 +53,14 @@
       padding-left: 8px;
 
       :global {
-
         .semi-input-prefix {
           margin-right: 8px;
 
           div {
             display: flex !important;
-
           }
         }
       }
     }
-
   }
-  
 }

@@ -26,7 +26,9 @@ const ThirdPartyLoginInfoCard = () => {
             <div className={styles.platformName}>Github</div>
             <div className={styles.userName}>
               <div>Zhang bao lin </div>
-              <HoverLink href='' openNewTab>(@bowlingQ)</HoverLink>
+              <HoverLink href='' openNewTab>
+                (@bowlingQ)
+              </HoverLink>
             </div>
           </div>
         </div>

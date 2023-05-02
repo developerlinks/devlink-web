@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 
 const useMinimumLoadingTime = (isLoading, minLoadingTime = 1000) => {
   const [isLoadingWithMinTime, setIsLoadingWithMinTime] = useState(true);
-  const [loadingStartTimestamp, setLoadingStartTimestamp] = useState(Date.now());
+  const [loadingStartTimestamp, setLoadingStartTimestamp] = useState(
+    Date.now()
+  );
 
   useEffect(() => {
     let timerId;

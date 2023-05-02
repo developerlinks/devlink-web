@@ -35,10 +35,16 @@ const validate: Record<string, IValidate> = {
   },
 };
 
-const install: Record<string, (fieldValue: string, values: Record<string, any>) => string> = {};
+const install: Record<
+  string,
+  (fieldValue: string, values: Record<string, any>) => string
+> = {};
 
-Object.keys(validate).forEach(item => {
-  install[item + 'Validate'] = (fieldValue: string, values: Record<string, any>): string => {
+Object.keys(validate).forEach((item) => {
+  install[item + 'Validate'] = (
+    fieldValue: string,
+    values: Record<string, any>
+  ): string => {
     if (!fieldValue) {
       return validate[item].emptyErrorMsg;
     }

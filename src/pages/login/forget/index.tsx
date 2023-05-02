@@ -12,9 +12,7 @@ export default function Email() {
           <div className={styles.loginHeader}>
             <h1 className={styles.title}>密码登录</h1>
           </div>
-          <div className={styles.loginPath}>
-            
-          </div>
+          <div className={styles.loginPath}></div>
           <div className={styles.forgetContainer}>
             <Button
               theme='borderless'

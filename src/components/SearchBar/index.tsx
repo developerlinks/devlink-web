@@ -120,7 +120,7 @@ const SearchBar = () => {
     if (searchValue !== '') {
       handleLink(`/search?keyword=${searchValue}&type=material`);
     }
-  }
+  };
 
   return (
     <div style={{ marginLeft: '16px' }}>

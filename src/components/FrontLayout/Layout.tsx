@@ -1,7 +1,11 @@
 import Footer from '../Footer';
 import NavBar from '../NavBar';
 
-export default function FrontLayout({ children }: { children: React.ReactNode }) {
+export default function FrontLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <NavBar />

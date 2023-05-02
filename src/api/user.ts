@@ -1,4 +1,8 @@
-import type { LoginByPasswordParams, RegisterByEmail, UpdateUserDto } from './types/user';
+import type {
+  LoginByPasswordParams,
+  RegisterByEmail,
+  UpdateUserDto,
+} from './types/user';
 import http from '../utils/http';
 
 // TODO response type

@@ -1,4 +1,4 @@
-import { Tag } from "./user";
+import { Tag } from './user';
 
 export interface GetTag {
   tags: Tag[];

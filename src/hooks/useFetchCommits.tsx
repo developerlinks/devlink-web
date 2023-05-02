@@ -21,7 +21,12 @@ interface UseFetchCommitsProps {
   page: number;
 }
 
-export function useFetchCommits({ owner, repo, per_page, page }: UseFetchCommitsProps) {
+export function useFetchCommits({
+  owner,
+  repo,
+  per_page,
+  page,
+}: UseFetchCommitsProps) {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -47,7 +52,7 @@ export function useFetchCommits({ owner, repo, per_page, page }: UseFetchCommits
         );
         //@ts-ignore
         setCommits(response.data);
-        if(response.data.length < per_page) {
+        if (response.data.length < per_page) {
           setLoading(false);
         }
         console.log('res', response);

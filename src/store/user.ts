@@ -13,7 +13,7 @@ interface useUserStore {
 const useUserStore = create<useUserStore>((set, get) => ({
   user: null,
   setUser: (userData) => {
-    set({ user: userData })
+    set({ user: userData });
     sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userData));
   },
   getUser: () => {

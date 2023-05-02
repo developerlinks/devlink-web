@@ -4,10 +4,8 @@ import { useRouter } from 'next/router';
 const defaultMeta = {
   title: 'devlink',
   siteName: 'devlink',
-  description:
-    'devlink',
-  keywords:
-    'devlink',
+  description: 'devlink',
+  keywords: 'devlink',
   url: 'https://devlink.wiki',
   type: 'website',
   robots: 'follow, index',
@@ -45,7 +43,11 @@ export default function Seo(props: SeoProps) {
       <meta property='og:title' content={meta.title} />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      <link key='/images/devlink_d_black.svg' href='/images/devlink_d_black.svg' rel='icon' />
+      <link
+        key='/images/devlink_d_black.svg'
+        href='/images/devlink_d_black.svg'
+        rel='icon'
+      />
       <meta name='theme-color' content='#ffffff' />
     </Head>
   );

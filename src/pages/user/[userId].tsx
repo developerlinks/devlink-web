@@ -22,19 +22,16 @@ const User = ({ userId }: UserProps) => {
   if (error) return <div>用户信息获取失败</div>;
 
   return (
-    <Layout>
-      <Seo />
-      <main className={styles.userPage}>
-        <div className={styles.userContainer}>
-          <div className={styles.useInfoAside}>
-            <UserInfoCard {...user} />
-          </div>
-          <div className={styles.userView}>
-            <UserView userId={userId} />
-          </div>
+    <main className={styles.userPage}>
+      <div className={styles.userContainer}>
+        <div className={styles.useInfoAside}>
+          <UserInfoCard {...user} />
         </div>
-      </main>
-    </Layout>
+        <div className={styles.userView}>
+          <UserView userId={userId} />
+        </div>
+      </div>
+    </main>
   );
 };
 
