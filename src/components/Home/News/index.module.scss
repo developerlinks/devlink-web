@@ -1,6 +1,24 @@
 .news {
   display: flex;
-  .projectStatusContainer {
+
+  .changelog {
     width: 100%;
+    padding: 0 16px;
+    .tips {
+
+      .title {
+        font-weight: 500;
+        font-size: 15px;
+        margin-bottom: 16px;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+      }
+
+    }
+
+
   }
 }

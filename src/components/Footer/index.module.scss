@@ -1,6 +1,8 @@
+@import '@/styles/color.scss';
+
 .footer {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   max-width: 100%;
   background: #fafafa;
   padding: 64px 24px 0;
@@ -21,6 +23,17 @@
         font-size: 14px;
         font-weight: 500;
         margin-bottom: 16px;
+      }
+
+      .groupItem {
+        color: $color-text-gray;
+        font-size: 14px;
+        padding: 8px 0;
+
+        a {
+          color: $color-text-gray;
+
+        }
       }
     }
   }

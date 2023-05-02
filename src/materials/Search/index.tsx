@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { SearchIcon } from '../../components/SearchBar/material';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import StrSvg from '@/components/StrSvg';
 import StrIcon from '../StrIcon';
 import { useEffect } from 'react';

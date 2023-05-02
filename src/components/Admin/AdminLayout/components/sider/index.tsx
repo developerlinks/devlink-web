@@ -80,7 +80,7 @@ const Index: FC = () => {
               alt='logo'
               width={27}
               height={35}
-              style={{ cursor: 'pointer', marginLeft: '8px' }}
+              style={{ cursor: 'pointer'}}
               onClick={() => push('/')}
             />
           ),

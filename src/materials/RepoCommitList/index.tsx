@@ -3,18 +3,24 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 import moment from 'moment';
 import { Commit, useFetchCommits } from '@/hooks/useFetchCommits';
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
 import HoverLink from '../../components/HoverLink';
 
 interface CommitListProps {
   owner: string;
   repo: string;
+  style?: React.CSSProperties;
+  pageNumber?: number;
 }
 moment.locale('zh-cn');
 
-const pageNumber = 5;
-export default function RepoCommitList({ owner, repo }: CommitListProps) {
+export default function RepoCommitList({
+  owner,
+  repo,
+  style = {},
+  pageNumber = 5,
+}: CommitListProps) {
   const [listLoading, setListLoading] = useState(false);
   const [dataSource, setDataSource] = useState<Commit[]>([]);
   const [page, setPage] = useState(1);
@@ -74,6 +80,7 @@ export default function RepoCommitList({ owner, repo }: CommitListProps) {
           border: '1px solid var(--semi-color-border)',
           borderRadius: 4,
           paddingBottom: 10,
+          ...style,
         }}
       >
         <HoverLink

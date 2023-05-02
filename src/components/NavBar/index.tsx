@@ -101,7 +101,7 @@ export default function NavBar() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => push('/')}
               />
-              <SearchBar />
+              {!!userInfo && <SearchBar />}
             </>
           }
           footer={navRightBox()}

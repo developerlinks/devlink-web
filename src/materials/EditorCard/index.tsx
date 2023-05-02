@@ -4,7 +4,7 @@ import {
   Input,
 } from '@douyinfe/semi-ui';
 
-import styles from './style/index.module.scss';
+import styles from './index.module.scss';
 import { useState } from 'react';
 
 interface BaseSettingCardProps {

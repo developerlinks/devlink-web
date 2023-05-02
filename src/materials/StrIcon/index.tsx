@@ -10,6 +10,7 @@ const StrIcon = (props: StrIconProps) => {
         color: '#b3b3b3',
         fontSize: '.75rem',
         minWidth: '24px',
+        padding: '0 8px',
         backgroundColor: '#FAFAFA',
         display: 'inline-block',
         borderRadius: '5px',

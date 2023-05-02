@@ -14,6 +14,9 @@
     background-color: white;
     line-height: 36px;
     font-weight: 600;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.05);
+    border-bottom: 1px solid #e1e1e1;
+    transition: height .1s ease;
   }
 
   .commitItem {

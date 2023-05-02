@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import CommitList from '../../materials/RepoCommitList';
+import RepoCommitList from '../../materials/RepoCommitList';
 
 export default function ProjectStatus() {
   return (
@@ -8,9 +8,9 @@ export default function ProjectStatus() {
         <header className={styles.commitListHeader}>
           devlink 相关项目提交记录
         </header>
-        <CommitList owner='developerlinks' repo='devlink-server' />
-        <CommitList owner='developerlinks' repo='devlink-web' />
-        <CommitList owner='developerlinks' repo='devlink-cli' />
+        <RepoCommitList owner='developerlinks' repo='devlink-server' />
+        <RepoCommitList owner='developerlinks' repo='devlink-web' />
+        <RepoCommitList owner='developerlinks' repo='devlink-cli' />
       </div>
     </div>
   );

@@ -101,7 +101,7 @@ const SearchBar = () => {
       <>
         {renderFuzzyQueryItems(
           queryMaterialName,
-          '仓库',
+          '物料',
           <IconPuzzle style={{ marginTop: '2px' }} />,
           'material'
         )}
