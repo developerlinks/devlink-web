@@ -1,0 +1,52 @@
+.sideContainer {
+  .tagsContainer {
+    position: relative;
+
+    .tags {
+      position: absolute;
+      top: 40px;
+      background: white;
+      z-index: 999;
+      padding: 3px 0;
+      border-radius: 6px;
+      width: 50%;
+      border: 1px solid rgba(28, 31, 35, 0.08);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.03), 0 4px 14px rgba(0, 0, 0, 0.01);
+
+      .tagItem {
+        background: white;
+        color: rgb(29, 31, 35);
+        padding: 10px;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgb(244, 245, 245);
+        }
+      }
+    }
+  }
+
+  .formItemRequired {
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+
+  .required {
+    &::after {
+      content: '*';
+      color: red;
+      margin-left: 4px;
+    }
+  }
+
+  :global {
+    .semi-form-field {
+      margin: 16px 0;
+    }
+  }
+}

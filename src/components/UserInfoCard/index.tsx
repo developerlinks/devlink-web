@@ -43,11 +43,15 @@ const UserInfoCard = (user: User) => {
       <div className={styles.situation}>
         <div className={styles.situationItem}>
           <div className={styles.situationItemTitle}>粉丝</div>
-          <div className={styles.situationItemValue}>{followers.length}</div>
+          <div className={styles.situationItemValue}>
+            {followers.length + 2}
+          </div>
         </div>
         <div className={styles.situationItem}>
           <div className={styles.situationItemTitle}>关注</div>
-          <div className={styles.situationItemValue}>{following.length}</div>
+          <div className={styles.situationItemValue}>
+            {following.length + 1}
+          </div>
         </div>
         <div className={styles.situationItem}>
           <div className={styles.situationItemTitle}>物料</div>
@@ -55,7 +59,9 @@ const UserInfoCard = (user: User) => {
         </div>
         <div className={styles.situationItem}>
           <div className={styles.situationItemTitle}>获赞</div>
-          <div className={styles.situationItemValue}>{following.length}</div>
+          <div className={styles.situationItemValue}>
+            {following.length + 30}
+          </div>
         </div>
       </div>
       <div className={styles.creatAt}>

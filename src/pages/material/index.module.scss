@@ -1,7 +1,10 @@
+@import '@/styles/color.scss';
+
 .materialPage {
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  background-color: $color-bg;
   .materialContainer {
     margin-top: 20px;
     width: 960px;

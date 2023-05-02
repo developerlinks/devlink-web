@@ -1,0 +1,37 @@
+.npmInstallText {
+  display: flex;
+
+  .npmInstallTextContent {
+    padding: 0 12px;
+    overflow: auto;
+    white-space: nowrap;
+    background-color: rgb(242, 243, 245);
+    line-height: 32px;
+    height: 32px;
+    color: rgb(29, 33, 41);
+    max-width: 260px;
+    border-radius: 5px;
+    padding-right: 8px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .icon {
+    background-color: rgb(45, 92, 246);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    &:hover {
+      background-color: rgb(80, 126, 247);
+      cursor: pointer;
+    }
+  }
+}

@@ -17,8 +17,7 @@
       margin-right: 5px;
     }
 
-    .actionTime {
-    }
+    .actionTime {}
   }
 
   .actionDetail {
@@ -32,5 +31,14 @@
       display: flex;
       justify-content: space-between;
     }
+
+    .actionDetailBottom {
+      .abstract {
+        margin-bottom: 10px;
+        font-size: 13px;
+        color: $color-text-default;
+      }
+    }
   }
+
 }

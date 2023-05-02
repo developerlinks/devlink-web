@@ -69,7 +69,9 @@ export default function ActionCard({ material }: ActionCardProps) {
           </SplitButtonGroup>
         </div>
         <div className={styles.actionDetailBottom}>
-          <div className={styles.description}>{material.description}</div>
+          {material.abstract && (
+            <div className={styles.abstract}>{material.abstract}</div>
+          )}
           <div className={styles.tags}>
             <Space>
               {material.tags.map((tag) => (

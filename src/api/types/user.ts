@@ -68,6 +68,7 @@ export interface Material {
   name: string;
   npmName: string;
   version: string;
+  abstract: string;
   description: string;
   installCommand: string;
   startCommand: string;

@@ -1,0 +1,83 @@
+@import '@/styles/color.scss';
+
+.materiview {
+  .header {
+    width: 100%;
+
+    .materialInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+
+      .materialInfoTop {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .materialName {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+
+      }
+
+      .materialInfobottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .materialInfobottomLeft {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          font-size: 14px;
+          color: $color-text-gray;
+        }
+
+        .version {
+          display: inline-flex;
+          align-items: center;
+          font-size: 12px;
+          font-weight: 400;
+          color: $color-text-gray;
+          padding: 6px 8px;
+          background-color: #f2f5fa;
+          border-radius: 5px;
+        }
+      }
+
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        .tagItem {
+          &:hover {
+            color: white;
+            background-color: $color-primary;
+            cursor: pointer;
+          }
+        }
+
+      }
+    }
+  }
+
+  .materialDescription {
+    margin-top: 16px;
+
+    .materialDescriptionTitle {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .materialDescriptionContent {
+      font-size: 14px;
+      color: $color-text-default;
+      line-height: 1.5;
+    }
+  }
+}

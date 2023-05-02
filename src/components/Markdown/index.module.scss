@@ -1,0 +1,24 @@
+@import '@/styles/color.scss';
+
+
+.editorContainer {
+  :global {
+    .bytemd {
+      height: calc(100vh - 40px);
+
+      .bytemd-tippy-right {
+        &:nth-child(6) {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+.markdownView {
+  :global {
+   .markdown-body {
+      background-color: $color-bg;
+   }
+  }
+}

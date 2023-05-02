@@ -10,6 +10,9 @@
     "format": "prettier --write \"*.ts\" "
   },
   "dependencies": {
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight": "^1.21.0",
+    "@bytemd/react": "^1.21.0",
     "@douyinfe/semi-icons": "^2.32.2",
     "@douyinfe/semi-illustrations": "^2.33.0",
     "@douyinfe/semi-ui": "^2.32.2",
@@ -24,6 +27,7 @@
     "compressorjs": "^1.2.1",
     "crypto": "^1.0.1",
     "eslint-config-next": "13.3.0",
+    "github-markdown-css": "^5.2.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "next": "13.3.0",
