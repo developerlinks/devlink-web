@@ -16,11 +16,9 @@
         gap: 16px;
 
         .materialName {
-          font-size: 24px;
+          font-size: 36px;
           font-weight: bold;
         }
-
-
       }
 
       .materialInfobottom {
@@ -32,7 +30,7 @@
           display: flex;
           align-items: center;
           gap: 16px;
-          font-size: 14px;
+          font-size: 15px;
           color: $color-text-gray;
         }
 
@@ -60,7 +58,6 @@
             cursor: pointer;
           }
         }
-
       }
     }
   }
@@ -68,16 +65,13 @@
   .materialDescription {
     margin-top: 16px;
 
-    .materialDescriptionTitle {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
     .materialDescriptionContent {
       font-size: 14px;
       color: $color-text-default;
       line-height: 1.5;
     }
+  }
+  .commentContainer {
+    margin: 32px 0;
   }
 }

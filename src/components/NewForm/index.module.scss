@@ -13,7 +13,6 @@
       vertical-align: bottom;
     }
   }
-
 }
 
 .formItemRequired {
@@ -30,5 +29,14 @@
     content: '*';
     color: red;
     margin-left: 4px;
+  }
+}
+
+.formDescriptionItem {
+  :global {
+    .bytemd {
+      height: calc(100vh - 200px);
+
+    }
   }
 }

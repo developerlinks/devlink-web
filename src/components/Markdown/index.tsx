@@ -11,9 +11,14 @@ const plugins = [gfm(), highlight()];
 interface RichEditorProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  [key: string]: any;
 }
 
-export const MarkdownEditor: FC<RichEditorProps> = ({ value, setValue }) => {
+export const MarkdownEditor: FC<RichEditorProps> = ({
+  value,
+  setValue,
+  ...rest
+}) => {
   return (
     <div className={styles.editorContainer}>
       <Editor
@@ -23,6 +28,7 @@ export const MarkdownEditor: FC<RichEditorProps> = ({ value, setValue }) => {
         onChange={(v) => {
           setValue(v);
         }}
+        {...rest}
       />
     </div>
   );

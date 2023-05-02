@@ -1,0 +1,53 @@
+@import '@/styles/color.scss';
+
+.commentItem {
+  padding: 10px 0px 0 20px;
+  display: flex;
+  width: 100%;
+  gap: 8px;
+
+  .main {
+    flex: 1;
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .username {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .time {
+        color: $color-text-gray;
+        font-size: 12px;
+      }
+    }
+
+    .content {
+      background: #eff1f8;
+      padding: 16px;
+      border-radius: 12px;
+      width: 100%;
+      font-size: 15px;
+      margin: 10px 0px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+
+      .infoLeft {
+        width: 100%;
+        margin-bottom: 14px;
+        color: $color-text-gray;
+        font-size: 12px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .replyBtn {}
+    }
+  }
+}

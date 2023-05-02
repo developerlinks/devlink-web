@@ -69,7 +69,7 @@ export default function NewForm() {
             </Button>
           </div>
 
-          <div>
+          <div className={styles.formDescriptionItem}>
             <div className={clsx(styles.formItemRequired, styles.required)}>
               描述
             </div>

@@ -7,6 +7,7 @@ import NpmInstallText from '../NpmInstallText';
 import OperationBar from '../OperationBar';
 import clsx from 'clsx';
 import { MarkdownView } from '../Markdown';
+import Comment from '../Comment';
 
 interface MaterialViewProps {
   material: Material;
@@ -58,12 +59,15 @@ const MaterialView = ({ material }: MaterialViewProps) => {
         </div>
       </div>
       <div className={styles.materialDescription}>
-        <div className={styles.materialDescriptionTitle}>描述</div>
         <div className={styles.materialDescriptionContent}>
           <MarkdownView value={material.description} />
         </div>
       </div>
       <OperationBar materialId={material.id} />
+      <div className={styles.commentContainer}>
+        {' '}
+        <Comment />{' '}
+      </div>
     </div>
   );
 };

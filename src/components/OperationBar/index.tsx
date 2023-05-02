@@ -19,7 +19,7 @@ const OperationBar = ({ materialId }: OperationBarProps) => {
         </Badge>
       </div>
       <div className={styles.operationItem}>
-        <Badge count={20} className={clsx({ [styles.noActive]: true })}>
+        <Badge count={3} className={clsx({ [styles.noActive]: true })}>
           <IconStar style={{ fontSize: '1.3rem' }} />
         </Badge>
       </div>

@@ -1,0 +1,18 @@
+.commentEditor {
+  .editorContainer {
+    :global {
+      .bytemd {
+        height: 300px;
+      }
+    }
+
+    .submitContainer {
+      display: flex;
+      justify-content: flex-end; // 添加这一行代码
+    }
+
+    .submit {
+      margin: 8px 0;
+    }
+  }
+}
