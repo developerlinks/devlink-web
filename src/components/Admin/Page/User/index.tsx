@@ -20,7 +20,7 @@ export default function UserPageTable() {
       title: '头像',
       dataIndex: 'profile.avatar',
       render: (text, record, index) => {
-        return <Avatar src={text} username={record.username}/>;
+        return <Avatar id={record.id} src={text} username={record.username}/>;
       },
     },
     {

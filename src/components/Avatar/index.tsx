@@ -1,5 +1,6 @@
 import { Avatar as AvatarSemi } from '@douyinfe/semi-ui';
 import { AvatarColor } from '@douyinfe/semi-ui/lib/es/avatar';
+import { useRouter } from 'next/router';
 const colors = [
   'amber',
   'blue',
@@ -24,10 +25,11 @@ interface AvatarProps {
   src: string | undefined | null;
   size?: 'small' | 'default' | 'large';
   style?: React.CSSProperties;
+  id?: string;
   [key: string]: any;
 }
 
-function Avatar({ username, src, size, style, ...rest }: AvatarProps) {
+function Avatar({ username, src, id, size, style, ...rest }: AvatarProps) {
   const color = colors[username.length % colors.length] as AvatarColor;
   return (
     <AvatarSemi
@@ -35,8 +37,14 @@ function Avatar({ username, src, size, style, ...rest }: AvatarProps) {
       alt={username}
       src={src ?? ''}
       size={size ?? 'default'}
-      style={style}
+      style={{
+        cursor: id ? 'pointer' : 'auto',
+        ...style,
+      }}
       {...rest}
+      onClick={() => {
+        id && open(`/user/${id}`);
+      }}
     >
       {username.split('')[0]}
     </AvatarSemi>

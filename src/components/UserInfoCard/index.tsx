@@ -11,6 +11,7 @@ moment.locale('zh-cn');
 
 const UserInfoCard = (user: User) => {
   const {
+    id,
     username,
     profile: { avatar, description },
     createdAt,
@@ -21,7 +22,7 @@ const UserInfoCard = (user: User) => {
   return (
     <div className={styles.userInfoCard}>
       <div className={styles.userAvatarContainer}>
-        <Avatar username={username} src={avatar ?? ''} size='large' />
+        <Avatar id={id} username={username} src={avatar ?? ''} size='large' />
       </div>
       <div className={styles.userName}>{username}</div>
       <div className={styles.operationBar}>

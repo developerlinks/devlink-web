@@ -51,7 +51,7 @@ export default function Email() {
       ) !== -1;
     // 判断权限
     push(isAdmin ? '/admin' : '/');
-    ToastSuccess('欢迎回来👏');
+    ToastSuccess('欢迎回来 👏');
   };
 
   return (

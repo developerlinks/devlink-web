@@ -13,13 +13,13 @@ export default function News() {
           <div className={styles.content}>
             <div className={styles.item}>
               <IconApps style={{ marginRight: '8px' }} />
-              点击查看
+              点击
               <StrIcon>
                 <HoverLink href='https://devlink.wiki/commitlist' openNewTab>
                   devlink
                 </HoverLink>
               </StrIcon>
-              开发日志
+              查看开发日志
             </div>
           </div>
         </div>

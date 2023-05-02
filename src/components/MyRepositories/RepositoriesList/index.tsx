@@ -33,6 +33,7 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
       <li className={styles.repositoryItem} key={item.id}>
         <div className={styles.ownerInfo}>
           <Avatar
+            id={item.user?.id}
             src={item.user?.profile?.avatar ?? ''}
             username={item.user?.username as string}
             size='small'

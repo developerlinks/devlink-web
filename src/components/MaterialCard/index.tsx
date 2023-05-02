@@ -44,6 +44,7 @@ export default function MaterialCard({
               <>
                 {isShowAvatar && (
                   <Avatar
+                    id={material.user.id}
                     style={{ width: '20px', height: '20px', marginRight: 5 }}
                     size='small'
                     username={username}
