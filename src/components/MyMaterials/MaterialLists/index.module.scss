@@ -1,14 +1,14 @@
-.repositoryUl {
+.materialUl {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0;
+  gap: 16px;
 
-  .repositoryItem {
+  .materialItem {
     display: flex;
     align-items: center;
     width: 100%;
-    margin-top: 8px;
     font-size: 14px;
 
     .ownerInfo {

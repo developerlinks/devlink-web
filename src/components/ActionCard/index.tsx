@@ -9,8 +9,9 @@ import {
 import moment from 'moment';
 import { Material } from '@/api/types/user';
 import { IconTreeTriangleDown } from '@douyinfe/semi-icons';
-import Avatar from '../Avatar';
+import CustomAvatar from '../CustomAvatar';
 import HoverLink from '../HoverLink';
+import MaterialCard from '../MaterialCard';
 
 interface ActionCardProps {
   material: Material;
@@ -21,7 +22,7 @@ export default function ActionCard({ material }: ActionCardProps) {
     <div className={styles.actionCard}>
       <div className={styles.actionHeader}>
         <div className={styles.owner}>
-          <Avatar
+          <CustomAvatar
             id={material.user.id}
             src={material.user.profile?.avatar ?? ''}
             username={material.user.username}
@@ -36,8 +37,10 @@ export default function ActionCard({ material }: ActionCardProps) {
           {moment(material.createdAt).startOf('hour').fromNow()}
         </div>
       </div>
-      <div className={styles.actionDetail}>
-        <div className={styles.actionDetailHeader}>
+      <MaterialCard displaySelfName={false} material={material} />
+      {/* <div className={styles.actionDetail}> */}
+
+      {/* <div className={styles.actionDetailHeader}>
           <HoverLink
             href={`/material/${material.id}`}
             openNewTab
@@ -81,8 +84,8 @@ export default function ActionCard({ material }: ActionCardProps) {
               ))}
             </Space>
           </div>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }

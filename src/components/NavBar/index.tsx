@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
 import { User } from '@/api/types/user';
-import Avatar from '../Avatar';
+import Avatar from '../CustomAvatar';
 import SearchBar from '../SearchBar';
 
 export default function NavBar() {

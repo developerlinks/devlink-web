@@ -13,7 +13,7 @@ import useStore from '@/store/common/global';
 import useUserStore from '@/store/user';
 import { User } from '@/api/types/user';
 import { useRouter } from 'next/router';
-import Avatar from '@/components/Avatar';
+import CustomAvatar from '@/components/CustomAvatar';
 
 const { Header } = Layout;
 
@@ -76,7 +76,7 @@ const Index: FC = () => {
                 </Dropdown.Menu>
               }
             >
-              <Avatar
+              <CustomAvatar
                 username={userInfo?.username as string}
                 src={userInfo?.profile.avatar}
                 size='small'

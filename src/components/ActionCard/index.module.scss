@@ -20,25 +20,4 @@
     .actionTime {
     }
   }
-
-  .actionDetail {
-    margin-top: 8px;
-    background-color: #ffffff;
-    border: 1px solid $color-border-default;
-    padding: 16px;
-    border-radius: 6px;
-
-    .actionDetailHeader {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .actionDetailBottom {
-      .abstract {
-        margin-bottom: 10px;
-        font-size: 13px;
-        color: $color-text-default;
-      }
-    }
-  }
 }

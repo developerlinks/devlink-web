@@ -11,15 +11,31 @@
     .materialDetailHeader {
       display: flex;
       justify-content: space-between;
-      height: 32px;
+      gap: 32px;
 
-      .name {
-        font-size: 16px;
-        font-weight: 500;
-        color: $color-text-default;
+      .materialTitle {
+        .name {
+          font-size: 16px;
+          font-weight: 500;
+          color: $color-text-default;
+        }
+
+        .active {
+          color: $color-text-active;
+        }
+        margin-bottom: 8px;
       }
-      .active {
-        color: $color-text-active;
+
+
+      .actionBtn {
+        display: flex;
+      }
+    }
+
+    .materialDetailBottom {
+
+      .abstract {
+        margin-bottom: 16px;
       }
     }
   }

@@ -1,7 +1,5 @@
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import { User } from '@/api/types/user';
-import Avatar from '../Avatar';
 import { Button } from '@douyinfe/semi-ui';
 import {
   IconCalendarClock,

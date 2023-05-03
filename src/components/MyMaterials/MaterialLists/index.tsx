@@ -3,13 +3,14 @@ import { GetMyMaterial } from '@/api/types/material';
 import { fetcher } from '@/utils/http';
 import styles from './index.module.scss';
 import { Material } from '@/api/types/user';
-import Avatar from '@/components/Avatar';
+import CustomAvatar from '@/components/CustomAvatar';
+import HoverLink from '@/components/HoverLink';
 
-type RepositoriesListProps = {
+type MaterialListsProps = {
   search: string;
 };
 
-export default function RepositoriesList({ search }: RepositoriesListProps) {
+export default function MaterialLists({ search }: MaterialListsProps) {
   const { data, isLoading } = useSWR<GetMyMaterial>(
     '/material/myself',
     fetcher
@@ -28,26 +29,28 @@ export default function RepositoriesList({ search }: RepositoriesListProps) {
 
   const filteredMaterials = filterMaterials(data?.materials || [], search);
 
-  const RepositoryLi = (item: Material) => {
+  const MaterialLi = (item: Material) => {
     return (
-      <li className={styles.repositoryItem} key={item.id}>
+      <li className={styles.materialItem} key={item.id}>
         <div className={styles.ownerInfo}>
-          <Avatar
+          <CustomAvatar
             id={item.user?.id}
             src={item.user?.profile?.avatar ?? ''}
             username={item.user?.username as string}
             size='small'
           />
         </div>
-        <div>{item.name}</div>
+        <HoverLink href={`/material/${item.id}`} openNewTab>
+          {item.name}
+        </HoverLink>
       </li>
     );
   };
 
   return (
-    <ul className={styles.repositoryUl}>
+    <ul className={styles.materialUl}>
       {filteredMaterials.length !== 0 ? (
-        filteredMaterials.map((item) => <>{RepositoryLi(item)}</>)
+        filteredMaterials.map((item) => <>{MaterialLi(item)}</>)
       ) : (
         <>未检索到指定内容</>
       )}

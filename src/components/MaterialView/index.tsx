@@ -8,6 +8,7 @@ import OperationBar from '../OperationBar';
 import clsx from 'clsx';
 import { MarkdownView } from '../Markdown';
 import Comment from '../Comment';
+import { CustomTag } from '../CustomTag';
 
 interface MaterialViewProps {
   material: Material;
@@ -45,15 +46,9 @@ const MaterialView = ({ material }: MaterialViewProps) => {
           </div>
           <div className={styles.tags}>
             {material.tags.map((tag, index) => (
-              <Tag
-                key={index}
-                size='large'
-                type='light'
-                color='blue'
-                className={styles.tagItem}
-              >
+              <CustomTag size='small' key={tag.id} href='/'>
                 {tag.name}
-              </Tag>
+              </CustomTag>
             ))}
           </div>
         </div>

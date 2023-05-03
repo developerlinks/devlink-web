@@ -5,7 +5,7 @@ import { fetcher } from '@/utils/http';
 import { useState } from 'react';
 import { User } from '@/api/types/user';
 import moment from 'moment';
-import Avatar from '@/components/Avatar';
+import CustomAvatar from '@/components/CustomAvatar';
 
 moment.locale('zh-cn');
 
@@ -20,7 +20,9 @@ export default function CommentPageTable() {
       title: '头像',
       dataIndex: 'profile.avatar',
       render: (text, record, index) => {
-        return <Avatar id={record.id} src={text} username={record.username} />;
+        return (
+          <CustomAvatar id={record.id} src={text} username={record.username} />
+        );
       },
     },
     {

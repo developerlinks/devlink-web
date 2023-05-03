@@ -1,12 +1,12 @@
 import { Button, Input } from '@douyinfe/semi-ui';
 import styles from './index.module.scss';
 import { IconCustomize } from '@douyinfe/semi-icons';
-import RepositoriesList from './RepositoriesList';
+import RepositoriesList from './MaterialLists';
 import { useCallback, useState } from 'react';
 import debounce from 'lodash/debounce';
 import { useRouter } from 'next/router';
 
-export default function MyRepositories() {
+export default function MyMaterials() {
   const [search, setSearch] = useState('');
   const { push } = useRouter();
   // eslint-disable-next-line react-hooks/exhaustive-deps

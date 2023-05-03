@@ -5,7 +5,7 @@ import { fetcher } from '@/utils/http';
 import { useState, useMemo } from 'react';
 import { User } from '@/api/types/user';
 import moment from 'moment';
-import Avatar from '@/components/Avatar';
+import Avatar from '@/components/CustomAvatar';
 
 moment.locale('zh-cn');
 

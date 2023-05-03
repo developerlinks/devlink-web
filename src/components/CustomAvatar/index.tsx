@@ -23,22 +23,31 @@ const colors = [
 interface AvatarProps {
   username: string;
   src: string | undefined | null;
-  size?: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large' | 'vsmalle';
   style?: React.CSSProperties;
   id?: string;
   [key: string]: any;
 }
 
-function Avatar({ username, src, id, size, style, ...rest }: AvatarProps) {
+function CustomAvatar({
+  username,
+  src,
+  id,
+  size,
+  style,
+  ...rest
+}: AvatarProps) {
   const color = colors[username.length % colors.length] as AvatarColor;
   return (
     <AvatarSemi
       color={color}
       alt={username}
       src={src ?? ''}
-      size={size ?? 'default'}
+      size={size === 'vsmalle' || !size ? 'default' : size}
       style={{
         cursor: id ? 'pointer' : 'auto',
+        width: size === 'vsmalle' ? '20px' : undefined,
+        height: size === 'vsmalle' ? '20px' : undefined,
         ...style,
       }}
       {...rest}
@@ -50,4 +59,4 @@ function Avatar({ username, src, id, size, style, ...rest }: AvatarProps) {
     </AvatarSemi>
   );
 }
-export default Avatar;
+export default CustomAvatar;

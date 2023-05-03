@@ -1,30 +1,35 @@
-import Avatar from '@/components/Avatar';
+import CustomAvatar from '@/components/CustomAvatar';
 import styles from './index.module.scss';
 import HoverLink from '@/components/HoverLink';
 import { Button } from '@douyinfe/semi-ui';
+import { User } from '@/api/types/user';
 
 interface CommentItemProps {
   children?: React.ReactNode;
+  username: string;
+  comment: string;
+  avatar?: string;
 }
 
-const CommentItem = ({ children }: CommentItemProps) => {
+const CommentItem = ({
+  children,
+  username,
+  comment,
+  avatar,
+}: CommentItemProps) => {
   return (
     <div className={styles.commentItem}>
       <div className={styles.avatar}>
-        <Avatar
-          username={'bowling'}
-          id='/'
-          src={'https://qiniuyun.devlink.wiki/%E5%A4%B4%E5%83%8F.jpeg'}
-        />
+        <CustomAvatar username={'bowling'} id='/' src={avatar} />
       </div>
       <div className={styles.main}>
         <div className={styles.header}>
           <div className={styles.username}>
-            <HoverLink href='/'>bowling</HoverLink>
+            <HoverLink href='/'>{username}</HoverLink>
           </div>
           <div className={styles.time}>2023-03-16 19:47:06</div>
         </div>
-        <div className={styles.content}>测试测试</div>
+        <div className={styles.content}>{comment}</div>
         <div className={styles.info}>
           <div className={styles.infoLeft}>
             <div className={styles.ip}>223.**.**116</div>

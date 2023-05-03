@@ -1,4 +1,4 @@
-import MyRepositories from '../MyRepositories';
+import MyRepositories from '../MyMaterials';
 import News from './News';
 import Recommend from './Recommend';
 import styles from './index.module.scss';

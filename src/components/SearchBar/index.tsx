@@ -10,6 +10,7 @@ import useMinimumLoadingTime from '@/hooks/useMinimumLoadingTime';
 import StrSvg from '../StrSvg';
 import { SearchIcon } from './material';
 import { useRouter } from 'next/router';
+import CustomAvatar from '../CustomAvatar';
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -86,7 +87,16 @@ const SearchBar = () => {
                 onClick={() => open(`/${routePrefix}/${item.id}`)}
               >
                 <div className={styles.searchValueLeft}>
-                  {iconComponent}
+                  {iconComponent === 'avatar' ? (
+                    <CustomAvatar
+                      username={item.username}
+                      src={item.avatar}
+                      size='vsmalle'
+                      id={item.id}
+                    />
+                  ) : (
+                    iconComponent
+                  )}
                   <div>{item.name || item.username}</div>
                 </div>
                 <div className={styles.searchValueRight}>跳转</div>
@@ -105,12 +115,7 @@ const SearchBar = () => {
           <IconPuzzle style={{ marginTop: '2px' }} />,
           'material'
         )}
-        {renderFuzzyQueryItems(
-          queryByUserName,
-          '用户',
-          <IconUserCircle />,
-          'user'
-        )}
+        {renderFuzzyQueryItems(queryByUserName, '用户', 'avatar', 'user')}
         {renderFuzzyQueryItems(queryByTagName, '标签', <IconPriceTag />, 'tag')}
       </>
     );

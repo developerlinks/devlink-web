@@ -9,20 +9,23 @@ import {
 import moment from 'moment';
 import { Material, User } from '@/api/types/user';
 import { IconTreeTriangleDown } from '@douyinfe/semi-icons';
-import Avatar from '../Avatar';
+import CustomAvatar from '../CustomAvatar';
 import HoverLink from '../HoverLink';
 import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { CustomTag } from '../CustomTag';
 
 interface MaterialCardProps {
   material: Material;
   isShowAvatar?: boolean;
+  displaySelfName?: boolean;
 }
 moment.locale('zh-cn');
 export default function MaterialCard({
   material,
   isShowAvatar = false,
+  displaySelfName = true,
 }: MaterialCardProps) {
   const [user, setUser] = useState<User | null>(null);
   const { getUser } = useUserStore();
@@ -39,11 +42,11 @@ export default function MaterialCard({
     <div className={styles.materialCard}>
       <div className={styles.materialDetail}>
         <div className={styles.materialDetailHeader}>
-          <div>
+          <div className={styles.materialTitle}>
             {isSelf && (
               <>
                 {isShowAvatar && (
-                  <Avatar
+                  <CustomAvatar
                     id={material.user.id}
                     style={{ width: '20px', height: '20px', marginRight: 5 }}
                     size='small'
@@ -51,16 +54,22 @@ export default function MaterialCard({
                     src={material.user?.profile?.avatar}
                   />
                 )}
-                <HoverLink
-                  href={`/user/${material.user.id}`}
-                  className={clsx(styles.name, {
-                    [styles.active]: isShowAvatar,
-                  })}
-                  openNewTab
-                >
-                  {username}
-                </HoverLink>
-                /
+                <>
+                  {username === user.username && displaySelfName && (
+                    <>
+                      <HoverLink
+                        href={`/user/${material.user.id}`}
+                        className={clsx(styles.name, {
+                          [styles.active]: isShowAvatar,
+                        })}
+                        openNewTab
+                      >
+                        {username}
+                      </HoverLink>
+                      /
+                    </>
+                  )}
+                </>
               </>
             )}
             <HoverLink
@@ -77,6 +86,7 @@ export default function MaterialCard({
             <SplitButtonGroup
               style={{ marginRight: 10 }}
               aria-label='项目操作按钮组'
+              className={styles.actionBtn}
             >
               <Button theme='light' type='primary'>
                 收藏
@@ -99,13 +109,15 @@ export default function MaterialCard({
           )}
         </div>
         <div className={styles.materialDetailBottom}>
-          <div className={styles.description}>{material.description}</div>
+          {material.abstract && (
+            <div className={styles.abstract}>{material.abstract}</div>
+          )}
           <div className={styles.tags}>
             <Space>
               {material.tags.map((tag) => (
-                <Tag size='small' key={tag.id}>
+                <CustomTag size='small' key={tag.id} href='/'>
                   {tag.name}
-                </Tag>
+                </CustomTag>
               ))}
             </Space>
           </div>

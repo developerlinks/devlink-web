@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { User } from '@/api/types/user';
-import Avatar from '../Avatar';
+import CustomAvatar from '../CustomAvatar';
 import { Button } from '@douyinfe/semi-ui';
 import { IconCalendarClock, IconLink } from '@douyinfe/semi-icons';
 
@@ -22,7 +22,12 @@ const UserInfoCard = (user: User) => {
   return (
     <div className={styles.userInfoCard}>
       <div className={styles.userAvatarContainer}>
-        <Avatar id={id} username={username} src={avatar ?? ''} size='large' />
+        <CustomAvatar
+          id={id}
+          username={username}
+          src={avatar ?? ''}
+          size='large'
+        />
       </div>
       <div className={styles.userName}>{username}</div>
       <div className={styles.operationBar}>
