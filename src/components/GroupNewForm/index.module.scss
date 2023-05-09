@@ -1,0 +1,27 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  :global {
+    .semi-form-field {
+      flex: 1;
+    }
+    .semi-form-vertical .semi-form-field {
+      flex: 1;
+    }
+    .semi-button {
+      margin-top: 24px;
+      vertical-align: bottom;
+      width: 52px;
+    }
+  }
+}
+
+.formDescriptionItem {
+  :global {
+    .bytemd {
+      height: calc(100vh - 200px);
+    }
+  }
+}
