@@ -1,0 +1,26 @@
+@import '@/styles/color.scss';
+
+.searchFilterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  .filterBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.slotNode {
+  background-color: var(--semi-color-fill-0);
+  height: 36px;
+  display: flex;
+  padding-left: 32px;
+  color: var(--semi-color-link);
+  align-items: center;
+  cursor: pointer;
+  border-top: 1px solid var(--semi-color-border);
+  border-radius: 0 0 6px 6px;
+}

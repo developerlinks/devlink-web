@@ -1,11 +1,13 @@
 import { User } from '@/api/types/user';
 import { Tabs, TabPane } from '@douyinfe/semi-ui';
 import MaterialList from './MaterialList';
+import SearchFilterBar from './components/SearchFilterBar';
 
 const UserView = ({ userId }: { userId: string }) => {
   return (
     <Tabs type='button'>
       <TabPane tab='物料' itemKey='material'>
+        <SearchFilterBar />
         <MaterialList userId={userId} />
       </TabPane>
       <TabPane tab='收藏' itemKey='collection'>
