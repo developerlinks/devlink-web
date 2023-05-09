@@ -19,8 +19,10 @@ export default function NavBar() {
   const { push, pathname } = useRouter();
   const { getUser, user } = useUserStore();
 
+  const isLoginPage = pathname.includes('login');
+
   useEffect(() => {
-    if (!pathname.includes('login') || !user) {
+    if (!isLoginPage || (!user && !isLoginPage)) {
       getUser().then((data) => {
         setUserInfo(data);
       });
