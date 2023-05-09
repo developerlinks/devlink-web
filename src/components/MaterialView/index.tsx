@@ -60,8 +60,7 @@ const MaterialView = ({ material }: MaterialViewProps) => {
       </div>
       <OperationBar materialId={material.id} />
       <div className={styles.commentContainer}>
-        {' '}
-        <Comment />{' '}
+        <Comment />
       </div>
     </div>
   );

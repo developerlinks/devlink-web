@@ -19,7 +19,6 @@ const MaterialList = ({ userId }: MaterialListProps) => {
 
   useEffect(() => {
     const queryData: QueryIF = query;
-    console.log('queryData', queryData);
     const queryString = qs.stringify(queryData);
     setUrl(`/material?authorId=${userId}&${queryString}`);
   }, [query, userId]);
@@ -28,6 +27,7 @@ const MaterialList = ({ userId }: MaterialListProps) => {
 
   if (isLoading) return <>loading...</>;
   if (error) return <>error...</>;
+
   return (
     <div>
       {data?.materials.map((material: Material) => (

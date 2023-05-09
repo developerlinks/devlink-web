@@ -25,7 +25,7 @@ export default function MyMaterials() {
             icon={<IconCustomize />}
             theme='solid'
             type='primary'
-            onClick={() => push('/new')}
+            onClick={() => push('/material/add')}
           >
             新建
           </Button>

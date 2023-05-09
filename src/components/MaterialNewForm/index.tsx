@@ -8,6 +8,7 @@ import FormSide from './FormSide';
 import { addMaterial } from '@/api/material';
 import { ToastSuccess } from '@/utils/common';
 import { MarkdownEditor } from '../Markdown';
+import { useRouter } from 'next/router';
 
 const { Input } = Form;
 
@@ -15,20 +16,17 @@ export default function NewForm() {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [formSideVisible, setFormSideVisible] = useState(false);
+  const { push } = useRouter();
   const handleSubmit = async (values: AddMaterialParmas) => {
-    // let description = document.querySelector('.markdown-body')
-    //   ?.innerHTML as string;
-    // description = description.slice(0, description.length - 9);
-
     const data = {
       ...values,
       description,
     };
-    console.info('handleSubmit', data);
     setLoading(true);
     addMaterial(data)
       .then((res) => {
-        // TODO: 跳转到详情页
+        const materialId = res.data.id;
+        push(`/material/${materialId}`);
         ToastSuccess('添加成功');
       })
       .catch()

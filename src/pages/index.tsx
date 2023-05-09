@@ -1,10 +1,7 @@
 import { User } from '@/api/types/user';
-import Layout from '@/components/FrontLayout/Layout';
-import Seo from '@/components/Seo';
 import Welcome from '@/components/Welcome';
 import Home from '@/components/Home';
 import useUserStore from '@/store/user';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Index() {

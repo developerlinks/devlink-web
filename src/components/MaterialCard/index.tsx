@@ -15,6 +15,7 @@ import useUserStore from '@/store/user';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { CustomTag } from '../CustomTag';
+import GroupActionBtn from './components/GroupActionBtn';
 
 interface MaterialCardProps {
   material: Material;
@@ -38,6 +39,7 @@ export default function MaterialCard({
 
   const isSelf = user?.id === material.user.id;
   const username = material.user.username;
+
   return (
     <div className={styles.materialCard}>
       <div className={styles.materialDetail}>
@@ -88,23 +90,7 @@ export default function MaterialCard({
               aria-label='项目操作按钮组'
               className={styles.actionBtn}
             >
-              <Button theme='light' type='primary'>
-                收藏
-              </Button>
-              <Dropdown
-                trigger='custom'
-                showTick
-                visible={false}
-                position='bottomRight'
-                render={<>收藏分组</>}
-              >
-                <Button
-                  style={{ padding: '8px 4px' }}
-                  theme='light'
-                  type='primary'
-                  icon={<IconTreeTriangleDown />}
-                ></Button>
-              </Dropdown>
+              <GroupActionBtn material={material} isSelf={isSelf} />
             </SplitButtonGroup>
           )}
         </div>

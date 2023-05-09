@@ -4,7 +4,8 @@
   :global {
     .semi-tag {
       background-color: $color-bg-light-bule;
-      font: 12px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+      font: 12px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+        Liberation Mono, monospace;
       border-radius: 4px;
     }
   }
@@ -17,5 +18,4 @@
       text-decoration: underline;
     }
   }
-
 }

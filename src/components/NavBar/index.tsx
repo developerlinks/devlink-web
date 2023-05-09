@@ -20,12 +20,12 @@ export default function NavBar() {
   const { getUser, user } = useUserStore();
 
   useEffect(() => {
-    if (!pathname.includes('login')) {
+    if (!pathname.includes('login') || !user) {
       getUser().then((data) => {
         setUserInfo(data);
       });
     }
-  }, [user]);
+  }, [user, pathname]);
 
   const UnAuthRightBox = () => {
     const { Text } = Typography;

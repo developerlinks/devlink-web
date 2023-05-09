@@ -4,6 +4,7 @@ import type {
   UpdateUserDto,
 } from './types/user';
 import http from '../utils/http';
+import { NewGroupDto } from './types/group';
 
 // TODO response type
 

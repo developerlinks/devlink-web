@@ -7,9 +7,10 @@ const Comment = () => {
   return (
     <div className={styles.comment}>
       <div className={styles.submitContainer}>
+        <div className={styles.commentText}>评论</div>
         <CommentEditor />
         <div className={styles.commentList}>
-          <div className={styles.commentNums}>3条留言</div>
+          <div className={styles.commentNums}>3条评论</div>
           <CommentItem
             username={'devlink 官方'}
             comment='看起来很不错哦'

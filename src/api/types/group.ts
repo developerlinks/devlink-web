@@ -5,3 +5,13 @@ export interface GetGroup {
   total: number;
   totalPages: number;
 }
+
+export interface NewGroupDto {
+  name: string;
+  description: string;
+}
+
+export interface GroupMaterialDto {
+  groupId: string;
+  materialId: string;
+}

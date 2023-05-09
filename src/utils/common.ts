@@ -1,6 +1,6 @@
 import { getInfo } from '@/api/user';
 import type { User } from '@/api/types/user';
-import { Modal, Toast } from '@douyinfe/semi-ui';
+import { Modal, Toast, Notification } from '@douyinfe/semi-ui';
 import type { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import type { Dispatch, SetStateAction } from 'react';
 import { STORGE_USER_INFO } from './const';
@@ -11,6 +11,14 @@ export function ToastSuccess(content: string, duration = 4) {
     content: content,
     duration,
     showClose: false,
+  });
+}
+
+export function NoticeSuccess(title: string, content?: string, duration = 4) {
+  return Notification.success({
+    title: title,
+    content: content,
+    duration,
   });
 }
 
@@ -194,4 +202,39 @@ export function getDeviceAndOSInfo() {
   }
 
   return { device, os, browser };
+}
+
+interface CompareResult {
+  action: 'added' | 'deleted';
+  item: string;
+}
+
+export function compareArrays(
+  A: string[],
+  B: string[]
+): CompareResult | undefined {
+  const setA = new Set(A);
+  const setB = new Set(B);
+
+  if (A.length > B.length) {
+    // 从A中删除了一个元素
+    for (const item of setA) {
+      if (!setB.has(item)) {
+        return {
+          action: 'deleted',
+          item: item,
+        };
+      }
+    }
+  } else {
+    // 在A中添加了一个元素
+    for (const item of setB) {
+      if (!setA.has(item)) {
+        return {
+          action: 'added',
+          item: item,
+        };
+      }
+    }
+  }
 }
