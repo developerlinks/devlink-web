@@ -4,6 +4,7 @@ import {
   Button,
   Typography,
   DropdownDivider,
+  Spin,
 } from '@douyinfe/semi-ui';
 import Image from 'next/image';
 import styles from './index.module.scss';
@@ -13,12 +14,14 @@ import { useEffect, useState } from 'react';
 import { User } from '@/api/types/user';
 import Avatar from '../CustomAvatar';
 import SearchBar from '../SearchBar';
+import { logout } from '@/api/user';
+import { NoticeSuccess, clearUserinfo } from '@/utils/common';
 
 export default function NavBar() {
   const [userInfo, setUserInfo] = useState<User>();
   const { push, pathname } = useRouter();
-  const { getUser, user } = useUserStore();
-
+  const { getUser, user, clearUser } = useUserStore();
+  const [logoutIsLoading, setLogoutIsLoading] = useState(false);
   const isLoginPage = pathname.includes('login');
 
   useEffect(() => {
@@ -48,6 +51,21 @@ export default function NavBar() {
     );
   };
 
+  const logoutHandle = () => {
+    setLogoutIsLoading(true);
+    logout()
+      .then(() => {
+        NoticeSuccess('退出成功', user?.username);
+        clearUserinfo();
+        clearUser();
+        push('/login');
+      })
+      .catch(() => {})
+      .finally(() => {
+        setLogoutIsLoading(false);
+      });
+  };
+
   const AuthRightBox = () => (
     <>
       {/* TODO: */}
@@ -66,12 +84,15 @@ export default function NavBar() {
               后台管理
             </Dropdown.Item>
             <DropdownDivider />
-            <Dropdown.Item>退出</Dropdown.Item>
+            <Dropdown.Item onClick={logoutHandle}>
+              {logoutIsLoading && <Spin />}
+              退出
+            </Dropdown.Item>
           </Dropdown.Menu>
         }
       >
         <Avatar
-          src={userInfo?.profile.avatar ?? ''}
+          src={userInfo?.profile?.avatar ?? ''}
           username={userInfo?.username as string}
           size='small'
           style={{ marginRight: 8 }}

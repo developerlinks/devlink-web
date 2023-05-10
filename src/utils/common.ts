@@ -14,7 +14,7 @@ export function ToastSuccess(content: string, duration = 4) {
   });
 }
 
-export function NoticeSuccess(title: string, content?: string, duration = 4) {
+export function NoticeSuccess(title: string, content?: string, duration = 3) {
   return Notification.success({
     title: title,
     content: content,
@@ -148,6 +148,11 @@ export function getUserInfo(): Promise<User> {
       })
       .catch();
   });
+}
+
+export function clearUserinfo() {
+  sessionStorage.setItem(STORGE_USER_INFO, '{}');
+  localStorage.setItem('bearerToken', '');
 }
 
 export function getDeviceAndOSInfo() {

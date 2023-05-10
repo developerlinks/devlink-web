@@ -7,11 +7,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <script
-            defer
+            async
             src='https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-bundle.js'
           ></script>
           <script
-            defer
+            async
             src='https://unpkg.com/@statuspage/status-widget/dist/index.js'
           ></script>
         </Head>

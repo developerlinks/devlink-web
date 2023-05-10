@@ -8,26 +8,36 @@ import { addMaterial } from '@/api/material';
 import { NoticeSuccess, ToastSuccess } from '@/utils/common';
 import { MarkdownEditor } from '../Markdown';
 import { useRouter } from 'next/router';
-import { newGroup } from '@/api/group';
+import { newCollectionGroup, newGroup } from '@/api/group';
 
 const { Input } = Form;
 
-export default function GroupNewForm() {
+interface GroupNewFormProps {
+  type: 'group' | 'collectionGroup';
+}
+
+export default function GroupNewForm({ type }: GroupNewFormProps) {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const { push } = useRouter();
+  const addFunc = type === 'group' ? newGroup : newCollectionGroup;
   const handleSubmit = async (values: AddMaterialParmas) => {
     const data = {
       ...values,
       description,
     };
-    console.info('handleSubmit', data);
     setLoading(true);
-    newGroup(data)
+
+    addFunc(data)
       .then((res) => {
         const groupId = res.data.id;
         const groupName = res.data.name;
-        push(`/group/${groupId}`);
+
+        const url = `/${
+          type === 'group' ? 'group' : 'collection-group'
+        }/${groupId}`;
+
+        push(url);
         NoticeSuccess('添加成功', groupName);
       })
       .catch()
@@ -35,6 +45,8 @@ export default function GroupNewForm() {
         setLoading(false);
       });
   };
+
+  const placeholder = `输入${type === 'group' ? '' : '收藏'}分组名称`;
 
   return (
     <Form onSubmit={(values) => handleSubmit(values)} style={{ width: '70%' }}>
@@ -44,7 +56,7 @@ export default function GroupNewForm() {
             <Input
               field='name'
               label={{ text: '分组名称', required: true }}
-              placeholder='输入分组名称'
+              placeholder={placeholder}
               className={styles.input}
             ></Input>
             <Button type='primary' theme='solid' htmlType='submit'>

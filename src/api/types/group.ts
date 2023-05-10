@@ -15,3 +15,8 @@ export interface GroupMaterialDto {
   groupId: string;
   materialId: string;
 }
+
+export interface CollectionGroupMaterialDto {
+  collectionGroupId: string;
+  materialId: string;
+}

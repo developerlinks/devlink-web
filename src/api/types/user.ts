@@ -58,7 +58,16 @@ export declare class Group {
   id: string;
   name: string;
   description: string;
-  createdAt: Date;
+  createdAt: string;
+  user: User;
+  material: Material[];
+}
+
+export declare class CollectionGroup {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
   user: User;
   material: Material[];
 }
@@ -79,6 +88,7 @@ export interface Material {
   user: User;
   tags: Tag[];
   groups: Group[];
+  collectedInGroups: CollectionGroup[];
   comments: Comment[];
   likes: Like[];
   stars: User[];

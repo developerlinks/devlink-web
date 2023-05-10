@@ -1,4 +1,9 @@
-import { addMaterialToGroup, removeMaterialFromGroup } from '@/api/group';
+import {
+  addMaterialToCollectionGroup,
+  addMaterialToGroup,
+  removeMaterialFromCollectionGroup,
+  removeMaterialFromGroup,
+} from '@/api/group';
 import { Material } from '@/api/types/user';
 import { ListIf } from '@/components/UserView/components/SearchFilterBar';
 import { NoticeSuccess, compareArrays } from '@/utils/common';
@@ -9,16 +14,26 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import qs from 'querystring';
+import {
+  CollectionGroupMaterialDto,
+  GroupMaterialDto,
+} from '@/api/types/group';
 
 interface GroupActionBtnProps {
   material: Material;
   isSelf: boolean;
+  type: 'person' | 'collection';
 }
 
-const GroupActionBtn = ({ material, isSelf }: GroupActionBtnProps) => {
-  const { id, groups } = material;
+const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
+  const { id, groups, collectedInGroups } = material;
   const [list, setList] = useState<ListIf[]>([]);
-  const { data, isLoading, error } = useSWR('/group', fetcher);
+  const fetchUrl = isSelf
+    ? type === 'person'
+      ? '/group'
+      : '/collection_group'
+    : '/collection_group';
+  const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
   const [Loading, setLoading] = useState(false);
 
   const userId = material.user.id;
@@ -33,7 +48,11 @@ const GroupActionBtn = ({ material, isSelf }: GroupActionBtnProps) => {
     setSWRKey(`/material?authorId=${userId}&${queryString}`);
   }, [query]);
 
-  const defaultValue = groups.map((item) => item.id);
+  const defaultValue =
+    type === 'person'
+      ? groups.map((item) => item.id)
+      : collectedInGroups.map((item) => item.id);
+
   useEffect(() => {
     if (data) {
       const groupList = data.groups.map((item) => ({
@@ -45,14 +64,26 @@ const GroupActionBtn = ({ material, isSelf }: GroupActionBtnProps) => {
     }
   }, [isLoading, data]);
 
+  const addFunc =
+    type === 'person' ? addMaterialToGroup : addMaterialToCollectionGroup;
+  const removeFunc =
+    type === 'person'
+      ? removeMaterialFromGroup
+      : removeMaterialFromCollectionGroup;
   const onChange = (value: string[]) => {
     const change = compareArrays(defaultValue, value);
 
     if (change) {
       setLoading(true);
       const { action, item } = change;
+      const params: CollectionGroupMaterialDto | GroupMaterialDto =
+        type === 'person'
+          ? { groupId: item, materialId: id }
+          : { collectionGroupId: item, materialId: id };
+
       if (action === 'added') {
-        addMaterialToGroup({ groupId: item, materialId: id })
+        // @ts-ignore
+        addFunc(params)
           .then(() => {
             const groupName = list.find((val) => val.value === item)?.label;
             NoticeSuccess('添加成功', `${material.name}添加到${groupName}中`);
@@ -63,7 +94,8 @@ const GroupActionBtn = ({ material, isSelf }: GroupActionBtnProps) => {
             setLoading(false);
           });
       } else {
-        removeMaterialFromGroup({ groupId: item, materialId: id })
+        // @ts-ignore
+        removeFunc(params)
           .then(() => {
             const groupName = list.find((val) => val.value === item)?.label;
             NoticeSuccess('移除成功', `${material.name}从${groupName}中移除`);

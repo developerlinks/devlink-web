@@ -17,16 +17,33 @@ import clsx from 'clsx';
 import { CustomTag } from '../CustomTag';
 import GroupActionBtn from './components/GroupActionBtn';
 
+moment.locale('zh-cn');
+
 interface MaterialCardProps {
   material: Material;
   isShowAvatar?: boolean;
   displaySelfName?: boolean;
+  type?: 'person' | 'collection';
 }
-moment.locale('zh-cn');
+
+/**
+ * 分为3种情况
+ * 1. 本人视角
+ *  i. 个人中心物料处
+ *    - 操作按钮显示分组
+ *  ii.  个人中心收藏处
+ *    - 操作按钮显示分组
+ * 2. 他人视角
+ *  i. 个人中心物料、收藏处、物料广场处
+ *    - 操作按钮显示收藏
+ * @param param0
+ * @returns
+ */
 export default function MaterialCard({
   material,
   isShowAvatar = false,
   displaySelfName = true,
+  type = 'person',
 }: MaterialCardProps) {
   const [user, setUser] = useState<User | null>(null);
   const { getUser } = useUserStore();
@@ -90,7 +107,7 @@ export default function MaterialCard({
               aria-label='项目操作按钮组'
               className={styles.actionBtn}
             >
-              <GroupActionBtn material={material} isSelf={isSelf} />
+              <GroupActionBtn material={material} isSelf={isSelf} type={type} />
             </SplitButtonGroup>
           )}
         </div>

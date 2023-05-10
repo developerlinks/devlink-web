@@ -8,6 +8,7 @@ interface useUserStore {
   user: User | null;
   setUser: (userData: User | null) => void;
   getUser: () => Promise<User>;
+  clearUser: () => void;
 }
 
 const useUserStore = create<useUserStore>((set, get) => ({
@@ -27,6 +28,9 @@ const useUserStore = create<useUserStore>((set, get) => ({
         });
       }
     });
+  },
+  clearUser: () => {
+    set({ user: null });
   },
 }));
 

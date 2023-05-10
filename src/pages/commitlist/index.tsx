@@ -8,19 +8,19 @@ export default function CommitListPage() {
         owner='developerlinks'
         repo='devlink-server'
         style={{ height: '90%' }}
-        pageNumber={8}
+        pageNumber={9}
       />
       <RepoCommitList
         owner='developerlinks'
         repo='devlink-web'
         style={{ height: '90%' }}
-        pageNumber={8}
+        pageNumber={9}
       />
       <RepoCommitList
         owner='developerlinks'
         repo='devlink-cli'
         style={{ height: '90%' }}
-        pageNumber={8}
+        pageNumber={9}
       />
     </main>
   );

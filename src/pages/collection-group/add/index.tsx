@@ -5,7 +5,7 @@ export default function GroupAdd() {
   return (
     <main>
       <div className={styles.formContainer}>
-        <GroupNewForm type='group' />
+        <GroupNewForm type='collectionGroup' />
       </div>
     </main>
   );

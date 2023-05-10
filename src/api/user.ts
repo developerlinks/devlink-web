@@ -46,3 +46,7 @@ export function updateUserInfo(data: UpdateUserDto) {
     data,
   });
 }
+
+export function logout() {
+  return http('/auth/logout');
+}
