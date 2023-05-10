@@ -129,6 +129,8 @@ export interface UpdateUserDto {
 
   gender?: Gender;
 
+  avatar?: string;
+
   photo?: string;
 
   address?: string;

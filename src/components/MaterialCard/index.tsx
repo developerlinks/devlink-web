@@ -118,7 +118,7 @@ export default function MaterialCard({
           <div className={styles.tags}>
             <Space>
               {material.tags.map((tag) => (
-                <CustomTag size='small' key={tag.id} href='/'>
+                <CustomTag size='small' key={tag.id} href={`/tag/${tag.id}`}>
                   {tag.name}
                 </CustomTag>
               ))}

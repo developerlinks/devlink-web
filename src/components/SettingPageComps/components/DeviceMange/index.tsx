@@ -15,7 +15,6 @@ const DeviceMange = () => {
   const { data, isLoading, error } = useSWR('/auth/get_user_devices', fetcher);
   if (isLoading) return <div>设备信息获取中...</div>;
   if (error) return <div>设备信息获取失败</div>;
-  console.log('data', data);
   const columns = [
     {
       title: '客户端',

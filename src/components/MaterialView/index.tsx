@@ -46,7 +46,7 @@ const MaterialView = ({ material }: MaterialViewProps) => {
           </div>
           <div className={styles.tags}>
             {material.tags.map((tag, index) => (
-              <CustomTag size='small' key={tag.id} href='/'>
+              <CustomTag size='small' key={tag.id} href={`/tag/${tag.id}`}>
                 {tag.name}
               </CustomTag>
             ))}

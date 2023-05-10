@@ -18,7 +18,7 @@ const Setting = () => {
 
   if (isLoading) return <div>用户信息获取中...</div>;
   if (error) return <div>用户信息获取失败</div>;
-  console.log('user', user);
+
   const getContainer = () => {
     return document.querySelector('window') as HTMLElement | Window;
   };
