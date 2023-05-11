@@ -16,3 +16,13 @@ export interface AddMaterialParmas {
   startCommand?: string;
   ignore?: string;
 }
+
+export interface CreateCommentDto {
+  content: string;
+
+  emoticon?: string;
+
+  materialId: string | null;
+
+  parentId?: string;
+}

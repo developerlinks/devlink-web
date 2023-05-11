@@ -5,6 +5,7 @@ import 'bytemd/dist/index.css';
 import type { FC } from 'react';
 import styles from './index.module.scss';
 import 'github-markdown-css/github-markdown-light.css';
+import clsx from 'clsx';
 
 const plugins = [gfm(), highlight()];
 
@@ -36,11 +37,19 @@ export const MarkdownEditor: FC<RichEditorProps> = ({
 
 interface MarkdownViewProps {
   value: string;
+  insetBackGround?: boolean;
 }
 
-export const MarkdownView: FC<MarkdownViewProps> = ({ value }) => {
+export const MarkdownView: FC<MarkdownViewProps> = ({
+  value,
+  insetBackGround = false,
+}) => {
   return (
-    <div className={styles.markdownView}>
+    <div
+      className={clsx(styles.markdownView, {
+        [styles.insetBackGround]: insetBackGround,
+      })}
+    >
       <Viewer value={value} plugins={plugins} />
     </div>
   );

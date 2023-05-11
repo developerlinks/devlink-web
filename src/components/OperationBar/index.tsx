@@ -1,4 +1,4 @@
-import { Like, Material } from '@/api/types/user';
+import { Comment, Like, Material } from '@/api/types/user';
 import styles from './index.module.scss';
 import { IconComment, IconLikeThumb, IconStar } from '@douyinfe/semi-icons';
 import { Badge, Spin } from '@douyinfe/semi-ui';
@@ -16,7 +16,18 @@ interface OperationBarProps {
 
 const OperationBar = ({ material }: OperationBarProps) => {
   const swrKey = `/like/material/${material.id}`;
-  const { data, isLoading, error } = useSWR(swrKey, fetcher);
+  const {
+    data: likeData,
+    isLoading: likeFetchIsloading,
+    error: likeDataError,
+  } = useSWR(swrKey, fetcher);
+
+  const commentSWRKey = `/comments/${material.id}`;
+  const {
+    data: commentData,
+    isLoading: commentFetchIsLoading,
+    error: commentFetchError,
+  } = useSWR(commentSWRKey, fetcher);
 
   const { user } = useUserStore();
   const isCollected =
@@ -35,12 +46,24 @@ const OperationBar = ({ material }: OperationBarProps) => {
       });
   };
 
-  if (isLoading) return <Spin />;
-  if (error) return <>error</>;
+  if (likeFetchIsloading || commentFetchIsLoading) return <Spin />;
+  if (likeDataError || commentFetchError) return <>error</>;
 
-  const likesNum = data.data.length;
+  const likesNum = likeData.data.length;
   const isLiked =
-    data.data.filter((item: Like) => item.user.id === user?.id).length !== 0;
+    likeData.data.filter((item: Like) => item.user.id === user?.id).length !==
+    0;
+
+  let commentNum = 0;
+  commentData.data.forEach((item: Comment) => {
+    commentNum++;
+    item.children.map((item) => {
+      commentNum++;
+    });
+  });
+  const isCommented =
+    commentData.data.filter((item: Comment) => item.user.id === user?.id)
+      .length !== 0;
 
   function getUniqueUserCollectionCount(material: Material): number {
     if (!material.collectedInGroups) return 0;
@@ -85,8 +108,14 @@ const OperationBar = ({ material }: OperationBarProps) => {
         </GroupActionBtn>
       </div>
       <div className={styles.operationItem}>
-        <Badge count={2 || null} className={clsx({ [styles.noActive]: true })}>
-          <IconComment style={{ fontSize: '1.3rem' }} />
+        <Badge
+          count={commentNum || null}
+          className={clsx({ [styles.noActive]: !isCommented })}
+        >
+          <IconComment
+            className={clsx({ [styles.iconAcive]: isCommented })}
+            style={{ fontSize: '1.3rem' }}
+          />
         </Badge>
       </div>
     </div>

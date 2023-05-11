@@ -1,27 +1,41 @@
-import { MarkdownEditor } from '../Markdown';
+import useSWR from 'swr';
 import CommentEditor from './components/components/CommentEditor';
 import CommentItem from './components/components/CommentItem';
 import styles from './index.module.scss';
+import { fetcher } from '@/utils/http';
+import { Material, Comment } from '@/api/types/user';
+import { Spin } from '@douyinfe/semi-ui';
+import CommentView from './components/components/CommentView';
 
-const Comment = () => {
+interface CommentProps {
+  material: Material;
+}
+
+const CommentComp = ({ material }: CommentProps) => {
+  const { id } = material;
+  const commentSWRKey = `/comments/${id}`;
+  const { data, isLoading, error } = useSWR(commentSWRKey, fetcher);
+
+  if (isLoading) return <Spin />;
+  if (error) return <>获取评论失败，请刷新重试</>;
+
+  const commentList = data.data as Comment[];
+
   return (
     <div className={styles.comment}>
       <div className={styles.submitContainer}>
         <div className={styles.commentText}>评论</div>
         <CommentEditor />
         <div className={styles.commentList}>
-          <div className={styles.commentNums}>3条评论</div>
-          <CommentItem
-            username={'devlink 官方'}
-            comment='看起来很不错哦'
-            avatar='https://qiniuyun.devlink.wiki/%E5%A4%B4%E5%83%8F.jpeg'
-          >
-            <CommentItem username={'小张'} comment='+1' />
-          </CommentItem>
-          <CommentItem username='小张' comment='加油～' />
+          <div className={styles.commentNums}>
+            {commentList.length === 0
+              ? '无人区，请尽情交流吧'
+              : `${commentList.length}条评论`}
+          </div>
+          <CommentView commentList={commentList} />
         </div>
       </div>
     </div>
   );
 };
-export default Comment;
+export default CommentComp;

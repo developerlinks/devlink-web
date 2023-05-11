@@ -1,5 +1,3 @@
-import internal from 'stream';
-
 export interface LoginByPasswordParams {
   email: string;
   password: string;
@@ -92,6 +90,26 @@ export interface Material {
   comments: Comment[];
   likes: Like[];
   stars: User[];
+}
+
+export interface Comment {
+  id: string;
+
+  content: string;
+
+  emoticon: string;
+
+  createdAt: string;
+
+  updateAt: string;
+
+  material: Material;
+
+  parent: Comment;
+
+  children: Comment[];
+
+  user: User;
 }
 
 export interface Tag {

@@ -58,7 +58,7 @@ const MaterialView = ({ material }: MaterialViewProps) => {
       </div>
       <OperationBar material={material} />
       <div className={styles.commentContainer}>
-        <Comment />
+        <Comment material={material} />
       </div>
     </div>
   );
