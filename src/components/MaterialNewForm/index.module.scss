@@ -8,11 +8,19 @@
     .semi-form-vertical .semi-form-field {
       flex: 1;
     }
+
     .semi-button {
       margin-top: 24px;
       vertical-align: bottom;
     }
+
+    .semi-input-suffix {
+      .semi-button {
+        margin-top: 0;
+      }
+    }
   }
+
 }
 
 .formItemRequired {

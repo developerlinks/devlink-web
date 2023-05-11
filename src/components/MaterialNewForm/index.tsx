@@ -1,4 +1,4 @@
-import { Button, Form, Spin } from '@douyinfe/semi-ui';
+import { Button, Dropdown, Form, Spin } from '@douyinfe/semi-ui';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AddMaterialParmas } from '@/api/types/material';
@@ -9,6 +9,8 @@ import { addMaterial } from '@/api/material';
 import { ToastSuccess } from '@/utils/common';
 import { MarkdownEditor } from '../Markdown';
 import { useRouter } from 'next/router';
+import { IconBulb } from '@douyinfe/semi-icons';
+import { textPolisher } from '@/api/ai';
 
 const { Input } = Form;
 
@@ -16,6 +18,9 @@ export default function NewForm() {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [formSideVisible, setFormSideVisible] = useState(false);
+  const [aiIsLoading, setAiIsLoading] = useState(false);
+  const [aiResultVisible, setAiResultVisible] = useState(false);
+  const [aiResult, setAiResult] = useState('');
   const { push } = useRouter();
   const handleSubmit = async (values: AddMaterialParmas) => {
     const data = {
@@ -35,17 +40,56 @@ export default function NewForm() {
       });
   };
 
+  const textPolisherHandle = (text: string) => {
+    setAiIsLoading(true);
+    textPolisher({ text })
+      .then((data) => {
+        setAiResult(data.data.text);
+        setAiResultVisible(true);
+      })
+      .catch(() => {})
+      .finally(() => {
+        setAiIsLoading(false);
+      });
+  };
+
+  const aiDropDownHandle = (formApi) => {
+    formApi.setValues({ name: aiResult });
+    setAiResultVisible(false);
+  };
+
   return (
     <Form onSubmit={(values) => handleSubmit(values)} style={{ width: '70%' }}>
       {({ formState, values, formApi }) => (
         <>
           <div className={styles.inputContainer}>
-            <Input
-              field='name'
-              label={{ text: '物料名称', required: true }}
-              placeholder='输入物料名称'
-              className={styles.input}
-            ></Input>
+            <Dropdown
+              position={'bottomLeft'}
+              trigger='custom'
+              visible={aiResultVisible}
+              render={
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={() => aiDropDownHandle(formApi)}>
+                    {aiResult}
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              }
+            >
+              <Input
+                field='name'
+                label={{ text: '物料名称', required: true }}
+                placeholder='输入物料名称'
+                className={styles.input}
+                suffix={
+                  <Button
+                    onClick={() => textPolisherHandle(values.name)}
+                    loading={aiIsLoading}
+                    icon={<IconBulb />}
+                  />
+                }
+              ></Input>
+            </Dropdown>
+
             <Input
               field='npmName'
               label={{ text: 'npm 包名', required: true }}
