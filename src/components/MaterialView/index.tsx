@@ -1,11 +1,9 @@
 import moment from 'moment';
 import { Material } from '@/api/types/user';
 import styles from './index.module.scss';
-import { Tag } from '@douyinfe/semi-ui';
 import HoverLink from '../HoverLink';
 import NpmInstallText from '../NpmInstallText';
 import OperationBar from '../OperationBar';
-import clsx from 'clsx';
 import { MarkdownView } from '../Markdown';
 import Comment from '../Comment';
 import { CustomTag } from '../CustomTag';

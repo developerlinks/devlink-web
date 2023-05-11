@@ -50,3 +50,17 @@ export function updateUserInfo(data: UpdateUserDto) {
 export function logout() {
   return http('/auth/logout');
 }
+
+export function follow(followingId: string) {
+  return http({
+    url: `/follow/${followingId}`,
+    method: 'post',
+  });
+}
+
+export function unfollow(followingId: string) {
+  return http({
+    url: `/follow/${followingId}`,
+    method: 'delete',
+  });
+}

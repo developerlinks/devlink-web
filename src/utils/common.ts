@@ -238,3 +238,24 @@ export function compareArrays(
     }
   }
 }
+
+export const handleCopy = (text: string) => {
+  navigator.clipboard.writeText(text).then(
+    () => {
+      Notification.success({
+        title: '复制成功',
+        content: text,
+        duration: 3,
+        theme: 'light',
+      });
+    },
+    (err) => {
+      Notification.error({
+        title: '复制失败',
+        content: err,
+        duration: 3,
+        theme: 'light',
+      });
+    }
+  );
+};

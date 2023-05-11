@@ -42,6 +42,19 @@ const OperationBar = ({ material }: OperationBarProps) => {
   const isLiked =
     data.data.filter((item: Like) => item.user.id === user?.id).length !== 0;
 
+  function getUniqueUserCollectionCount(material: Material): number {
+    if (!material.collectedInGroups) return 0;
+
+    const countedUsers = new Set<string>();
+    material.collectedInGroups.forEach((group) => {
+      if (group !== null && group.user !== null) {
+        countedUsers.add(group.user.id);
+      }
+    });
+
+    return countedUsers.size;
+  }
+
   return (
     <div className={styles.operationBar}>
       <div
@@ -61,7 +74,7 @@ const OperationBar = ({ material }: OperationBarProps) => {
       <div className={styles.operationItem}>
         <GroupActionBtn material={material} isSelf={false} type='collection'>
           <Badge
-            count={3}
+            count={getUniqueUserCollectionCount(material) || null}
             className={clsx({ [styles.noActive]: !isCollected })}
           >
             <IconStar
@@ -72,7 +85,7 @@ const OperationBar = ({ material }: OperationBarProps) => {
         </GroupActionBtn>
       </div>
       <div className={styles.operationItem}>
-        <Badge count={2} className={clsx({ [styles.noActive]: true })}>
+        <Badge count={2 || null} className={clsx({ [styles.noActive]: true })}>
           <IconComment style={{ fontSize: '1.3rem' }} />
         </Badge>
       </div>
