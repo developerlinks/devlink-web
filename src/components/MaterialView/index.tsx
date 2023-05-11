@@ -58,7 +58,7 @@ const MaterialView = ({ material }: MaterialViewProps) => {
           <MarkdownView value={material.description} />
         </div>
       </div>
-      <OperationBar materialId={material.id} />
+      <OperationBar material={material} />
       <div className={styles.commentContainer}>
         <Comment />
       </div>

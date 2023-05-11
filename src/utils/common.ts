@@ -137,21 +137,16 @@ export function randomString(length = 6) {
 
 export function getUserInfo(): Promise<User> {
   return new Promise((resolve, reject) => {
-    let userinfo = sessionStorage.getItem(STORGE_USER_INFO);
-    userinfo = userinfo && JSON.parse(userinfo);
-    userinfo && resolve(userinfo as unknown as User);
     getInfo()
       .then((res) => {
         const userinfo: User = res.data;
-        sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userinfo));
         resolve(userinfo);
       })
       .catch();
   });
 }
 
-export function clearUserinfo() {
-  sessionStorage.setItem(STORGE_USER_INFO, '{}');
+export function clearUserToken() {
   localStorage.setItem('bearerToken', '');
 }
 

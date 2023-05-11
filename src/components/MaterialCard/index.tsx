@@ -23,7 +23,7 @@ interface MaterialCardProps {
   material: Material;
   isShowAvatar?: boolean;
   displaySelfName?: boolean;
-  type?: 'person' | 'collection';
+  type?: 'person' | 'collection' | 'like';
 }
 
 /**
@@ -62,7 +62,7 @@ export default function MaterialCard({
       <div className={styles.materialDetail}>
         <div className={styles.materialDetailHeader}>
           <div className={styles.materialTitle}>
-            {isSelf && (
+            {!isSelf && (
               <>
                 {isShowAvatar && (
                   <CustomAvatar
@@ -74,7 +74,7 @@ export default function MaterialCard({
                   />
                 )}
                 <>
-                  {username === user.username && displaySelfName && (
+                  {username === user?.username && displaySelfName && (
                     <>
                       <HoverLink
                         href={`/user/${material.user.id}`}
@@ -101,15 +101,17 @@ export default function MaterialCard({
               {material.name}
             </HoverLink>
           </div>
-          {isSelf && (
-            <SplitButtonGroup
-              style={{ marginRight: 10 }}
-              aria-label='项目操作按钮组'
-              className={styles.actionBtn}
-            >
-              <GroupActionBtn material={material} isSelf={isSelf} type={type} />
-            </SplitButtonGroup>
-          )}
+          <SplitButtonGroup
+            style={{ marginRight: 10 }}
+            aria-label='项目操作按钮组'
+            className={styles.actionBtn}
+          >
+            <GroupActionBtn
+              material={material}
+              isSelf={isSelf}
+              type={type === 'like' ? 'collection' : type}
+            />
+          </SplitButtonGroup>
         </div>
         <div className={styles.materialDetailBottom}>
           {material.abstract && (

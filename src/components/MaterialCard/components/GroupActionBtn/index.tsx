@@ -23,33 +23,42 @@ interface GroupActionBtnProps {
   material: Material;
   isSelf: boolean;
   type: 'person' | 'collection';
+  children?: React.ReactNode;
 }
 
-const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
+const GroupActionBtn = ({
+  material,
+  isSelf,
+  type,
+  children,
+}: GroupActionBtnProps) => {
+  const calculatedType = isSelf ? type : 'collection';
   const { id, groups, collectedInGroups } = material;
   const [list, setList] = useState<ListIf[]>([]);
-  const fetchUrl = isSelf
-    ? type === 'person'
-      ? '/group'
-      : '/collection_group'
-    : '/collection_group';
+  const fetchUrl = calculatedType === 'person' ? '/group' : '/collection_group';
   const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
   const [Loading, setLoading] = useState(false);
 
   const userId = material.user.id;
   const router = useRouter();
-  const { query } = router;
+  const { query, pathname } = router;
 
   const [SWRKey, setSWRKey] = useState(`/material?authorId=${userId}`);
 
   useEffect(() => {
     const queryData = query;
     const queryString = qs.stringify(queryData);
-    setSWRKey(`/material?authorId=${userId}&${queryString}`);
+    if (pathname === '/') {
+      setSWRKey(`/material`);
+    } else if (pathname === '/material/[materialId]') {
+      setSWRKey(`/material/detail?id=${query.materialId}`);
+    } else {
+      setSWRKey(`/material?authorId=${userId}&${queryString}`);
+    }
   }, [query]);
 
   const defaultValue =
-    type === 'person'
+    calculatedType === 'person'
       ? groups.map((item) => item.id)
       : collectedInGroups.map((item) => item.id);
 
@@ -65,9 +74,11 @@ const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
   }, [isLoading, data]);
 
   const addFunc =
-    type === 'person' ? addMaterialToGroup : addMaterialToCollectionGroup;
+    calculatedType === 'person'
+      ? addMaterialToGroup
+      : addMaterialToCollectionGroup;
   const removeFunc =
-    type === 'person'
+    calculatedType === 'person'
       ? removeMaterialFromGroup
       : removeMaterialFromCollectionGroup;
   const onChange = (value: string[]) => {
@@ -77,7 +88,7 @@ const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
       setLoading(true);
       const { action, item } = change;
       const params: CollectionGroupMaterialDto | GroupMaterialDto =
-        type === 'person'
+        calculatedType === 'person'
           ? { groupId: item, materialId: id }
           : { collectionGroupId: item, materialId: id };
 
@@ -112,6 +123,8 @@ const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
   if (isLoading) return <>分组获取中</>;
   if (error) return <>分组获取失败</>;
 
+  const btnVal = isSelf && type === 'person' ? '分组' : '收藏';
+
   return (
     <>
       <Dropdown
@@ -131,15 +144,17 @@ const GroupActionBtn = ({ material, isSelf, type }: GroupActionBtnProps) => {
           )
         }
       >
-        <Button
-          style={{ padding: '8px 4px' }}
-          theme='light'
-          type='primary'
-          icon={<IconTreeTriangleDown />}
-          iconPosition='right'
-        >
-          {isSelf ? '分组' : '收藏'}
-        </Button>
+        {children || (
+          <Button
+            style={{ padding: '8px 4px' }}
+            theme='light'
+            type='primary'
+            icon={<IconTreeTriangleDown />}
+            iconPosition='right'
+          >
+            {btnVal}
+          </Button>
+        )}
       </Dropdown>
     </>
   );

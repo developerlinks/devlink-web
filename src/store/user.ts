@@ -15,7 +15,6 @@ const useUserStore = create<useUserStore>((set, get) => ({
   user: null,
   setUser: (userData) => {
     set({ user: userData });
-    sessionStorage.setItem(STORGE_USER_INFO, JSON.stringify(userData));
   },
   getUser: () => {
     return new Promise((resolve, reject) => {
@@ -24,6 +23,7 @@ const useUserStore = create<useUserStore>((set, get) => ({
         resolve(user);
       } else {
         getUserInfo().then((data) => {
+          get().setUser(data);
           resolve(data);
         });
       }

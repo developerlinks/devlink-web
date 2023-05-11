@@ -1,4 +1,3 @@
-import { User } from '@/api/types/user';
 import { Tabs, TabPane } from '@douyinfe/semi-ui';
 import MaterialList from './MaterialList';
 import SearchFilterBar from './components/SearchFilterBar';
@@ -23,7 +22,7 @@ const UserView = ({ userId }: { userId: string }) => {
         <MaterialList type='collection' userId={userId} />
       </TabPane>
       <TabPane tab='点赞' itemKey='like'>
-        点赞
+        <MaterialList type='like' userId={userId} />
       </TabPane>
       <TabPane tab='评论' itemKey='comment'>
         评论

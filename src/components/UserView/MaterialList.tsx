@@ -9,7 +9,7 @@ import qs from 'querystring';
 
 interface MaterialListProps {
   userId: string;
-  type: 'person' | 'collection';
+  type: 'person' | 'collection' | 'like';
 }
 
 const MaterialList = ({ userId, type }: MaterialListProps) => {
@@ -17,9 +17,19 @@ const MaterialList = ({ userId, type }: MaterialListProps) => {
   const { query } = router;
 
   const url = useMemo(() => {
-    const queryData: QueryIF = query;
+    if (type === 'like') return `like/user/${userId}`;
+
+    let queryData: QueryIF = query;
+    if (type === 'person') {
+      queryData.authorId = userId;
+      queryData.collectorId = '';
+    } else {
+      queryData.collectorId = queryData.userId;
+      queryData.authorId = '';
+    }
     const queryString = qs.stringify(queryData);
-    return `/material?authorId=${userId}&${queryString}`;
+
+    return `/material?${queryString}`;
   }, [query, userId]);
 
   const { data, isLoading, error } = useSWR(url, fetcher);

@@ -10,6 +10,9 @@ import { ParsedUrlQueryInput, stringify } from 'querystring';
 export interface QueryIF extends ParsedUrlQueryInput {
   groupIds?: string[] | string;
   name?: string;
+  collectorId?: string;
+  authorId?: string;
+  userId?: string;
 }
 
 export interface ListIf {
@@ -28,6 +31,7 @@ const SearchFilterBar = ({ type: typeProp, _key }: SearchFilterBarProps) => {
     () => (typeProp === 'person' ? '/group' : '/collection_group'),
     [typeProp]
   );
+  // FIXME: 应该改为查询他的分组，而不是查询自己的
   const { data: groupData, isLoading, error } = useSWR(fetchUrl, fetcher);
   const [list, setList] = useState<ListIf[]>([]);
   const [search, setSearch] = useState('');

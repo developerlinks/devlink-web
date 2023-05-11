@@ -9,3 +9,15 @@ export const addMaterial = (data: AddMaterialParmas) =>
     method: 'post',
     data,
   });
+
+export const likeMaterial = (materialId: string) =>
+  http({
+    url: `/like/${materialId}`,
+    method: 'post',
+  });
+
+export const cancelLikeMaterial = (materialId: string) =>
+  http({
+    url: `/like/${materialId}`,
+    method: 'delete',
+  });

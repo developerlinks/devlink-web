@@ -11,6 +11,7 @@ import { MarkdownEditor } from '../Markdown';
 import { useRouter } from 'next/router';
 import { IconBulb } from '@douyinfe/semi-icons';
 import { textPolisher } from '@/api/ai';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 const { Input } = Form;
 
@@ -22,6 +23,15 @@ export default function NewForm() {
   const [aiResultVisible, setAiResultVisible] = useState(false);
   const [aiResult, setAiResult] = useState('');
   const { push } = useRouter();
+
+  const dropdownRef = useRef(null);
+
+  useOutsideClick(dropdownRef, () => {
+    if (aiResultVisible) {
+      setAiResultVisible(false);
+    }
+  });
+
   const handleSubmit = async (values: AddMaterialParmas) => {
     const data = {
       ...values,
@@ -62,7 +72,7 @@ export default function NewForm() {
     <Form onSubmit={(values) => handleSubmit(values)} style={{ width: '70%' }}>
       {({ formState, values, formApi }) => (
         <>
-          <div className={styles.inputContainer}>
+          <div className={styles.inputContainer} ref={dropdownRef}>
             <Dropdown
               position={'bottomLeft'}
               trigger='custom'

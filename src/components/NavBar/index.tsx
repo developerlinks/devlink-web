@@ -15,7 +15,7 @@ import { User } from '@/api/types/user';
 import Avatar from '../CustomAvatar';
 import SearchBar from '../SearchBar';
 import { logout } from '@/api/user';
-import { NoticeSuccess, clearUserinfo } from '@/utils/common';
+import { NoticeSuccess, clearUserToken } from '@/utils/common';
 
 export default function NavBar() {
   const [userInfo, setUserInfo] = useState<User>();
@@ -56,7 +56,7 @@ export default function NavBar() {
     logout()
       .then(() => {
         NoticeSuccess('退出成功', user?.username);
-        clearUserinfo();
+        clearUserToken();
         clearUser();
         push('/login');
       })
@@ -68,7 +68,6 @@ export default function NavBar() {
 
   const AuthRightBox = () => (
     <>
-      {/* TODO: */}
       <Dropdown
         position='bottomLeft'
         render={
