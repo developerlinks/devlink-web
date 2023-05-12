@@ -54,7 +54,7 @@
     "prettier": "^2.8.8"
   },
   "lint-staged": {
-    "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
+    "*.{js,ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ]

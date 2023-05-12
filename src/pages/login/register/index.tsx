@@ -4,9 +4,12 @@ import styles from './index.module.scss';
 import { Form, Toast, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi, register, sendCode } from '@/api/user';
-import { LoginByPasswordParams, RegisterByEmail } from '@/api/types/user';
+import { LoginByPasswordParams, RegisterByEmail, User } from '@/api/types/user';
 import { useState } from 'react';
-import { ToastSuccess } from '@/utils/common';
+import { ToastSuccess, getDeviceAndOSInfo } from '@/utils/common';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { generateHash } from '@/utils/generateHash';
+import useUserStore from '@/store/user';
 
 interface handleSubmitParams extends LoginByPasswordParams {
   agree: boolean;
@@ -14,7 +17,7 @@ interface handleSubmitParams extends LoginByPasswordParams {
 
 export default function Email() {
   const [loading, setLoading] = useState(false);
-
+  const { setUser } = useUserStore();
   const { push } = useRouter();
 
   const sendCodeHandle = (email: string) => {
@@ -28,6 +31,27 @@ export default function Email() {
     register(values)
       .then(() => {
         ToastSuccess('注册成功');
+        return Promise.resolve();
+      })
+      .then(() => {
+        return FingerprintJS.load()
+          .then((fp) => fp.get())
+          .then((result) => {
+            const visitorId = result.visitorId;
+            const deviceId = generateHash({ visitorId, email: values.email });
+            const { os, device, browser } = getDeviceAndOSInfo();
+            const params: LoginByPasswordParams = {
+              ...values,
+              deviceId,
+              deviceType: `${device}:${os}:${browser}`,
+            };
+            return loginApi(params);
+          });
+      })
+      .then((res) => {
+        const { user, accessToken } = res.data;
+        localStorage.setItem('bearerToken', accessToken);
+        afterLoginSuccess(user);
       })
       .catch((err) => {})
       .finally(() => {
@@ -35,9 +59,16 @@ export default function Email() {
       });
   };
 
-  const afterRegisterSuccess = (values: LoginByPasswordParams) => {
+  const afterLoginSuccess = (user: User) => {
+    const { roles } = user;
+    setUser(user);
+    const isAdmin =
+      roles.findIndex(
+        (item) => item.name === 'super' || item.name === 'admin'
+      ) !== -1;
     // 判断权限
-    push('/login/email');
+    push(isAdmin ? '/admin' : '/');
+    ToastSuccess('欢迎回来 👏');
   };
 
   return (
@@ -69,6 +100,7 @@ export default function Email() {
                   field='password'
                   label='密码'
                   type='password'
+                  mode='password'
                   style={{ width: '100%' }}
                   placeholder='请输入密码'
                 ></Form.Input>
@@ -80,8 +112,8 @@ export default function Email() {
                   suffix={
                     <Button
                       block
-                      theme='borderless'
-                      type='tertiary'
+                      type='primary'
+                      theme='solid'
                       onClick={() => sendCodeHandle(values.email)}
                     >
                       发送

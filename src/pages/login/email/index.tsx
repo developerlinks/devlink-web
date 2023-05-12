@@ -76,6 +76,8 @@ export default function Email() {
                 <Form.Input
                   field='password'
                   label='密码'
+                  type='password'
+                  mode='password'
                   style={{ width: '100%' }}
                   placeholder='输入密码'
                 ></Form.Input>

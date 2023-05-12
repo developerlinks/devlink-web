@@ -17,7 +17,6 @@ const renderSubComments = (subComments: Comment[]) => {
 };
 
 const CommentView = ({ commentList }: CommentViewProps) => {
-  console.log('commentList', commentList);
   return (
     <div className={styles.commentView}>
       {commentList.map((comment) => (

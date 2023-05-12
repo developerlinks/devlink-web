@@ -32,7 +32,7 @@ const CommentEditor = ({ parent, onCancel }: CommentEditorProps) => {
     const prams: CreateCommentDto = {
       content: value,
       materialId: onCancel ? null : (materialId as string),
-      parentId: parent?.parent.id,
+      parentId: parent?.parent?.id || parent?.id,
     };
     addCommentToMaterial(prams).then(() => {
       NoticeSuccess('发送评论成功');

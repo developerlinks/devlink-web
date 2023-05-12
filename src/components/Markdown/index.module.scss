@@ -18,13 +18,12 @@
       background-color: $color-bg;
     }
   }
-
 }
 
 .insetBackGround {
   :global {
     .markdown-body {
-      background-color: $color-bg-inset ;
+      background-color: $color-bg-inset;
     }
   }
 }
