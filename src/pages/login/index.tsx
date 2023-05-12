@@ -47,6 +47,15 @@ export default function Login() {
             type='tertiary'
             block
             className={styles.loginPathButton}
+            onClick={() => push('/login/register')}
+          >
+            注册
+          </Button>
+          <Button
+            theme='borderless'
+            type='tertiary'
+            block
+            className={styles.loginPathButton}
           >
             忘记密码
           </Button>

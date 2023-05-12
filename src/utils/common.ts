@@ -142,7 +142,7 @@ export function getUserInfo(): Promise<User> {
         const userinfo: User = res.data;
         resolve(userinfo);
       })
-      .catch();
+      .catch(() => {});
   });
 }
 

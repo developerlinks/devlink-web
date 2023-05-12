@@ -26,7 +26,6 @@ http.interceptors.response.use(
       let {
         message: { message },
       } = errorData;
-      // TODO: 错误信息处理，后端返回的错误信息格式不统一 数组 or 对象
       message = Array.isArray(message) ? message[0] : message;
       switch (status) {
         case 400:
@@ -49,9 +48,6 @@ http.interceptors.response.use(
         default:
           ToastError(message);
       }
-    } else if (error.request) {
-      ToastWaring(`网络发生波动,未收到响应,请稍后再试`);
-      console.error(`${error.message}`);
     } else {
       ToastError(error.message);
       console.error(`Request configuration error: ${error.message}`);

@@ -1,0 +1,49 @@
+.welcome {
+  .banner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+
+    gap: 40px;
+
+    .bannerContentLeft {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 120px 0;
+
+      .slogan {
+        flex: 2;
+        font-size: 54px;
+        line-height: 1.25;
+        font-weight: 500;
+      }
+
+      .description {
+        flex: 3;
+        font-size: 30px;
+        line-height: 1.5;
+        font-weight: 500;
+        margin: 40px 0 60px 0;
+      }
+
+      .operation {
+        flex: 1;
+
+        .btn {
+          height: 44px;
+        }
+      }
+    }
+
+    .bannerContentRight {
+      flex: 1;
+
+      img {
+        width: 100%;
+        border-radius: 4%;
+      }
+    }
+  }
+}

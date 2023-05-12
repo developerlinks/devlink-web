@@ -1,18 +1,9 @@
-import { User } from '@/api/types/user';
 import Welcome from '@/components/Welcome';
 import Home from '@/components/Home';
-import useUserStore from '@/store/user';
-import { useEffect, useState } from 'react';
+import useFetchUserInfo from '@/hooks/useFetchUserInfo';
 
 export default function Index() {
-  const [userInfo, setUserInfo] = useState<User>();
-  const { getUser } = useUserStore();
-
-  useEffect(() => {
-    getUser().then((data) => {
-      setUserInfo(data);
-    });
-  }, []);
+  const userInfo = useFetchUserInfo();
 
   return <main>{!!userInfo ? <Home /> : <Welcome />}</main>;
 }

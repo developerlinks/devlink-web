@@ -112,8 +112,8 @@ export default function Email() {
                   suffix={
                     <Button
                       block
-                      type='primary'
-                      theme='solid'
+                      theme='borderless'
+                      type='tertiary'
                       onClick={() => sendCodeHandle(values.email)}
                     >
                       发送
@@ -146,7 +146,8 @@ export default function Email() {
                   <Button
                     disabled={!values.agree}
                     htmlType='submit'
-                    type='tertiary'
+                    type='primary'
+                    theme='solid'
                     loading={loading}
                   >
                     提交

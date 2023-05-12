@@ -45,14 +45,14 @@ export default function MaterialCard({
   displaySelfName = true,
   type = 'person',
 }: MaterialCardProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const { getUser } = useUserStore();
+  // const [user, setUser] = useState<User | null>(null);
+  const { user } = useUserStore();
 
-  useEffect(() => {
-    getUser().then((res) => {
-      setUser(res);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getUser().then((res) => {
+  //     setUser(res);
+  //   });
+  // }, []);
 
   const isSelf = user?.id === material.user.id;
   const username = material.user.username;

@@ -16,21 +16,22 @@ import Avatar from '../CustomAvatar';
 import SearchBar from '../SearchBar';
 import { logout } from '@/api/user';
 import { NoticeSuccess, clearUserToken } from '@/utils/common';
+import CustomAvatar from '../CustomAvatar';
 
 export default function NavBar() {
-  const [userInfo, setUserInfo] = useState<User>();
+  // const [userInfo, setUserInfo] = useState<User>();
   const { push, pathname } = useRouter();
-  const { getUser, user, clearUser } = useUserStore();
+  const { user, clearUser } = useUserStore();
   const [logoutIsLoading, setLogoutIsLoading] = useState(false);
   const isLoginPage = pathname.includes('login');
 
-  useEffect(() => {
-    if (!isLoginPage || (!user && !isLoginPage)) {
-      getUser().then((data) => {
-        setUserInfo(data);
-      });
-    }
-  }, [user, pathname]);
+  // useEffect(() => {
+  //   if (!isLoginPage || (!user && !isLoginPage)) {
+  //     getUser().then((data) => {
+  //       setUserInfo(data);
+  //     });
+  //   }
+  // }, [user, pathname]);
 
   const UnAuthRightBox = () => {
     const { Text } = Typography;
@@ -72,7 +73,7 @@ export default function NavBar() {
         position='bottomLeft'
         render={
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => push(`/user/${userInfo?.id}`)}>
+            <Dropdown.Item onClick={() => push(`/user/${user?.id}`)}>
               个人主页
             </Dropdown.Item>
             <Dropdown.Item onClick={() => push('/user/setting')}>
@@ -90,11 +91,11 @@ export default function NavBar() {
           </Dropdown.Menu>
         }
       >
-        <Avatar
-          src={userInfo?.profile?.avatar ?? ''}
-          username={userInfo?.username as string}
+        <CustomAvatar
+          id={user?.id}
+          src={user?.profile?.avatar ?? ''}
+          username={user?.username as string}
           size='small'
-          style={{ marginRight: 8 }}
         />
         <div />
       </Dropdown>
@@ -102,7 +103,7 @@ export default function NavBar() {
   );
 
   const navRightBox = () => {
-    return <div>{!!userInfo ? AuthRightBox() : UnAuthRightBox()}</div>;
+    return <div>{!!user ? AuthRightBox() : UnAuthRightBox()}</div>;
   };
 
   const renderHorizontal = () => {
@@ -123,7 +124,7 @@ export default function NavBar() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => push('/')}
               />
-              {!!userInfo && <SearchBar />}
+              {!!user && <SearchBar />}
             </>
           }
           footer={navRightBox()}

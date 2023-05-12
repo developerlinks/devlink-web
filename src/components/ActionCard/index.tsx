@@ -38,54 +38,6 @@ export default function ActionCard({ material }: ActionCardProps) {
         </div>
       </div>
       <MaterialCard displaySelfName={false} material={material} />
-      {/* <div className={styles.actionDetail}> */}
-
-      {/* <div className={styles.actionDetailHeader}>
-          <HoverLink
-            href={`/material/${material.id}`}
-            openNewTab
-            className={styles.name}
-          >
-            {material.name}
-          </HoverLink>
-          <SplitButtonGroup
-            style={{ marginRight: 10 }}
-            aria-label='项目操作按钮组'
-          >
-            <Button theme='light' type='primary'>
-              收藏
-            </Button>
-            <Dropdown
-              trigger='custom'
-              showTick
-              visible={false}
-              position='bottomRight'
-              render={<>收藏分组</>}
-            >
-              <Button
-                style={{ padding: '8px 4px' }}
-                theme='light'
-                type='primary'
-                icon={<IconTreeTriangleDown />}
-              ></Button>
-            </Dropdown>
-          </SplitButtonGroup>
-        </div>
-        <div className={styles.actionDetailBottom}>
-          {material.abstract && (
-            <div className={styles.abstract}>{material.abstract}</div>
-          )}
-          <div className={styles.tags}>
-            <Space>
-              {material.tags.map((tag) => (
-                <Tag size='small' key={tag.id}>
-                  {tag.name}
-                </Tag>
-              ))}
-            </Space>
-          </div>
-        </div> */}
-      {/* </div> */}
     </div>
   );
 }
