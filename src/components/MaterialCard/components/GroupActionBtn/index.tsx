@@ -64,7 +64,9 @@ const GroupActionBtn = ({
 
   useEffect(() => {
     if (data) {
-      const groupList = data.groups.map((item) => ({
+      const groupList = data[
+        calculatedType === 'person' ? 'groups' : 'collectionGroups'
+      ].map((item) => ({
         value: item.id,
         label: item.name,
         otherKey: item.id,

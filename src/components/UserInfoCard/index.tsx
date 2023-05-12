@@ -10,6 +10,7 @@ import styles from './index.module.scss';
 import { fetcher } from '@/utils/http';
 import { follow, unfollow } from '@/api/user';
 import { NoticeSuccess, handleCopy } from '@/utils/common';
+import useUserStore from '@/store/user';
 
 moment.locale('zh-cn');
 
@@ -21,6 +22,8 @@ const UserInfoCard = (user: User) => {
     createdAt,
     materials,
   } = user;
+
+  const { user: userSelf } = useUserStore();
 
   const followerKey = `/follow/${id}/followers`;
   const followingKey = `/follow/${id}/following`;
@@ -46,7 +49,7 @@ const UserInfoCard = (user: User) => {
 
   const isFollowed =
     !followerFetchIsLoading &&
-    followers.data.filter((item) => item.id === id).length !== 0;
+    followers.data.filter((item) => item.id === userSelf?.id).length !== 0;
 
   const followHandle = () => {
     const handle = isFollowed ? unfollow : follow;

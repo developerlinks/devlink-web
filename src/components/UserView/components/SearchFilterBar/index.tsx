@@ -43,11 +43,13 @@ const SearchFilterBar = ({ type: typeProp, _key }: SearchFilterBarProps) => {
   useEffect(() => {
     if (groupData) {
       setList(
-        groupData.groups.map((item) => ({
-          value: item.id,
-          label: item.name,
-          otherKey: item.id,
-        }))
+        groupData[typeProp === 'person' ? 'groups' : 'collectionGroups'].map(
+          (item) => ({
+            value: item.id,
+            label: item.name,
+            otherKey: item.id,
+          })
+        )
       );
 
       setTimeout(() => {

@@ -14,6 +14,7 @@ import { localeConfig } from '../locales';
 
 import '@/styles/nprogress.module.scss';
 import '@/styles/normalize.css';
+import useFetchUserInfo from '@/hooks/useFetchUserInfo';
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
@@ -21,7 +22,7 @@ Router.events.on('routeChangeComplete', nProgress.done);
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const locale = useStore((state) => state.locale);
-
+  useFetchUserInfo();
   const getLocale = useMemo(() => {
     if (locale === 'en_GB') {
       return en_GB;
