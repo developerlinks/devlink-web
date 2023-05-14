@@ -34,7 +34,9 @@ http.interceptors.response.use(
           break;
         case 401:
           ToastError(message);
-          window.location.href = '/login';
+          if (!window.location.pathname.includes('login')) {
+            window.location.href = '/login';
+          }
           break;
         case 403:
           ToastError(message);
