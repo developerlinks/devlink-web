@@ -12,16 +12,14 @@ import styles from './style/index.module.scss';
 import DeviceMange from '@/components/SettingPageComps/components/DeviceMange';
 import ThirdPartyLoginInfoCard from '@/components/ThirdPartyLoginInfoCard';
 import AvatarettingCard from '@/components/SettingPageComps/components/Avatar';
+import useUserStore from '@/store/user';
 
 const Setting = () => {
-  const { data: user, error, isLoading } = useSWR('user/userinfo', fetcher);
-
-  if (isLoading) return <div>用户信息获取中...</div>;
-  if (error) return <div>用户信息获取失败</div>;
-
+  const { user } = useUserStore();
   const getContainer = () => {
     return document.querySelector('window') as HTMLElement | Window;
   };
+
   return (
     <main className={styles.settingPage}>
       <div className={styles.settingContainer}>
@@ -66,9 +64,11 @@ const Setting = () => {
               <AddressSettingCard />
             </div>
           </div>
-          <div id='thirdPartyLogin'>
-            <ThirdPartyLoginInfoCard />
-          </div>
+          {user && user.githubId && (
+            <div id='thirdPartyLogin'>
+              <ThirdPartyLoginInfoCard />
+            </div>
+          )}
           <div id='deviceMange'>
             <DeviceMange />
           </div>

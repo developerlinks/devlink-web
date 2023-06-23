@@ -14,6 +14,7 @@ export type RegisterByEmail = {
 
 export interface User {
   id: string;
+  githubId: string;
   username: string;
   email: string;
   password: string;
@@ -36,6 +37,8 @@ interface Profile {
   avatar: string;
   photo: string;
   address: string;
+  githubLogin: string;
+  githubName: string;
   description: string;
   refreshToken: string;
   refreshTokenExpiresAt: number;

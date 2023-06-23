@@ -4,9 +4,16 @@ import styles from './index.module.scss';
 import { Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { getUserInfo } from '@/utils/common';
+import { githubClientId } from '@/api/github';
 
 export default function Login() {
   const { push } = useRouter();
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${githubClientId}`;
+
+  const githubAuth = () => {
+    window.location.href = githubAuthUrl;
+  };
+
   return (
     <main className={styles.loginScreen}>
       <div className={styles.loginCard}>
@@ -37,6 +44,7 @@ export default function Login() {
             theme='solid'
             block
             className={styles.loginPathButton}
+            onClick={githubAuth}
           >
             Github 授权
           </Button>

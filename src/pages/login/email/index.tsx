@@ -1,15 +1,12 @@
-import Layout from '@/components/FrontLayout/Layout';
-import Seo from '@/components/Seo';
 import styles from './index.module.scss';
-import { Form, Toast, Button } from '@douyinfe/semi-ui';
+import { Form, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi } from '@/api/user';
 import { LoginByPasswordParams, User } from '@/api/types/user';
 import { useState } from 'react';
-import { ToastSuccess, getDeviceAndOSInfo } from '@/utils/common';
+import { ToastSuccess } from '@/utils/common';
 import useUserStore from '@/store/user';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { generateHash } from '@/utils/generateHash';
+import { generateDeviceInfo } from '@/utils/device';
 
 export default function Email() {
   const [loading, setLoading] = useState(false);
@@ -18,16 +15,13 @@ export default function Email() {
   const { push } = useRouter();
   const handleSubmit = (values: LoginByPasswordParams) => {
     setLoading(true);
-    FingerprintJS.load()
-      .then((fp) => fp.get())
-      .then((result) => {
-        const visitorId = result.visitorId;
-        const deviceId = generateHash({ visitorId, email: values.email });
-        const { os, device, browser } = getDeviceAndOSInfo();
+    generateDeviceInfo(values.email)
+      .then((res) => {
+        const { deviceId, deviceType } = res;
         const params: LoginByPasswordParams = {
           ...values,
           deviceId,
-          deviceType: `${device}:${os}:${browser}`,
+          deviceType,
         };
         return loginApi(params);
       })

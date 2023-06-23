@@ -6,10 +6,11 @@ import { useRouter } from 'next/router';
 import { loginApi, register, sendCode } from '@/api/user';
 import { LoginByPasswordParams, RegisterByEmail, User } from '@/api/types/user';
 import { useState } from 'react';
-import { ToastSuccess, getDeviceAndOSInfo } from '@/utils/common';
+import { ToastSuccess } from '@/utils/common';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { generateHash } from '@/utils/generateHash';
 import useUserStore from '@/store/user';
+import { generateDeviceInfo } from '@/utils/device';
 
 interface handleSubmitParams extends LoginByPasswordParams {
   agree: boolean;
@@ -33,20 +34,17 @@ export default function Email() {
         ToastSuccess('注册成功');
         return Promise.resolve();
       })
-      .then(() => {
-        return FingerprintJS.load()
-          .then((fp) => fp.get())
-          .then((result) => {
-            const visitorId = result.visitorId;
-            const deviceId = generateHash({ visitorId, email: values.email });
-            const { os, device, browser } = getDeviceAndOSInfo();
-            const params: LoginByPasswordParams = {
-              ...values,
-              deviceId,
-              deviceType: `${device}:${os}:${browser}`,
-            };
-            return loginApi(params);
-          });
+      .then(async () => {
+        const { deviceId, deviceType } = await generateDeviceInfo(values.email);
+        if (deviceId && deviceType) {
+          const params: LoginByPasswordParams = {
+            ...values,
+            deviceId,
+            deviceType,
+          };
+          return loginApi(params);
+        }
+        return Promise.reject();
       })
       .then((res) => {
         const { user, accessToken } = res.data;
@@ -68,7 +66,7 @@ export default function Email() {
       ) !== -1;
     // 判断权限
     push(isAdmin ? '/admin' : '/');
-    ToastSuccess('欢迎回来 👏');
+    ToastSuccess('欢迎 👏');
   };
 
   return (

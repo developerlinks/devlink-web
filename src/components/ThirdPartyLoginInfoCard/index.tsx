@@ -10,10 +10,17 @@ import {
 
 import styles from './index.module.scss';
 import HoverLink from '../HoverLink';
+import useUserStore from '@/store/user';
+import { User } from '@/api/types/user';
 
 moment.locale('zh-cn');
 
 const ThirdPartyLoginInfoCard = () => {
+  const { user } = useUserStore();
+  const {
+    profile: { githubLogin, githubName },
+  } = user as User;
+  const githubUrl = `https://github.com/${githubLogin}`;
   return (
     <div className={styles.ThirdPartyLoginInfoCard}>
       <div className={styles.cardTitle}>第三方登录</div>
@@ -23,17 +30,14 @@ const ThirdPartyLoginInfoCard = () => {
           <div className={styles.userInfo}>
             <div className={styles.platformName}>Github</div>
             <div className={styles.userName}>
-              <div>Zhang bao lin </div>
-              <HoverLink href='' openNewTab>
-                (@bowlingQ)
+              <div>{githubName}</div>
+              <HoverLink href={githubUrl} openNewTab>
+                ({githubLogin})
               </HoverLink>
             </div>
           </div>
         </div>
         <div className={styles.cardRight}>
-          <div className={styles.time}>
-            授权于 {moment().startOf('hour').fromNow()}
-          </div>
           <div className={styles.operation}>
             <Button theme='borderless' icon={<IconMore />} />
           </div>
