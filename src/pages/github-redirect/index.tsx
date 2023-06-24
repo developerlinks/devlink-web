@@ -4,7 +4,12 @@ import React, { useEffect } from 'react';
 import useUserStore from '@/store/user';
 import { User } from '@/api/types/user';
 import { useRouter } from 'next/router';
-import { ToastSuccess } from '@/utils/common';
+import { ToastError, ToastSuccess } from '@/utils/common';
+import { Empty } from '@douyinfe/semi-ui';
+import {
+  IllustrationConstructionDark,
+  IllustrationConstruction,
+} from '@douyinfe/semi-illustrations';
 
 const GithubRedirect = () => {
   const { setUser } = useUserStore();
@@ -39,14 +44,41 @@ const GithubRedirect = () => {
             localStorage.setItem('bearerToken', accessToken);
             afterLoginSuccess(user);
           })
-          .catch(() => {});
+          .catch(() => {
+            errorHandle();
+          });
       });
     } else {
       // 导航到登录界面，显示错误信息
+      errorHandle();
     }
   }, []);
 
-  return <div>Signing in with Github...</div>;
+  const errorHandle = () => {
+    ToastError('验证失败');
+    setTimeout(() => {
+      window.location.href = '/login';
+    }, 2000);
+  };
+
+  return (
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Empty
+        image={<IllustrationConstruction style={{ width: 300, height: 300 }} />}
+        darkModeImage={
+          <IllustrationConstructionDark style={{ width: 300, height: 300 }} />
+        }
+        description={'正在进行身份验证，请稍等...'}
+      />
+    </div>
+  );
 };
 
 export default GithubRedirect;
