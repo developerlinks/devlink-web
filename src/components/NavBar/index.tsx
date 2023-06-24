@@ -19,19 +19,9 @@ import { NoticeSuccess, clearUserToken } from '@/utils/common';
 import CustomAvatar from '../CustomAvatar';
 
 export default function NavBar() {
-  // const [userInfo, setUserInfo] = useState<User>();
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
   const { user, clearUser } = useUserStore();
   const [logoutIsLoading, setLogoutIsLoading] = useState(false);
-  const isLoginPage = pathname.includes('login');
-
-  // useEffect(() => {
-  //   if (!isLoginPage || (!user && !isLoginPage)) {
-  //     getUser().then((data) => {
-  //       setUserInfo(data);
-  //     });
-  //   }
-  // }, [user, pathname]);
 
   const UnAuthRightBox = () => {
     const { Text } = Typography;

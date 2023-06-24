@@ -4,14 +4,14 @@ import { getUserInfo } from '@/utils/common';
 import { STORGE_USER_INFO } from '@/utils/const';
 import { create } from 'zustand';
 
-interface useUserStore {
+interface UseUserStore {
   user: User | null;
   setUser: (userData: User | null) => void;
   getUser: () => Promise<User>;
   clearUser: () => void;
 }
 
-const useUserStore = create<useUserStore>((set, get) => ({
+const useUserStore = create<UseUserStore>((set, get) => ({
   user: null,
   setUser: (userData) => {
     set({ user: userData });

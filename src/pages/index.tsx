@@ -1,9 +1,9 @@
-import Welcome from '@/components/Welcome';
-import Home from '@/components/Home';
-import useFetchUserInfo from '@/hooks/useFetchUserInfo';
+import Dashboard from '@/components/Dashboard';
+import Home from './home';
+import useUserStore from '@/store/user';
 
 export default function Index() {
-  const userInfo = useFetchUserInfo();
+  const { user } = useUserStore();
 
-  return <main>{!!userInfo ? <Home /> : <Welcome />}</main>;
+  return <main>{user ? <Dashboard /> : <Home />}</main>;
 }

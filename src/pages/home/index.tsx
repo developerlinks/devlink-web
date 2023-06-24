@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { IconTerminal } from '@douyinfe/semi-icons';
 import { useRouter } from 'next/router';
 
-export default function Welcome() {
+export default function Home() {
   const { push } = useRouter();
   const sloganSourceString = '提效利器';
   const sloganSearchWords = ['提效'];

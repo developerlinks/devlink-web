@@ -33,10 +33,7 @@ http.interceptors.response.use(
           console.error(`错误请求: ${message}`);
           break;
         case 401:
-          ToastError(message);
-          if (!window.location.pathname.includes('login')) {
-            window.location.href = '/login';
-          }
+          Handle401(message);
           break;
         case 403:
           ToastError(message);
@@ -57,6 +54,15 @@ http.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+const Handle401 = (message: string) => {
+  const { pathname } = window.location;
+  if (!pathname.includes('login') && pathname !== '/') {
+    ToastError(message);
+    window.location.href = '/login';
+  }
+};
+
 export default http;
 
 export const fetcher = (url: string) => http.get(url).then((res) => res.data);
