@@ -67,6 +67,13 @@ const UserInfoCard = (user: User) => {
     handleCopy(window.location.href);
   };
 
+  const avatarClick = (id: string) => {
+    const { pathname } = window.location;
+    if (!pathname.startsWith('/user')) {
+      open(`/user/${id}`);
+    }
+  };
+
   return (
     <div className={styles.userInfoCard}>
       <div className={styles.userAvatarContainer}>
@@ -75,6 +82,7 @@ const UserInfoCard = (user: User) => {
           username={username}
           src={avatar ?? ''}
           size='large'
+          clickHandle={() => avatarClick(id)}
         />
       </div>
       <div className={styles.userName}>{username}</div>

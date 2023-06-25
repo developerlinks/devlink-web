@@ -81,7 +81,6 @@ const Index: FC = () => {
                 src={userInfo?.profile.avatar}
                 size='small'
               />
-              {/* FIXME: */}
               <div />
             </Dropdown>
 

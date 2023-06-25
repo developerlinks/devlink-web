@@ -26,6 +26,8 @@ interface AvatarProps {
   size?: 'small' | 'default' | 'large' | 'vsmalle';
   style?: React.CSSProperties;
   id?: string;
+  userLink?: boolean;
+  clickHandle?: () => void;
   [key: string]: any;
 }
 
@@ -35,9 +37,14 @@ function CustomAvatar({
   id,
   size,
   style,
+  userLink,
+  clickHandle,
   ...rest
 }: AvatarProps) {
   const color = colors[username.length % colors.length] as AvatarColor;
+  const userAvatarClick = () => {
+    userLink && id && open(`/user/${id}`);
+  };
   return (
     <AvatarSemi
       color={color}
@@ -51,9 +58,7 @@ function CustomAvatar({
         ...style,
       }}
       {...rest}
-      onClick={() => {
-        id && open(`/user/${id}`);
-      }}
+      onClick={clickHandle || userAvatarClick}
     >
       {username.split('')[0]}
     </AvatarSemi>

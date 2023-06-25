@@ -60,7 +60,7 @@ const CommentItem = ({ children, comment }: CommentItemProps) => {
   return (
     <div className={styles.commentItem}>
       <div className={styles.avatar}>
-        <CustomAvatar username={username} id='/' src={avatar} />
+        <CustomAvatar username={username} id={id} src={avatar} userLink />
       </div>
       <div className={styles.main}>
         <div className={styles.header}>

@@ -27,6 +27,7 @@ export default function ActionCard({ material }: ActionCardProps) {
             src={material.user.profile?.avatar ?? ''}
             username={material.user.username}
             size='small'
+            userLink
           />
           <HoverLink href={`/user/${material.user.id}`} openNewTab>
             {material.user.username}

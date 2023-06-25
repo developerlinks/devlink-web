@@ -38,6 +38,7 @@ export default function MaterialLists({ search }: MaterialListsProps) {
             src={item.user?.profile?.avatar ?? ''}
             username={item.user?.username as string}
             size='small'
+            userLink
           />
         </div>
         <HoverLink href={`/material/${item.id}`} openNewTab>

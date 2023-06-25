@@ -71,6 +71,7 @@ export default function MaterialCard({
                     size='small'
                     username={username}
                     src={material.user?.profile?.avatar}
+                    userLink
                   />
                 )}
                 <>

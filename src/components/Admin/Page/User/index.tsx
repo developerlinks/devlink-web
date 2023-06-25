@@ -21,7 +21,12 @@ export default function UserPageTable() {
       dataIndex: 'profile.avatar',
       render: (text, record, index) => {
         return (
-          <CustomAvatar id={record.id} src={text} username={record.username} />
+          <CustomAvatar
+            id={record.id}
+            src={text}
+            username={record.username}
+            userLink
+          />
         );
       },
     },
