@@ -47,8 +47,14 @@ export function updateUserInfo(data: UpdateUserDto) {
   });
 }
 
-export function logout() {
-  return http('/auth/logout');
+export function logout(deviceId: string) {
+  return http({
+    url: '/auth/logout',
+    method: 'post',
+    data: {
+      deviceId,
+    },
+  });
 }
 
 export function follow(followingId: string) {

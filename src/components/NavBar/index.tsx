@@ -17,6 +17,7 @@ import SearchBar from '../SearchBar';
 import { logout } from '@/api/user';
 import { NoticeSuccess, clearUserToken } from '@/utils/common';
 import CustomAvatar from '../CustomAvatar';
+import { generateDeviceInfo, getDeviceId } from '@/utils/device';
 
 export default function NavBar() {
   const { push } = useRouter();
@@ -42,19 +43,21 @@ export default function NavBar() {
     );
   };
 
-  const logoutHandle = () => {
+  const logoutHandle = async () => {
     setLogoutIsLoading(true);
-    logout()
-      .then(() => {
-        NoticeSuccess('退出成功', user?.username);
-        clearUserToken();
-        clearUser();
-        push('/login');
-      })
-      .catch(() => {})
-      .finally(() => {
-        setLogoutIsLoading(false);
-      });
+    const deviceId = getDeviceId();
+    deviceId &&
+      logout(deviceId)
+        .then(() => {
+          NoticeSuccess('退出成功', user?.username);
+          clearUserToken();
+          clearUser();
+          push('/login');
+        })
+        .catch(() => {})
+        .finally(() => {
+          setLogoutIsLoading(false);
+        });
   };
 
   const AuthRightBox = () => (

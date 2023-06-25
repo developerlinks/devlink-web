@@ -56,14 +56,15 @@ export function getDeviceAndOSInfo() {
 }
 
 export const generateDeviceInfo = (
-  email: string
+  mark: string
 ): Promise<{ deviceId: string; deviceType: string }> => {
   return new Promise((resolve, reject) => {
     return FingerprintJS.load()
       .then((fp) => fp.get())
       .then((result) => {
         const visitorId = result.visitorId;
-        const deviceId = generateHash({ visitorId, email });
+        const deviceId = generateHash({ visitorId, mark });
+        setDeviceId(deviceId);
         const { os, device, browser } = getDeviceAndOSInfo();
         resolve({
           deviceId,
@@ -73,3 +74,9 @@ export const generateDeviceInfo = (
       .catch(reject);
   });
 };
+
+export function setDeviceId(deviceId: string) {
+  localStorage.setItem('devlink_deviceId', deviceId);
+}
+
+export const getDeviceId = () => localStorage.getItem('devlink_deviceId');
