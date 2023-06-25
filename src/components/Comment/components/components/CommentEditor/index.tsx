@@ -21,16 +21,11 @@ const CommentEditor = ({ parent, onCancel }: CommentEditorProps) => {
 
   const commentSWRKey = `/comments/${materialId}`;
 
-  useEffect(() => {
-    if (parent) {
-      const parentUser = `[@${parent?.user.username}](/user/${parent?.user.id})  `;
-      setValue(parentUser);
-    }
-  }, [parent?.id]);
-
   const submit = () => {
     const prams: CreateCommentDto = {
-      content: value,
+      content: parent
+        ? `[@${parent?.user.username}](/user/${parent?.user.id})\n${value}`
+        : value,
       materialId: onCancel ? null : (materialId as string),
       parentId: parent?.parent?.id || parent?.id,
     };
