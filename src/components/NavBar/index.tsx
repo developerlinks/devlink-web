@@ -10,14 +10,12 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 import { useRouter } from 'next/router';
 import useUserStore from '@/store/user';
-import { useEffect, useState } from 'react';
-import { User } from '@/api/types/user';
-import Avatar from '../CustomAvatar';
+import { useState } from 'react';
 import SearchBar from '../SearchBar';
 import { logout } from '@/api/user';
 import { NoticeSuccess, clearUserToken } from '@/utils/common';
 import CustomAvatar from '../CustomAvatar';
-import { generateDeviceInfo, getDeviceId } from '@/utils/device';
+import { getDeviceId } from '@/utils/device';
 
 export default function NavBar() {
   const { push } = useRouter();
@@ -50,9 +48,9 @@ export default function NavBar() {
       logout(deviceId)
         .then(() => {
           NoticeSuccess('退出成功', user?.username);
+          push('/login');
           clearUserToken();
           clearUser();
-          push('/login');
         })
         .catch(() => {})
         .finally(() => {

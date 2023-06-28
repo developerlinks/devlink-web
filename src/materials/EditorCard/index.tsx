@@ -1,7 +1,7 @@
 import { Card, Button, Input } from '@douyinfe/semi-ui';
 
 import styles from './index.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface BaseSettingCardProps {
   title: string;
@@ -56,8 +56,10 @@ const EditorCard = (props: SettingCardProps) => {
           {title}
           {type === 'input' ? (
             <Input
-              value={(props as InputSettingCardProps).value}
-              defaultValue={(props as InputSettingCardProps).initialValue}
+              value={
+                (props as InputSettingCardProps).value ||
+                (props as InputSettingCardProps).initialValue
+              }
               onChange={handleInputChange}
               placeholder={(props as InputSettingCardProps).placeholder}
             />

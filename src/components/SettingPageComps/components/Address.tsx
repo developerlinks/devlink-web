@@ -7,18 +7,12 @@ import { updateUserInfo } from '@/api/user';
 const AddressSettingCard = () => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const [initialValue, setInitialValue] = useState('');
   const [isExternallyDisabled, setIsExternallyDisabled] = useState(false);
   const config = settingConfig.address;
 
-  const { getUser, setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
 
-  useEffect(() => {
-    getUser().then((res) => {
-      setInputValue(res.profile.address);
-      setInitialValue(res.profile.address);
-    });
-  }, []);
+  const initialValue = user?.profile.address || '';
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -34,7 +28,7 @@ const AddressSettingCard = () => {
     updateUserInfo({ address: inputValue })
       .then((res) => {
         setUser(res.data);
-        setInitialValue(res.data.profile.address);
+        setInputValue(res.data.profile.address);
         setIsExternallyDisabled(true);
       })
       .catch((err) => err)

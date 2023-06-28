@@ -7,18 +7,12 @@ import { updateUserInfo } from '@/api/user';
 const UserNameSettingCard = () => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const [initialValue, setInitialValue] = useState('');
   const [isExternallyDisabled, setIsExternallyDisabled] = useState(false);
   const config = settingConfig.username;
 
-  const { getUser, setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
 
-  useEffect(() => {
-    getUser().then((res) => {
-      setInputValue(res.username);
-      setInitialValue(res.username);
-    });
-  }, []);
+  const initialValue = user?.username || '';
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -34,7 +28,7 @@ const UserNameSettingCard = () => {
     updateUserInfo({ username: inputValue })
       .then((res) => {
         setUser(res.data);
-        setInitialValue(res.data.username);
+        setInputValue(res.data.username);
         setIsExternallyDisabled(true);
       })
       .catch((err) => err)
@@ -42,12 +36,15 @@ const UserNameSettingCard = () => {
         setLoading(false);
       });
   };
+
+  console.info('username', initialValue);
+
   return (
     <EditorCard
       title={config.title}
       type='input'
       tips={config.tips}
-      placeholder='请输入你的名字'
+      placeholder={'请输入你的名字'}
       initialValue={initialValue}
       value={inputValue}
       onInputChange={handleInputChange}

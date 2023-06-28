@@ -20,19 +20,10 @@ const { Header } = Layout;
 const Index: FC = () => {
   const locale = useStore((state) => state.locale);
   const changeLocale = useStore((state) => state.changeLocale);
-  const { getUser } = useUserStore();
-  const { pathname, push } = useRouter();
-  const [userInfo, setUserInfo] = useState<User>();
+  const { user } = useUserStore();
 
-  useEffect(() => {
-    if (!pathname.includes('login')) {
-      getUser().then((data) => {
-        setUserInfo(data);
-      });
-    }
-  }, []);
+  if (!user) return null;
 
-  if (!userInfo) return null;
   const selectLocale = (locale: 'zh_CN' | 'en_GB') => {
     changeLocale(locale);
     localStorage.setItem('semi_locale', locale);
@@ -77,8 +68,8 @@ const Index: FC = () => {
               }
             >
               <CustomAvatar
-                username={userInfo?.username as string}
-                src={userInfo?.profile.avatar}
+                username={user?.username as string}
+                src={user?.profile.avatar}
                 size='small'
               />
               <div />

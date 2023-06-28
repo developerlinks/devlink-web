@@ -7,18 +7,12 @@ import { updateUserInfo } from '@/api/user';
 const EmailSettingCard = () => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const [initialValue, setInitialValue] = useState('');
   const [isExternallyDisabled, setIsExternallyDisabled] = useState(false);
   const config = settingConfig.email;
 
-  const { getUser, setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
 
-  useEffect(() => {
-    getUser().then((res) => {
-      setInputValue(res.email);
-      setInitialValue(res.email);
-    });
-  }, []);
+  const initialValue = user?.email || '';
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -34,7 +28,7 @@ const EmailSettingCard = () => {
     updateUserInfo({ email: inputValue })
       .then((res) => {
         setUser(res.data);
-        setInitialValue(res.data.email);
+        setInputValue(res.data.email);
         setIsExternallyDisabled(true);
       })
       .catch((err) => err)

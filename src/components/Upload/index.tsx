@@ -8,15 +8,21 @@ import { blobToHash } from '@/utils/generateHash';
 
 import styles from './index.module.scss';
 import { ToastError, ToastSuccess } from '@/utils/common';
+import CustomAvatar from '../CustomAvatar';
 
 interface UploadImgProps {
   imageUrl: string;
+  username: string;
   id?: number;
   successHandle: (url: string) => Promise<unknown>;
 }
 export const preUrl = 'https://qiniuyun.devlink.wiki/';
 // TODO: 带优化，抽离出物料，第二次无法上传
-const UploadImg: FC<UploadImgProps> = ({ imageUrl, successHandle }) => {
+const UploadImg: FC<UploadImgProps> = ({
+  imageUrl,
+  successHandle,
+  username,
+}) => {
   const [image, setImage] = useState<string | null>(null);
   const [uploadUrl, setUploadUrl] = useState<string | null>(null);
   const inputR = useRef<HTMLInputElement>(null);
@@ -89,12 +95,19 @@ const UploadImg: FC<UploadImgProps> = ({ imageUrl, successHandle }) => {
 
   return (
     <div>
-      <Avatar
-        onClick={showModal}
-        src={uploadUrl || imageUrl}
-        size='large'
-        hoverMask={hover}
-      />
+      <div>
+        {!!imageUrl ? (
+          <Avatar
+            onClick={showModal}
+            src={uploadUrl || imageUrl}
+            size='large'
+            hoverMask={hover}
+          />
+        ) : (
+          <CustomAvatar username={username} />
+        )}
+      </div>
+
       <input
         style={{ display: 'none' }}
         type='file'

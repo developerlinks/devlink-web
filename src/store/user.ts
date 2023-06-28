@@ -1,7 +1,5 @@
 import { User } from '@/api/types/user';
-import { getInfo } from '@/api/user';
 import { getUserInfo } from '@/utils/common';
-import { STORGE_USER_INFO } from '@/utils/const';
 import { create } from 'zustand';
 
 interface UseUserStore {

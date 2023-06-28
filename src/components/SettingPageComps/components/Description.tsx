@@ -7,18 +7,11 @@ import { updateUserInfo } from '@/api/user';
 const DescriptionSettingCard = () => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const [initialValue, setInitialValue] = useState('');
   const [isExternallyDisabled, setIsExternallyDisabled] = useState(false);
   const config = settingConfig.description;
 
-  const { getUser, setUser } = useUserStore();
-
-  useEffect(() => {
-    getUser().then((res) => {
-      setInputValue(res.profile.description);
-      setInitialValue(res.profile.description);
-    });
-  }, []);
+  const { user, setUser } = useUserStore();
+  const initialValue = user?.profile.description || '';
 
   const handleInputChange = (value: string) => {
     setInputValue(value);
@@ -34,7 +27,7 @@ const DescriptionSettingCard = () => {
     updateUserInfo({ description: inputValue })
       .then((res) => {
         setUser(res.data);
-        setInitialValue(res.data.profile.description);
+        setInputValue(res.data.profile.description);
         setIsExternallyDisabled(true);
       })
       .catch((err) => err)
