@@ -95,16 +95,11 @@ const UploadImg: FC<UploadImgProps> = ({
 
   return (
     <div>
-      <div>
+      <div onClick={showModal}>
         {!!imageUrl ? (
-          <Avatar
-            onClick={showModal}
-            src={uploadUrl || imageUrl}
-            size='large'
-            hoverMask={hover}
-          />
+          <Avatar src={uploadUrl || imageUrl} size='large' hoverMask={hover} />
         ) : (
-          <CustomAvatar username={username} />
+          <CustomAvatar username={username} hoverMask={hover} size='large' />
         )}
       </div>
 
