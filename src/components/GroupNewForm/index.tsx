@@ -1,7 +1,7 @@
 import { Button, Form, Spin } from '@douyinfe/semi-ui';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { AddMaterialParmas } from '@/api/types/material';
+import { AddMaterialParmas } from '@/types/material';
 import styles from './index.module.scss';
 import clsx from 'clsx';
 import { addMaterial } from '@/api/material';

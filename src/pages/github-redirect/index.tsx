@@ -2,7 +2,7 @@ import { getGithubUser } from '@/api/github';
 import { generateDeviceInfo } from '@/utils/device';
 import React, { useEffect } from 'react';
 import useUserStore from '@/store/user';
-import { User } from '@/api/types/user';
+import { User } from '@/types/user';
 import { useRouter } from 'next/router';
 import { ToastError, ToastSuccess } from '@/utils/common';
 import { Empty } from '@douyinfe/semi-ui';

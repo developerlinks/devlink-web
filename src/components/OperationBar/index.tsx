@@ -1,4 +1,4 @@
-import { Comment, Like, Material } from '@/api/types/user';
+import { Comment, Like, Material } from '@/types/user';
 import styles from './index.module.scss';
 import { IconComment, IconLikeThumb, IconStar } from '@douyinfe/semi-icons';
 import { Badge, Spin } from '@douyinfe/semi-ui';

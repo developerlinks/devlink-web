@@ -3,11 +3,11 @@ import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
 import { Button } from '@douyinfe/semi-ui';
 import { addCommentToMaterial } from '@/api/material';
-import { CreateCommentDto } from '@/api/types/material';
+import { CreateCommentDto } from '@/types/material';
 import { useRouter } from 'next/router';
 import { mutate } from 'swr';
 import { NoticeSuccess } from '@/utils/common';
-import { Comment } from '@/api/types/user';
+import { Comment } from '@/types/user';
 
 interface CommentEditorProps {
   parent?: Comment;

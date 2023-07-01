@@ -11,7 +11,7 @@ import {
 import { IconBell, IconHelpCircle } from '@douyinfe/semi-icons';
 import useStore from '@/store/common/global';
 import useUserStore from '@/store/user';
-import { User } from '@/api/types/user';
+import { User } from '@/types/user';
 import { useRouter } from 'next/router';
 import CustomAvatar from '@/components/CustomAvatar';
 

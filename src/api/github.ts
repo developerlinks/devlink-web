@@ -1,5 +1,5 @@
 import http from '@/utils/http';
-import { User } from './types/user';
+import { User } from '../types/user';
 
 export const githubClientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
 

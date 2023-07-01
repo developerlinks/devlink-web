@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import styles from './index.module.scss';
 import { fetcher } from '@/utils/http';
 import ActionCard from '@/components/ActionCard';
-import { Material } from '@/api/types/user';
+import { Material } from '@/types/user';
 
 export default function Recommend() {
   const { data, isLoading, error } = useSWR('/material', fetcher);

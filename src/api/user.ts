@@ -2,9 +2,9 @@ import type {
   LoginByPasswordParams,
   RegisterByEmail,
   UpdateUserDto,
-} from './types/user';
+} from '../types/user';
 import http from '../utils/http';
-import { NewGroupDto } from './types/group';
+import { NewGroupDto } from '../types/group';
 
 // TODO response type
 

@@ -4,7 +4,7 @@ import {
   removeMaterialFromCollectionGroup,
   removeMaterialFromGroup,
 } from '@/api/group';
-import { Material } from '@/api/types/user';
+import { Material } from '@/types/user';
 import { ListIf } from '@/components/UserView/components/SearchFilterBar';
 import { NoticeSuccess, compareArrays } from '@/utils/common';
 import { fetcher } from '@/utils/http';
@@ -14,10 +14,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import qs from 'querystring';
-import {
-  CollectionGroupMaterialDto,
-  GroupMaterialDto,
-} from '@/api/types/group';
+import { CollectionGroupMaterialDto, GroupMaterialDto } from '@/types/group';
 
 interface GroupActionBtnProps {
   material: Material;

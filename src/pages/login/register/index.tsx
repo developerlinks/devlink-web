@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import { Form, Toast, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi, register, sendCode } from '@/api/user';
-import { LoginByPasswordParams, RegisterByEmail, User } from '@/api/types/user';
+import { LoginByPasswordParams, RegisterByEmail, User } from '@/types/user';
 import { useState } from 'react';
 import { ToastSuccess } from '@/utils/common';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';

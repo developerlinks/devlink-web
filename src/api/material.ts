@@ -1,5 +1,5 @@
 import http from '../utils/http';
-import { AddMaterialParmas, CreateCommentDto } from './types/material';
+import { AddMaterialParmas, CreateCommentDto } from '../types/material';
 
 // TODO response type
 

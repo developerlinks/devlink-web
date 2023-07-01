@@ -5,7 +5,7 @@ import {
   CollectionGroupMaterialDto,
   GroupMaterialDto,
   NewGroupDto,
-} from './types/group';
+} from '../types/group';
 
 export function newGroup(data: NewGroupDto) {
   return http({

@@ -1,4 +1,4 @@
-import { User } from '@/api/types/user';
+import { User } from '@/types/user';
 import { getUserInfo } from '@/utils/common';
 import { create } from 'zustand';
 

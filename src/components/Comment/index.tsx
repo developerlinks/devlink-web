@@ -3,7 +3,7 @@ import CommentEditor from './components/components/CommentEditor';
 import CommentItem from './components/components/CommentItem';
 import styles from './index.module.scss';
 import { fetcher } from '@/utils/http';
-import { Material, Comment } from '@/api/types/user';
+import { Material, Comment } from '@/types/user';
 import { Spin } from '@douyinfe/semi-ui';
 import CommentView from './components/components/CommentView';
 

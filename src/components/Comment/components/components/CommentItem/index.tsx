@@ -2,7 +2,7 @@ import CustomAvatar from '@/components/CustomAvatar';
 import styles from './index.module.scss';
 import HoverLink from '@/components/HoverLink';
 import { Button, Dropdown, Spin } from '@douyinfe/semi-ui';
-import { Comment, User } from '@/api/types/user';
+import { Comment, User } from '@/types/user';
 import moment from 'moment';
 import { MarkdownView } from '@/components/Markdown';
 import { IconMore } from '@douyinfe/semi-icons';

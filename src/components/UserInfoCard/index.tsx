@@ -1,6 +1,6 @@
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import { User } from '@/api/types/user';
+import { User } from '@/types/user';
 import CustomAvatar from '../CustomAvatar';
 import { Button, Spin } from '@douyinfe/semi-ui';
 import { IconCalendarClock, IconLink } from '@douyinfe/semi-icons';

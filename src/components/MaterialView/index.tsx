@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Material } from '@/api/types/user';
+import { Material } from '@/types/user';
 import styles from './index.module.scss';
 import HoverLink from '../HoverLink';
 import NpmInstallText from '../NpmInstallText';

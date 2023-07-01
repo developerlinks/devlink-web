@@ -7,7 +7,7 @@ import {
   Tag,
 } from '@douyinfe/semi-ui';
 import moment from 'moment';
-import { Material, User } from '@/api/types/user';
+import { Material, User } from '@/types/user';
 import { IconTreeTriangleDown } from '@douyinfe/semi-icons';
 import CustomAvatar from '../CustomAvatar';
 import HoverLink from '../HoverLink';

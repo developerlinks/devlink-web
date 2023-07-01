@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import { Form, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
 import { loginApi } from '@/api/user';
-import { LoginByPasswordParams, User } from '@/api/types/user';
+import { LoginByPasswordParams, User } from '@/types/user';
 import { useState } from 'react';
 import { ToastSuccess } from '@/utils/common';
 import useUserStore from '@/store/user';

@@ -11,7 +11,7 @@ import {
 import styles from './index.module.scss';
 import HoverLink from '../HoverLink';
 import useUserStore from '@/store/user';
-import { User } from '@/api/types/user';
+import { User } from '@/types/user';
 
 moment.locale('zh-cn');
 

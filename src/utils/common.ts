@@ -1,5 +1,5 @@
 import { getInfo } from '@/api/user';
-import type { User } from '@/api/types/user';
+import type { User } from '@/types/user';
 import { Modal, Toast, Notification } from '@douyinfe/semi-ui';
 import type { FormApi } from '@douyinfe/semi-ui/lib/es/form';
 import type { Dispatch, SetStateAction } from 'react';

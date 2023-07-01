@@ -9,7 +9,7 @@ import ResultList from '@/components/SearchPageComps/ResultList';
 import { fetcher } from '@/utils/http';
 import { Spin } from '@douyinfe/semi-ui';
 
-import { Tag, Material, User } from '@/api/types/user';
+import { Tag, Material, User } from '@/types/user';
 
 export interface SearchItemData {
   items: Material[] | User[] | Tag[];

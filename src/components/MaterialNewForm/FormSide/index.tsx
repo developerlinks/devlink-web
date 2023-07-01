@@ -3,15 +3,15 @@ import { SideSheet, Button, Form, TagInput } from '@douyinfe/semi-ui';
 import { debounce } from 'lodash';
 import { addMaterial } from '@/api/material';
 import { BaseDataItem } from '@douyinfe/semi-ui/lib/es/autoComplete';
-import { Tag as TagIF } from '@/api/types/user';
-import { GetTag } from '@/api/types/tag';
+import { Tag as TagIF } from '@/types/user';
+import { GetTag } from '@/types/tag';
 import { fetcher } from '@/utils/http';
 import useSWR from 'swr';
 import clsx from 'clsx';
-import { AddMaterialParmas } from '@/api/types/material';
+import { AddMaterialParmas } from '@/types/material';
 
 import styles from './index.module.scss';
-import { GetGroup } from '@/api/types/group';
+import { GetGroup } from '@/types/group';
 import { ToastSuccess } from '@/utils/common';
 
 interface FormSideProps {

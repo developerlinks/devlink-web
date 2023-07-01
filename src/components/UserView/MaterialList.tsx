@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { Material } from '@/api/types/user';
+import { Material } from '@/types/user';
 import MaterialCard from '../MaterialCard';
 import { fetcher } from '@/utils/http';
 import { useEffect, useState, useMemo } from 'react';

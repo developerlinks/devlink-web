@@ -1,4 +1,4 @@
-import { Comment } from '@/api/types/user';
+import { Comment } from '@/types/user';
 import CommentItem from '../CommentItem';
 import styles from './index.module.scss';
 

@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-import { GetMyMaterial } from '@/api/types/material';
+import { GetMyMaterial } from '@/types/material';
 import { fetcher } from '@/utils/http';
 import styles from './index.module.scss';
-import { Material } from '@/api/types/user';
+import { Material } from '@/types/user';
 import CustomAvatar from '@/components/CustomAvatar';
 import HoverLink from '@/components/HoverLink';
 
