@@ -18,7 +18,7 @@ import CustomAvatar from '../CustomAvatar';
 import { getDeviceId } from '@/utils/device';
 
 export default function NavBar() {
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
   const { user, clearUser } = useUserStore();
   const [logoutIsLoading, setLogoutIsLoading] = useState(false);
 
@@ -93,8 +93,15 @@ export default function NavBar() {
     </>
   );
 
-  const navRightBox = () => {
+  const renderRightBox = () => {
     return <div>{!!user ? AuthRightBox() : UnAuthRightBox()}</div>;
+  };
+
+  const renderSearchBar = () => {
+    // 如何路由是 /home 则不显示搜索框
+    if (pathname === '/home' || !user) return null;
+
+    return <SearchBar />;
   };
 
   const renderHorizontal = () => {
@@ -103,7 +110,6 @@ export default function NavBar() {
         <Nav
           className={styles.navbar}
           mode={'horizontal'}
-          onSelect={(key) => console.log(key)}
           style={{ padding: 0 }}
           header={
             <>
@@ -115,10 +121,10 @@ export default function NavBar() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => push('/')}
               />
-              {!!user && <SearchBar />}
+              {renderSearchBar()}
             </>
           }
-          footer={navRightBox()}
+          footer={renderRightBox()}
         />
       </header>
     );
