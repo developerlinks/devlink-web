@@ -14,6 +14,12 @@ export const loginApi = (data: LoginByPasswordParams) =>
     method: 'post',
     data,
   });
+export const smsLogin = (data: LoginByPasswordParams) =>
+  http({
+    url: '/auth/signin_by_code',
+    method: 'post',
+    data,
+  });
 
 export const sendCode = (email: string) =>
   http({

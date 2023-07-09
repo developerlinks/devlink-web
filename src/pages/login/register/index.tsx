@@ -1,33 +1,19 @@
-import Layout from '@/components/FrontLayout/Layout';
-import Seo from '@/components/Seo';
 import styles from './index.module.scss';
-import { Form, Toast, Button } from '@douyinfe/semi-ui';
+import { Form, Button } from '@douyinfe/semi-ui';
 import { useRouter } from 'next/router';
-import { loginApi, register, sendCode } from '@/api/user';
+import { loginApi, register } from '@/api/user';
 import { LoginByPasswordParams, RegisterByEmail, User } from '@/types/user';
 import { useState } from 'react';
 import { ToastSuccess } from '@/utils/common';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { generateHash } from '@/utils/generateHash';
 import useUserStore from '@/store/user';
 import { generateDeviceInfo } from '@/utils/device';
-
-interface handleSubmitParams extends LoginByPasswordParams {
-  agree: boolean;
-}
+import VerificationCodeInput from '@/components/VerificationCodeInput';
 
 export default function Email() {
   const [loading, setLoading] = useState(false);
   const { setUser } = useUserStore();
   const { push } = useRouter();
 
-  const sendCodeHandle = (email: string) => {
-    sendCode(email)
-      .then(() => {
-        Toast.success('发送成功');
-      })
-      .catch((err) => {});
-  };
   const handleSubmit = (values: RegisterByEmail) => {
     register(values)
       .then(() => {
@@ -102,26 +88,7 @@ export default function Email() {
                   style={{ width: '100%' }}
                   placeholder='请输入密码'
                 ></Form.Input>
-                <Form.Input
-                  field='code'
-                  label='验证码'
-                  placeholder='请输入验证码'
-                  showClear
-                  suffix={
-                    <Button
-                      block
-                      theme='borderless'
-                      type='tertiary'
-                      onClick={() => sendCodeHandle(values.email)}
-                    >
-                      发送
-                    </Button>
-                  }
-                />
-
-                <Form.Checkbox field='agree' noLabel>
-                  我已阅读并同意服务条款
-                </Form.Checkbox>
+                <VerificationCodeInput email={values.email} />
                 <div
                   style={{
                     display: 'flex',
@@ -129,18 +96,9 @@ export default function Email() {
                     alignItems: 'center',
                   }}
                 >
-                  <p>
-                    <Button
-                      theme='borderless'
-                      style={{
-                        color: 'var(--semi-color-primary)',
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => push('/login/email')}
-                    >
-                      登录
-                    </Button>
-                  </p>
+                  <Form.Checkbox field='agree' noLabel>
+                    我已阅读并同意服务条款
+                  </Form.Checkbox>
                   <Button
                     disabled={!values.agree}
                     htmlType='submit'

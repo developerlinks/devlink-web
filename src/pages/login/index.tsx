@@ -56,14 +56,15 @@ export default function Login() {
           >
             注册
           </Button>
-          <Button
+          {/* //TODO: 忘记密码 */}
+          {/* <Button
             theme='borderless'
             type='tertiary'
             block
             className={styles.loginPathButton}
           >
             忘记密码
-          </Button>
+          </Button> */}
         </div>
       </div>
     </main>

@@ -45,7 +45,11 @@ http.interceptors.response.use(
           ToastError(`网络发生波动，请联系管理员`);
           break;
         default:
-          ToastError(message);
+          if (status >= 500) {
+            ToastError(`网络错误，请稍后重试`);
+          } else {
+            ToastError(message || '请求失败');
+          }
       }
     } else {
       ToastError(error.message);
