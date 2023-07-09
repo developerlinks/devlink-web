@@ -5,7 +5,10 @@ import { create } from 'zustand';
 interface UseUserStore {
   user: User | null;
   setUser: (userData: User | null) => void;
-  getUser: () => Promise<User>;
+  getUser: () => Promise<{
+    user: User;
+    isRefresh: boolean;
+  }>;
   clearUser: () => void;
 }
 
@@ -18,11 +21,17 @@ const useUserStore = create<UseUserStore>((set, get) => ({
     return new Promise((resolve, reject) => {
       const user = get().user;
       if (user) {
-        resolve(user);
+        resolve({
+          user,
+          isRefresh: false,
+        });
       } else {
         getUserInfo().then((data) => {
           get().setUser(data);
-          resolve(data);
+          resolve({
+            user: data,
+            isRefresh: true,
+          });
         });
       }
     });

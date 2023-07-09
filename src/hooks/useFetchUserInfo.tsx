@@ -10,7 +10,9 @@ const useFetchUserInfo = () => {
     const bearerToken = localStorage.getItem('bearerToken');
     if (bearerToken) {
       getUser().then((data) => {
-        setUserInfo(data);
+        if (data.isRefresh) {
+          setUserInfo(data.user);
+        }
       });
     }
   }, []);

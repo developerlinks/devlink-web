@@ -5,7 +5,7 @@ import useUserStore from '@/store/user';
 import { User } from '@/types/user';
 import { useRouter } from 'next/router';
 import { ToastError, ToastSuccess } from '@/utils/common';
-import { Empty } from '@douyinfe/semi-ui';
+import { Empty, Spin } from '@douyinfe/semi-ui';
 import {
   IllustrationConstructionDark,
   IllustrationConstruction,
@@ -29,7 +29,6 @@ const GithubRedirect = () => {
 
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get('code');
-
     if (code) {
       generateDeviceInfo(code).then((res) => {
         const { deviceId, deviceType } = res;
@@ -75,7 +74,11 @@ const GithubRedirect = () => {
         darkModeImage={
           <IllustrationConstructionDark style={{ width: 300, height: 300 }} />
         }
-        description={'正在进行身份验证，请稍等...'}
+        description={
+          <>
+            <Spin size='large'>身份验证中</Spin>
+          </>
+        }
       />
     </div>
   );
